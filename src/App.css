@@ -164,97 +164,75 @@ section[id] {
   }
 }
 
-/* ---------- Cena de Londres (lado direito do banner) ---------- */
+/* ---------- Cena dos EUA (lado direito do banner) ---------- */
 .cena {
   position: relative;
   min-height: 520px;
   overflow: hidden;
-  background: var(--uk-azul);
+  background: #3c3b6e;
 }
-.cena-bandeira {
+.cena-bandeira,
+.cena-brilho,
+.cena-escurecer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
-.cena-sombra {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 42%, transparent 25%, rgba(10, 20, 51, 0.35) 75%),
-    linear-gradient(to bottom, transparent 50%, rgba(10, 20, 51, 0.92) 88%);
+
+/* Um reflexo de luz passando devagar dá a impressão de a bandeira balançar */
+.cena-brilho {
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.22) 35%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.12) 65%,
+    transparent 80%
+  );
+  background-size: 250% 100%;
+  animation: bandeira-balancando 7s ease-in-out infinite alternate;
+}
+@keyframes bandeira-balancando {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
 }
 
-.cena-varal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-}
-.bandeirinha {
-  transform-box: fill-box;
-  transform-origin: 50% 0;
-  animation: balanca 2.2s ease-in-out infinite alternate;
-}
-@keyframes balanca {
-  from { transform: rotate(-9deg); }
-  to { transform: rotate(9deg); }
+/* Escurece um pouco a bandeira para os desenhos aparecerem melhor */
+.cena-escurecer {
+  background: linear-gradient(180deg, rgba(31, 30, 77, 0.35) 0%, rgba(31, 30, 77, 0.55) 100%);
 }
 
+/* Sua foto: pequena, no canto, sem chamar atenção */
 .foto {
   position: absolute;
-  left: 50%;
-  top: 44%;
-  z-index: 2;
-  width: clamp(180px, 22vw, 250px);
-  aspect-ratio: 1;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  width: 56px;
+  height: 56px;
   padding: 0;
-  border: 0;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 50%;
+  overflow: hidden;
   background: none;
   cursor: pointer;
-  transform: translate(-50%, -50%);
-  animation: flutua-foto 4s ease-in-out infinite;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
 }
-.foto-moldura {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 6px solid var(--uk-branco);
-  overflow: hidden;
-  box-shadow: 0 18px 40px -10px rgba(0, 0, 0, 0.6);
+.foto:hover {
+  opacity: 1;
 }
-.foto-moldura img {
+.foto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transform: scale(1.08); /* esconde as bordas escuras da foto original */
 }
-.balao {
-  position: absolute;
-  top: 2%;
-  right: -22%;
-  padding: 6px 14px;
-  border-radius: 16px 16px 16px 4px;
-  background: var(--uk-branco);
-  color: var(--uk-azul);
-  font-weight: 700;
-  box-shadow: var(--sombra);
-  transition: transform 0.2s ease;
-}
-.foto:hover .balao {
-  transform: scale(1.1) rotate(-3deg);
-}
-@keyframes flutua-foto {
-  0%, 100% { transform: translate(-50%, -50%); }
-  50% { transform: translate(-50%, calc(-50% - 10px)); }
-}
 
 .figurinha {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -288,11 +266,12 @@ section[id] {
   font-size: 0.75rem;
   font-weight: 600;
 }
-.f1 { top: 15%; left: 8%; }
-.f2 { top: 13%; right: 8%; animation-delay: -1s; }
-.f3 { top: 46%; left: 4%; animation-delay: -2s; }
-.f4 { top: 46%; right: 4%; animation-delay: -0.5s; }
-.f5 { top: 70%; left: calc(50% - 28px); animation-delay: -1.5s; }
+/* Os objetos ficam na parte de cima, acima dos desenhos */
+.f1 { top: 12%; left: 8%; }
+.f2 { top: 8%; left: calc(50% - 28px); animation-delay: -1s; }
+.f3 { top: 24%; right: 8%; animation-delay: -2s; }
+.f4 { top: 34%; left: 26%; animation-delay: -0.5s; }
+.f5 { top: 38%; right: 30%; animation-delay: -1.5s; }
 @keyframes flutua {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -304,17 +283,6 @@ section[id] {
   left: 0;
   width: 100%;
   height: auto;
-}
-.cena-onibus {
-  position: absolute;
-  bottom: 2px;
-  z-index: 2;
-  width: 110px;
-  animation: dirige 16s linear infinite;
-}
-@keyframes dirige {
-  from { left: -130px; }
-  to { left: 105%; }
 }
 
 /* ---------- Palavra do dia (faixa vermelha) ---------- */

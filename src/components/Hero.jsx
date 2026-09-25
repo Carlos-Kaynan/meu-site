@@ -1,4 +1,4 @@
-import LondonScene from './LondonScene'
+import CenaEUA from './CenaEUA'
 import { TRILHA_URL } from '../data/aulas'
 
 const etiquetas = [
@@ -38,7 +38,7 @@ function Hero() {
         <p className="hero-nota">* Estude no computador ou no celular, no seu ritmo.</p>
       </div>
 
-      <LondonScene />
+      <CenaEUA />
     </section>
   )
 }
