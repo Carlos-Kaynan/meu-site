@@ -21,13 +21,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```powershell
 npm install       # instala dependências
-npm run dev       # servidor de desenvolvimento em http://localhost:5173 (com hot reload)
+npm run dev       # servidor de desenvolvimento em http://localhost:5173/meu-site/ (com hot reload)
 npm run build     # gera a versão de produção em dist/
 npm run preview   # serve o build de dist/ localmente
 npm run lint      # roda o ESLint no projeto
 ```
 
 Não há framework de testes configurado.
+
+## Publicação
+
+- Publicado no GitHub Pages em https://carlos-kaynan.github.io/meu-site/ — cada push na `main` roda `.github/workflows/deploy.yml`, que faz o build e publica `dist/`.
+- Por isso `vite.config.js` tem `base: '/meu-site/'`: sem isso, os caminhos de CSS/JS quebram no Pages.
 
 ## Estrutura
 
