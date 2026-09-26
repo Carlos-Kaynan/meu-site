@@ -46,11 +46,11 @@ export const dialogos = [
     categoria: 'escola',
     nivel: 'iniciante',
     contexto: 'Dois alunos novos se conhecem no primeiro dia de aula.',
-    pessoas: [{ nome: 'Lucas' }, { nome: 'Sofia' }],
+    pessoas: [{ nome: 'Yuri Lucas' }, { nome: 'Sofia' }],
     falas: [
       { quem: 0, en: "Hi! What's your name?", pt: 'Oi! Qual é o seu nome?' },
       { quem: 1, en: 'My name is Sofia. And you?', pt: 'Meu nome é Sofia. E você?' },
-      { quem: 0, en: "I'm Lucas. Nice to meet you.", pt: 'Eu sou o Lucas. Prazer em te conhecer.' },
+      { quem: 0, en: "I'm Yuri Lucas. Nice to meet you.", pt: 'Eu sou o Yuri Lucas. Prazer em te conhecer.' },
       { quem: 1, en: 'Nice to meet you too. Where are you from?', pt: 'Prazer em te conhecer também. De onde você é?' },
       { quem: 0, en: "I'm from Brazil. And you?", pt: 'Eu sou do Brasil. E você?' },
       { quem: 1, en: "I'm from Portugal.", pt: 'Eu sou de Portugal.' },
