@@ -395,6 +395,115 @@ section[id] {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+/* Abas "Trilha 1 / Trilha 2": cartões grandes para chamar atenção */
+.abas-titulo {
+  margin: 0 0 14px;
+  color: var(--titulo);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+.abas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  max-width: 760px;
+  margin-bottom: 44px;
+}
+.aba {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  border: 3px solid var(--titulo);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.aba:hover {
+  transform: translateY(-5px);
+  border-color: var(--uk-vermelho);
+  box-shadow: 0 18px 34px -14px rgba(200, 16, 46, 0.55);
+}
+.aba-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(200, 16, 46, 0.12);
+  font-size: 2.2rem;
+  transition: transform 0.2s ease;
+}
+.aba:hover .aba-icone {
+  transform: rotate(-8deg) scale(1.08);
+}
+.aba-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.aba-nome {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.aba-detalhes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.aba-nivel {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--uk-vermelho);
+  color: var(--uk-branco);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.aba-qtd {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* A trilha escolhida: azul, borda vermelha e uma setinha apontando para as aulas */
+.aba.ativa {
+  border-color: var(--uk-vermelho);
+  background: linear-gradient(135deg, var(--uk-azul), #1d3f9e);
+  color: var(--uk-branco);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 34px -14px rgba(200, 16, 46, 0.6);
+}
+.aba.ativa .aba-icone {
+  background: rgba(255, 255, 255, 0.16);
+}
+.aba.ativa .aba-qtd {
+  color: #dbe4ff;
+}
+.aba.ativa::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  border: 12px solid transparent;
+  border-top-color: var(--uk-vermelho);
+  border-bottom: 0;
+  transform: translateX(-50%);
+}
+/* No celular os cartões ficam empilhados, e a seta apontaria para o outro cartão */
+@media (max-width: 600px) {
+  .aba.ativa::after {
+    display: none;
+  }
+}
 .faixa-branca h2 {
   color: var(--titulo);
   font-size: clamp(1.8rem, 4vw, 2.4rem);

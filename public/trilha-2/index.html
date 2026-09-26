@@ -1,0 +1,1833 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trilha 2 · Inglês A2</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🗺️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;padding:0;}
+  :root{
+    --bg:#F3F6F4; --surface:#FFFFFF; --surface-2:#E7EFEB; --surface-3:#DCE8E2;
+    --ink:#16211E; --ink-muted:#4B5D57; --border:#D3DED8;
+    --accent:#E0A72E; --accent-ink:#241900; --accent-soft:#FBEBC7;
+    --progress:#1F7A6C; --progress-ink:#FFFFFF; --progress-soft:#D9EEE9;
+    --danger:#B5493A; --danger-soft:#F6DEDA;
+    --locked:#AAB6B0; --locked-soft:#E4E9E6;
+    --shadow: 0 1px 2px rgba(20,30,27,.06), 0 6px 20px -8px rgba(20,30,27,.18);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1917; --surface:#142523; --surface-2:#1B322D; --surface-3:#213D36;
+      --ink:#E7F0EC; --ink-muted:#9FB3AC; --border:#24413B;
+      --accent:#F0B93E; --accent-ink:#241900; --accent-soft:#3A2C0C;
+      --progress:#33A08E; --progress-ink:#052420; --progress-soft:#12332C;
+      --danger:#E48A79; --danger-soft:#3B211C;
+      --locked:#4C625B; --locked-soft:#1B302B;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -10px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1917; --surface:#142523; --surface-2:#1B322D; --surface-3:#213D36;
+    --ink:#E7F0EC; --ink-muted:#9FB3AC; --border:#24413B;
+    --accent:#F0B93E; --accent-ink:#241900; --accent-soft:#3A2C0C;
+    --progress:#33A08E; --progress-ink:#052420; --progress-soft:#12332C;
+    --danger:#E48A79; --danger-soft:#3B211C;
+    --locked:#4C625B; --locked-soft:#1B302B;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -10px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Work Sans', system-ui, sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{ font-family:'Fraunces', Georgia, serif; text-wrap:balance; }
+  .mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  a{ color:inherit; }
+  button{ font-family:inherit; }
+  button:focus-visible, textarea:focus-visible, input:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px;
+  }
+  ::selection{ background:var(--accent-soft); }
+
+  .wrap{ max-width:840px; margin:0 auto; padding:28px 20px 80px; }
+  [hidden]{ display:none !important; }
+
+  /* ---------- Topbar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 20px; border-bottom:1px solid var(--border);
+    background:var(--surface); position:sticky; top:0; z-index:20;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; }
+  .brand .mark{
+    width:30px; height:30px; border-radius:9px; background:var(--accent); color:var(--accent-ink);
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex:none;
+  }
+  .streak-chip{
+    display:flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px;
+    background:var(--accent-soft); color:var(--ink); font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.85rem;
+    border:1px solid var(--border);
+  }
+
+  /* ---------- Sections / cards ---------- */
+  .panel{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px; box-shadow:var(--shadow);
+  }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:.08em; font-size:.72rem; font-weight:600; color:var(--ink-muted);
+  }
+  .lede{ color:var(--ink-muted); font-size:.98rem; max-width:62ch; }
+
+  /* ---------- Stat row ---------- */
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:22px 0; }
+  .stat{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:16px; text-align:left;
+  }
+  .stat .n{ font-family:'IBM Plex Mono',monospace; font-size:1.7rem; font-weight:600; line-height:1; }
+  .stat .l{ font-size:.76rem; color:var(--ink-muted); margin-top:6px; }
+  @media (max-width:640px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---------- Check-in strip ---------- */
+  .checkin-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:14px; }
+  .week-strip{ display:flex; gap:6px; }
+  .day-dot{
+    width:30px; height:30px; border-radius:8px; background:var(--surface-2); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; font-size:.68rem; color:var(--ink-muted);
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .day-dot.done{ background:var(--progress); color:var(--progress-ink); border-color:var(--progress); }
+  .day-dot.today{ box-shadow:0 0 0 2px var(--accent); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:10px;
+    border:1px solid transparent; font-weight:600; font-size:.92rem; cursor:pointer; transition:transform .08s ease;
+  }
+  .btn:active{ transform:scale(.98); }
+  .btn-primary{ background:var(--accent); color:var(--accent-ink); }
+  .btn-progress{ background:var(--progress); color:var(--progress-ink); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--border); }
+  .btn-ghost:hover{ background:var(--surface-2); }
+  .btn[disabled]{ opacity:.5; cursor:not-allowed; }
+  .btn-sm{ padding:6px 12px; font-size:.8rem; border-radius:8px; }
+
+  /* ---------- Journey path ---------- */
+  .path{
+    display:flex; gap:10px; overflow-x:auto; padding:6px 2px 14px; margin-top:10px;
+  }
+  .node{
+    flex:none; width:78px; height:92px; border-radius:12px; border:1px solid var(--border);
+    background:var(--surface); display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:6px; cursor:pointer; position:relative;
+  }
+  .node .num{ font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:1rem; }
+  .node .ic{ font-size:1.1rem; }
+  .node .t{ font-size:.58rem; color:var(--ink-muted); text-align:center; padding:0 4px; line-height:1.15; }
+  .node.locked{ background:var(--locked-soft); color:var(--locked); cursor:not-allowed; }
+  .node.locked .num, .node.locked .t{ color:var(--locked); }
+  .node.available{ border-color:var(--accent); box-shadow:0 0 0 1px var(--accent); }
+  .node.done{ background:var(--progress-soft); border-color:var(--progress); }
+  .node.review{ background:var(--accent-soft); }
+
+  /* ---------- Vocab cards ---------- */
+  .vocab-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
+  .vcard{ background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
+  .vcard .en{ font-weight:600; font-size:1.02rem; display:flex; align-items:center; gap:8px; }
+  .vcard .pt{ color:var(--ink-muted); font-size:.85rem; margin-top:2px; }
+  .vcard .ex{ font-size:.82rem; margin-top:6px; font-style:italic; color:var(--ink-muted); }
+  .speak-btn{
+    border:none; background:var(--surface-3); color:var(--ink); width:26px; height:26px; border-radius:50%;
+    font-size:.8rem; cursor:pointer; flex:none; display:flex; align-items:center; justify-content:center;
+  }
+  .speak-btn:hover{ background:var(--accent-soft); }
+
+  /* ---------- Dialogue ---------- */
+  .dlg-line{ display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; }
+  .dlg-avatar{
+    width:28px; height:28px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.78rem;
+  }
+  .dlg-avatar.A{ background:var(--accent-soft); color:var(--ink); }
+  .dlg-avatar.B{ background:var(--progress-soft); color:var(--ink); }
+  .dlg-bubble{
+    background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:8px 12px;
+    display:flex; align-items:center; gap:8px; font-size:.94rem;
+  }
+
+  /* ---------- Section nav (inside lesson) ---------- */
+  .section-nav{
+    display:flex; gap:6px; overflow-x:auto; padding-bottom:2px; margin-bottom:22px;
+    position:sticky; top:57px; background:var(--bg); z-index:10; padding-top:8px;
+  }
+  .section-nav a{
+    flex:none; font-size:.78rem; padding:7px 12px; border-radius:999px; border:1px solid var(--border);
+    background:var(--surface); text-decoration:none; color:var(--ink-muted); font-weight:500;
+  }
+  .section-nav a.seen{ color:var(--ink); border-color:var(--progress); }
+
+  .lesson-section{ margin-bottom:26px; scroll-margin-top:110px; }
+  .lesson-section h2{ font-size:1.25rem; margin:0 0 4px; display:flex; align-items:center; gap:8px; }
+  .lesson-section .step-num{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--ink-muted); border:1px solid var(--border);
+    border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; flex:none;
+  }
+
+  textarea{
+    width:100%; min-height:96px; padding:12px; border-radius:10px; border:1px solid var(--border);
+    background:var(--surface); color:var(--ink); font-family:inherit; font-size:.94rem; resize:vertical;
+  }
+  .ai-out{
+    margin-top:12px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:14px;
+    font-size:.92rem; white-space:pre-wrap;
+  }
+  .ai-note{ font-size:.78rem; color:var(--ink-muted); margin-top:8px; }
+
+  .chat-box{ background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:12px; }
+  .chat-log{ display:flex; flex-direction:column; gap:8px; max-height:340px; overflow-y:auto; margin-bottom:10px; }
+  .msg{ padding:8px 12px; border-radius:10px; font-size:.9rem; max-width:82%; }
+  .msg.bot{ background:var(--surface); border:1px solid var(--border); align-self:flex-start; }
+  .msg.me{ background:var(--accent); color:var(--accent-ink); align-self:flex-end; }
+  .chat-input-row{ display:flex; gap:8px; }
+  .chat-input-row input{
+    flex:1; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--ink);
+    font-family:inherit; font-size:.92rem;
+  }
+
+  .quiz-item{ border:1px solid var(--border); border-radius:10px; padding:14px; margin-bottom:10px; background:var(--surface-2); }
+  .quiz-q{ font-weight:600; margin-bottom:8px; }
+  .quiz-opt{ display:flex; align-items:center; gap:8px; padding:6px 4px; border-radius:8px; cursor:pointer; font-size:.92rem; }
+  .quiz-opt:hover{ background:var(--surface-3); }
+  .quiz-opt.correct{ background:var(--progress-soft); }
+  .quiz-opt.wrong{ background:var(--danger-soft); }
+  .quiz-tip{ font-size:.8rem; color:var(--ink-muted); margin-top:8px; display:none; }
+  .quiz-tip.show{ display:block; }
+  .quiz-score{ font-family:'IBM Plex Mono',monospace; font-weight:600; margin-top:6px; }
+
+  .word-actions{ margin-top:10px; display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+  .word-actions .btn{ font-size:.74rem; padding:5px 10px; }
+  .word-actions .ai-note{ margin:0; }
+
+  .review-banner{
+    background:var(--accent-soft); border:1px solid var(--accent); border-radius:10px; padding:14px 16px; font-size:.92rem;
+  }
+
+  .lesson-footer{
+    display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:30px;
+    padding-top:18px; border-top:1px solid var(--border); flex-wrap:wrap;
+  }
+
+  .toast{
+    position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:var(--ink); color:var(--bg);
+    padding:10px 18px; border-radius:10px; font-size:.88rem; z-index:50; box-shadow:var(--shadow); opacity:0; pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .toast.show{ opacity:1; }
+
+  .modal-backdrop{
+    position:fixed; inset:0; background:rgba(10,15,14,.55); display:flex; align-items:center; justify-content:center;
+    z-index:60; padding:20px;
+  }
+  .modal{
+    background:var(--surface); border-radius:var(--radius); padding:26px; max-width:400px; width:100%;
+    box-shadow:var(--shadow); text-align:center; border:1px solid var(--border);
+  }
+  .modal h3{ margin:6px 0 6px; }
+  .modal p{ color:var(--ink-muted); font-size:.92rem; margin-bottom:18px; }
+  .modal .row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .about-details{ margin-top:18px; font-size:.88rem; color:var(--ink-muted); }
+  .about-details summary{ cursor:pointer; color:var(--ink); font-weight:600; font-size:.88rem; }
+  .about-details p{ margin:10px 0 0; }
+
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; font-size:.85rem; color:var(--ink-muted);
+    text-decoration:none; margin-bottom:14px; cursor:pointer; background:none; border:none; padding:0;
+  }
+
+  /* review flashcards */
+  .flash{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:40px 24px;
+    text-align:center; box-shadow:var(--shadow);
+  }
+  .flash .word{ font-family:'Fraunces',serif; font-size:1.8rem; font-weight:600; }
+  .flash .trans{ margin-top:14px; font-size:1.1rem; color:var(--progress); min-height:1.4em; }
+  .flash .ex2{ margin-top:6px; font-size:.9rem; color:var(--ink-muted); font-style:italic; min-height:1.3em; }
+  .flash-controls{ margin-top:26px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="../" style="text-decoration:none;" title="Voltar para o Inglês Básico"><span class="mark">🗺️</span> Trilha A2</a>
+  <div class="streak-chip" id="streakChip">🔥 0</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ================= HOME VIEW ================= -->
+  <section id="view-home">
+    <div class="eyebrow">Módulo 2 · Do básico ao pré-intermediário · A2</div>
+    <h1 class="display" style="font-size:1.9rem;margin:6px 0 6px;">Sua trilha A2</h1>
+    <p class="lede">14 aulas de ~2 horas, o próximo passo depois do A1: falar do passado, do que está acontecendo agora e dos seus planos; comparar, viajar, resolver coisas no trabalho e contar suas experiências. Mesmo método de sempre — input compreensível, repetição espaçada, prática com IA e testes de recuperação ativa.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="n mono" id="statDay">1/12</div><div class="l">Aula atual</div></div>
+      <div class="stat"><div class="n mono" id="statStreak">0</div><div class="l">Sequência de dias</div></div>
+      <div class="stat"><div class="n mono" id="statToday">0</div><div class="l">Aulas feitas hoje</div></div>
+      <div class="stat"><div class="n mono" id="statWords">0</div><div class="l">Palavras na revisão</div></div>
+    </div>
+
+    <div class="panel">
+      <div class="eyebrow">Check-in</div>
+      <div class="checkin-row">
+        <div class="week-strip" id="weekStrip"></div>
+        <button class="btn btn-ghost btn-sm" id="btnManualCheckin">Já estudei hoje de outra forma</button>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+        <span id="reviewTeaser" hidden>
+          <button class="btn btn-primary" id="btnGoReview">🗂️ Revisar <span id="dueCount">0</span> palavra(s) de hoje</button>
+        </span>
+        <button class="btn btn-ghost" id="btnGoWords">📒 Novas palavras <span class="mono" id="wordsCount">(0)</span></button>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <div class="eyebrow">Sua trilha</div>
+      <div class="path" id="pathRow"></div>
+    </div>
+
+    <details class="about-details">
+      <summary>Como este método foi montado</summary>
+      <p>Cada aula combina <strong>input compreensível</strong> (vocabulário e diálogos no seu nível), <strong>repetição espaçada</strong> (as palavras voltam para revisão em intervalos crescentes, como no Anki), <strong>recuperação ativa</strong> (quiz em vez de reler) e <strong>produção</strong> — escrita corrigida pela IA e conversa livre, porque falar e escrever é o que consolida o que você aprendeu. Dias 7 e 14 são dias de revisão espaçada, sem conteúdo novo.</p>
+    </details>
+  </section>
+
+  <!-- ================= LESSON VIEW ================= -->
+  <section id="view-lesson" hidden>
+    <button class="back-link" id="btnBackHome">← Voltar para a trilha</button>
+    <div class="eyebrow" id="lessonEyebrow">Dia 1 de 12</div>
+    <h1 class="display" style="font-size:1.7rem;margin:4px 0 16px;" id="lessonTitle"></h1>
+
+    <nav class="section-nav" id="sectionNav"></nav>
+
+    <div class="lesson-section" id="sec-vocab">
+      <h2><span class="step-num">1</span> Vocabulário novo</h2>
+      <p class="lede" id="vocabIntro">Ouça cada palavra (🔊) antes de seguir. Isso já é o começo do shadowing.</p>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </div>
+
+    <div class="lesson-section" id="sec-grammar">
+      <h2><span class="step-num">2</span> Gramática</h2>
+      <h3 id="grammarTitle" style="margin:0 0 8px;font-size:1.05rem;"></h3>
+      <div id="grammarBody" class="lede" style="max-width:70ch;"></div>
+    </div>
+
+    <div class="lesson-section" id="sec-dialogue">
+      <h2><span class="step-num">3</span> Diálogo · shadowing</h2>
+      <p class="lede">Toque em 🔊 e repita em voz alta, imitando o ritmo. Depois tente ler sem áudio.</p>
+      <div id="dialogueBox" style="margin-top:12px;"></div>
+    </div>
+
+    <div class="lesson-section" id="sec-write">
+      <h2><span class="step-num">4</span> Produção escrita</h2>
+      <p class="lede" id="writingPrompt"></p>
+      <textarea id="writingInput" placeholder="Write your sentences here…"></textarea>
+      <div style="margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" id="btnCorrect">Corrigir com o Claude</button>
+        <span class="ai-note" id="aiNoteWrite" hidden>Correção por IA indisponível nesta visualização — mas sua trilha continua funcionando normalmente.</span>
+      </div>
+      <div class="ai-out" id="correctionOut" hidden></div>
+    </div>
+
+    <div class="lesson-section" id="sec-chat">
+      <h2><span class="step-num">5</span> Conversa com o Claude</h2>
+      <p class="lede" id="chatTopicLine"></p>
+      <div class="chat-box">
+        <div class="chat-log" id="chatLog"></div>
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="Type in English…" />
+          <button class="btn btn-primary btn-sm" id="btnSendChat">Enviar</button>
+        </div>
+        <span class="ai-note" id="aiNoteChat" hidden>Conversa por IA indisponível nesta visualização.</span>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="sec-quiz">
+      <h2><span class="step-num">6</span> Quiz de fixação</h2>
+      <p class="lede">Tente responder de memória antes de olhar o vocabulário acima — é o jeito mais eficaz de fixar.</p>
+      <div id="quizBox" style="margin-top:12px;"></div>
+      <button class="btn btn-progress" id="btnCheckQuiz">Corrigir quiz</button>
+      <div class="quiz-score" id="quizScore"></div>
+    </div>
+
+    <div class="lesson-footer">
+      <span class="ai-note" id="completeHint">Dica: corrija o quiz antes de concluir, para ver o que acertou.</span>
+      <button class="btn btn-progress" id="btnComplete">Concluir aula ✓</button>
+    </div>
+  </section>
+
+  <!-- ================= NEW WORDS VIEW ================= -->
+  <section id="view-words" hidden>
+    <button class="back-link" id="btnBackHome3">← Voltar para a trilha</button>
+    <div class="eyebrow">Seu caderno</div>
+    <h1 class="display" style="font-size:1.7rem;margin:4px 0 6px;">Novas palavras</h1>
+    <p class="lede">Toda vez que você escreve uma palavra em português na conversa e eu traduzo, ela fica guardada aqui.</p>
+    <div style="margin:18px 0;display:flex;gap:10px;flex-wrap:wrap;" id="wordsActions" hidden>
+      <button class="btn btn-progress" id="btnAllToDeck">Enviar todas para a revisão</button>
+    </div>
+    <div id="wordsList"></div>
+  </section>
+
+  <!-- ================= REVIEW VIEW ================= -->
+  <section id="view-review" hidden>
+    <button class="back-link" id="btnBackHome2">← Voltar para a trilha</button>
+    <div class="eyebrow">Revisão espaçada</div>
+    <h1 class="display" style="font-size:1.7rem;margin:4px 0 20px;">Cartões de hoje</h1>
+    <div id="reviewArea"></div>
+  </section>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* =========================================================
+   LESSON DATA
+   ========================================================= */
+var LESSONS = [
+{day:1, title:"Passado: was/were e verbos regulares", isReview:false,
+ vocab:[
+   {en:"yesterday", pt:"ontem", ex:"I was at home yesterday."},
+   {en:"last night", pt:"ontem à noite", ex:"We watched a movie last night."},
+   {en:"last week", pt:"semana passada", ex:"She worked a lot last week."},
+   {en:"ago", pt:"atrás (tempo)", ex:"Two years ago, I lived in Recife."},
+   {en:"was", pt:"era / estava (I, he, she, it)", ex:"I was very tired."},
+   {en:"were", pt:"eram / estavam (you, we, they)", ex:"They were at the party."},
+   {en:"worked", pt:"trabalhou / trabalhei", ex:"He worked until 8 p.m."},
+   {en:"studied", pt:"estudou / estudei", ex:"I studied English yesterday."},
+   {en:"watched", pt:"assistiu / assisti", ex:"We watched a series last night."},
+   {en:"arrived", pt:"chegou / cheguei", ex:"She arrived late."}
+ ],
+ grammarTitle:"Past Simple — was/were e verbos regulares (+ed)",
+ grammarBody:"<p><strong>To be no passado:</strong> I/he/she/it → <strong>was</strong> · you/we/they → <strong>were</strong>.<br>I was tired. · They were happy. · Negativo: wasn't / weren't. · Pergunta: Was it good? Were you there?</p><p><strong>Verbos regulares:</strong> acrescente <strong>-ed</strong> — a forma é a MESMA para todas as pessoas (I worked, he worked, they worked).</p><p><strong>Regras de escrita:</strong><br>work → worked (normal)<br>like → liked (já termina em e, só +d)<br>study → studied (consoante + y → ied)<br>stop → stopped (dobra a consoante final)</p><p><strong>Atenção à pronúncia do -ed:</strong> worked soa /t/, played soa /d/, wanted soa /id/. Ouça os exemplos no 🔊.</p>",
+ dialogue:[
+   {s:"A", en:"How was your weekend?"},
+   {s:"B", en:"It was great! I watched two movies and I rested a lot."},
+   {s:"A", en:"Nice. I worked on Saturday, so I was really tired."},
+   {s:"B", en:"Oh, were you at the office?"},
+   {s:"A", en:"No, I worked from home. Then I studied English at night."},
+   {s:"B", en:"That's good! Last week I studied only one day."}
+ ],
+ writingPrompt:"Conte o que você fez no fim de semana passado em 4-5 frases. Use was/were e pelo menos três verbos regulares no passado (worked, studied, watched, played, arrived…).",
+ chatTopic:"Seu fim de semana", chatTopicPt:"Conte o que aconteceu no seu fim de semana.",
+ chatOpening:"Welcome to A2! 🎉 Let's start with the past. How was your weekend? What did you do?",
+ quiz:[
+   {q:"“I ___ very tired yesterday.”", opts:["was","were","am","is"], correct:0, tip:"Com “I” usamos was."},
+   {q:"“They ___ at the party last night.”", opts:["was","were","are","is"], correct:1, tip:"Com “they” usamos were."},
+   {q:"Passado de “study”:", opts:["studyed","studied","studed","studying"], correct:1, tip:"Consoante + y vira ied: studied."},
+   {q:"Passado de “stop”:", opts:["stoped","stopped","stopt","stoping"], correct:1, tip:"Dobra a consoante final: stopped."},
+   {q:"“We ___ a movie last night.”", opts:["watch","watched","watching","watchs"], correct:1, tip:"Last night = passado → watched."}
+ ]
+},
+{day:2, title:"Passado: verbos irregulares", isReview:false,
+ vocab:[
+   {en:"went (go)", pt:"foi / fui", ex:"I went to the gym yesterday."},
+   {en:"had (have)", pt:"teve / tive", ex:"We had a meeting on Monday."},
+   {en:"did (do)", pt:"fez / fiz", ex:"She did all the work alone."},
+   {en:"saw (see)", pt:"viu / vi", ex:"I saw your message."},
+   {en:"ate (eat)", pt:"comeu / comi", ex:"He ate pizza last night."},
+   {en:"got (get)", pt:"recebeu / conseguiu", ex:"I got a new job."},
+   {en:"made (make)", pt:"fez (criou)", ex:"They made a great app."},
+   {en:"took (take)", pt:"pegou / levou", ex:"It took two hours."},
+   {en:"said (say)", pt:"disse", ex:"She said it was easy."},
+   {en:"came (come)", pt:"veio", ex:"My friends came to my house."}
+ ],
+ grammarTitle:"Past Simple — verbos irregulares",
+ grammarBody:"<p>Alguns verbos muito comuns <strong>não seguem a regra do -ed</strong>. Eles simplesmente mudam de forma, e você precisa memorizá-los — por isso eles entram hoje na sua revisão espaçada.</p><p><strong>Os mais usados:</strong><br>go → went · have → had · do → did · see → saw · eat → ate<br>get → got · make → made · take → took · say → said · come → came<br>write → wrote · read → read (mesma escrita, som diferente) · put → put</p><p>Assim como os regulares, a forma é <strong>igual para todas as pessoas</strong>: I went, he went, they went.</p>",
+ dialogue:[
+   {s:"A", en:"What did you do yesterday?"},
+   {s:"B", en:"I went to the office in the morning and we had a long meeting."},
+   {s:"A", en:"How long did it take?"},
+   {s:"B", en:"It took almost three hours! After that I made a report."},
+   {s:"A", en:"Wow. Did you finish it?"},
+   {s:"B", en:"Yes, and my boss said it was really good."}
+ ],
+ writingPrompt:"Escreva 4-5 frases sobre o que você fez ontem, usando pelo menos quatro verbos irregulares (went, had, did, saw, got, made, took…).",
+ chatTopic:"O que você fez ontem", chatTopicPt:"Use verbos irregulares para contar seu dia de ontem.",
+ chatOpening:"Let's practice irregular verbs. What did you do yesterday? Try to use “went”, “had” or “made”.",
+ quiz:[
+   {q:"“I ___ to the gym yesterday.”", opts:["goed","went","gone","go"], correct:1, tip:"go → went."},
+   {q:"“We ___ a meeting on Monday.”", opts:["haved","hadded","had","have"], correct:2, tip:"have → had."},
+   {q:"“She ___ my message this morning.”", opts:["seed","saw","seen","see"], correct:1, tip:"see → saw."},
+   {q:"“It ___ two hours.”", opts:["taked","took","taken","take"], correct:1, tip:"take → took."},
+   {q:"Qual destes é IRREGULAR?", opts:["worked","studied","made","arrived"], correct:2, tip:"make → made não usa -ed."}
+ ]
+},
+{day:3, title:"Passado: perguntas e negativas (did/didn't)", isReview:false,
+ vocab:[
+   {en:"happen", pt:"acontecer", ex:"What happened yesterday?"},
+   {en:"met (meet)", pt:"conheceu / encontrou", ex:"I met her last year."},
+   {en:"left (leave)", pt:"saiu / deixou", ex:"He left at six."},
+   {en:"bought (buy)", pt:"comprou", ex:"I bought a new phone."},
+   {en:"told (tell)", pt:"contou / disse a alguém", ex:"She told me the news."},
+   {en:"found (find)", pt:"encontrou / achou", ex:"I found my keys."},
+   {en:"thought (think)", pt:"pensou / achou", ex:"I thought it was easy."},
+   {en:"knew (know)", pt:"sabia / conhecia", ex:"I knew the answer."},
+   {en:"nothing", pt:"nada", ex:"I did nothing on Sunday."},
+   {en:"anything", pt:"nada / qualquer coisa", ex:"I didn't do anything."}
+ ],
+ grammarTitle:"Did e didn't — o verbo volta à forma base",
+ grammarBody:"<p>Para <strong>perguntar</strong> e <strong>negar</strong> no passado, usamos <strong>did</strong>. E aqui está o ponto mais importante: o <em>did</em> já carrega o passado, então o outro verbo <strong>volta à forma base</strong>.</p><p><strong>Pergunta:</strong> Did you go to the party? · Did she work yesterday?<br><strong>Negativa:</strong> I didn't go. · She didn't work.</p><p>⚠️ Erro muito comum: <s>I didn't went</s> → o certo é <strong>I didn't go</strong>. <s>Did you went?</s> → <strong>Did you go?</strong></p><p><strong>Perguntas com wh-:</strong> What did you do? · Where did you go? · Why did he leave?<br><strong>Respostas curtas:</strong> Yes, I did. / No, I didn't.</p>",
+ dialogue:[
+   {s:"A", en:"Did you go out last weekend?"},
+   {s:"B", en:"No, I didn't. I stayed home. What about you?"},
+   {s:"A", en:"I met some friends downtown. We bought tickets for a show."},
+   {s:"B", en:"Nice! Did you like it?"},
+   {s:"A", en:"Yes, I did. But it finished late and I didn't sleep well."},
+   {s:"B", en:"What time did you get home?"},
+   {s:"A", en:"Around two in the morning!"}
+ ],
+ writingPrompt:"Escreva 3 perguntas no passado (Did you…? What did you…?) e responda cada uma, usando pelo menos duas negativas com didn't.",
+ chatTopic:"Perguntas sobre o passado", chatTopicPt:"Faça e responda perguntas no passado.",
+ chatOpening:"Now let's ask questions. Did you do anything interesting last week? And feel free to ask me questions too!",
+ quiz:[
+   {q:"“___ you go to the party?”", opts:["Did","Do","Was","Does"], correct:0, tip:"Passado → Did."},
+   {q:"Qual está CORRETA?", opts:["I didn't went.","I didn't go.","I not went.","I don't went."], correct:1, tip:"didn't + verbo base."},
+   {q:"“Where ___ she work last year?”", opts:["did","was","does","done"], correct:0, tip:"Where did she work?"},
+   {q:"Resposta curta negativa para “Did you like it?”", opts:["No, I don't.","No, I didn't.","No, I wasn't.","No, I not."], correct:1, tip:"Did → didn't."},
+   {q:"“I ___ anything yesterday.”", opts:["didn't do","didn't did","not did","don't do"], correct:0, tip:"didn't + do (base)."}
+ ]
+},
+{day:4, title:"Present Continuous — agora vs. rotina", isReview:false,
+ vocab:[
+   {en:"right now", pt:"agora mesmo", ex:"I'm working right now."},
+   {en:"at the moment", pt:"no momento", ex:"She's busy at the moment."},
+   {en:"these days", pt:"nos dias de hoje / atualmente", ex:"I'm studying a lot these days."},
+   {en:"wearing", pt:"vestindo / usando (roupa)", ex:"He's wearing a blue shirt."},
+   {en:"looking for", pt:"procurando", ex:"I'm looking for my phone."},
+   {en:"waiting for", pt:"esperando (por)", ex:"We're waiting for the bus."},
+   {en:"working on", pt:"trabalhando em (um projeto)", ex:"I'm working on a new project."},
+   {en:"learning", pt:"aprendendo", ex:"She's learning Spanish."},
+   {en:"trying", pt:"tentando", ex:"I'm trying to finish this today."},
+   {en:"getting better", pt:"melhorando", ex:"My English is getting better."}
+ ],
+ grammarTitle:"Present Continuous (am/is/are + verbo-ing)",
+ grammarBody:"<p>Usamos o present continuous para o que está acontecendo <strong>agora</strong> ou <strong>neste período da vida</strong>.</p><p>I <strong>am working</strong> (I'm working) · He <strong>is studying</strong> (He's studying) · They <strong>are waiting</strong> (They're waiting)</p><p><strong>Escrita do -ing:</strong> work → working · make → making (perde o e) · run → running (dobra a consoante) · study → studying (o y fica).</p><p><strong>A diferença que mais importa:</strong><br>I <strong>work</strong> at a company. → minha rotina, sempre.<br>I<strong>'m working</strong> on a new system. → agora / neste período.</p><p>⚠️ Alguns verbos normalmente <strong>não</strong> usam -ing: like, want, need, know, understand. Dizemos “I want coffee”, não <s>I'm wanting coffee</s>.</p>",
+ dialogue:[
+   {s:"A", en:"Hi! What are you doing?"},
+   {s:"B", en:"I'm working on a project. And you?"},
+   {s:"A", en:"I'm waiting for my sister. She's buying coffee."},
+   {s:"B", en:"Do you usually meet on Fridays?"},
+   {s:"A", en:"Yes, we do. But these days she's studying a lot, so it's difficult."},
+   {s:"B", en:"I understand. I'm learning English every day now."}
+ ],
+ writingPrompt:"Escreva 4 frases: duas sobre o que você está fazendo agora (present continuous) e duas sobre sua rotina normal (present simple). Mostre a diferença.",
+ chatTopic:"O que você está fazendo agora", chatTopicPt:"Fale do momento atual e da sua rotina.",
+ chatOpening:"What are you doing right now? And what are you working on these days?",
+ quiz:[
+   {q:"“I ___ on a new project right now.”", opts:["work","am working","works","worked"], correct:1, tip:"Right now → present continuous."},
+   {q:"“She ___ Spanish these days.”", opts:["is learning","learn","learns","learned"], correct:0, tip:"Período atual → is learning."},
+   {q:"Forma -ing de “make”:", opts:["makeing","making","makking","makes"], correct:1, tip:"Perde o e: making."},
+   {q:"“I ___ coffee every morning.” (rotina)", opts:["am drinking","drink","drinking","drinks"], correct:1, tip:"Every morning = rotina → present simple."},
+   {q:"Qual frase está ERRADA?", opts:["I'm waiting for the bus.","She's running now.","I'm wanting a coffee.","They're studying."], correct:2, tip:"“want” não usa -ing: I want a coffee."}
+ ]
+},
+{day:5, title:"Futuro: going to e will", isReview:false,
+ vocab:[
+   {en:"tomorrow", pt:"amanhã", ex:"I'm going to travel tomorrow."},
+   {en:"next week", pt:"semana que vem", ex:"We'll meet next week."},
+   {en:"plan", pt:"plano / planejar", ex:"What are your plans?"},
+   {en:"hope", pt:"esperar (desejar)", ex:"I hope it works."},
+   {en:"maybe", pt:"talvez", ex:"Maybe I'll go."},
+   {en:"probably", pt:"provavelmente", ex:"It will probably rain."},
+   {en:"busy", pt:"ocupado", ex:"I'm busy tomorrow."},
+   {en:"free", pt:"livre (sem compromisso)", ex:"Are you free on Friday?"},
+   {en:"promise", pt:"prometer / promessa", ex:"I promise I'll help you."},
+   {en:"soon", pt:"logo / em breve", ex:"I'll call you soon."}
+ ],
+ grammarTitle:"Going to (planos) e will (na hora)",
+ grammarBody:"<p><strong>be going to</strong> → plano já decidido, ou algo que você vê que vai acontecer.<br>I'm going to study tonight. (já decidi)<br>Look at those clouds — it's going to rain.</p><p><strong>will</strong> → decisão tomada na hora, promessa, oferta e previsão.<br>The phone is ringing. — I'll answer it! (decidi agora)<br>I'll help you with that. (oferta)<br>I think she will like it. (previsão)</p><p><strong>Formas:</strong> I'm going to work · He's going to call · Negativa: I'm not going to go.<br>will → I'll, he'll, we'll · Negativa: won't (will not) — I won't be late.</p><p>Nas duas formas, o verbo fica na <strong>forma base</strong>: going to <em>study</em>, will <em>study</em>.</p>",
+ dialogue:[
+   {s:"A", en:"Are you free tomorrow night?"},
+   {s:"B", en:"No, sorry. I'm going to visit my parents."},
+   {s:"A", en:"No problem. What about Saturday?"},
+   {s:"B", en:"Saturday is good. What are we going to do?"},
+   {s:"A", en:"I don't know yet. Maybe we'll watch a movie."},
+   {s:"B", en:"Perfect. I'll bring something to eat."}
+ ],
+ writingPrompt:"Escreva sobre seus planos: 3 frases com “going to” (planos que você já decidiu) e 2 frases com “will” (previsões ou promessas).",
+ chatTopic:"Seus planos", chatTopicPt:"Fale sobre o que você vai fazer em breve.",
+ chatOpening:"What are you going to do this weekend? Tell me one plan you already have!",
+ quiz:[
+   {q:"“I ___ visit my parents tomorrow.” (plano já decidido)", opts:["will","am going to","go to","would"], correct:1, tip:"Plano decidido → going to."},
+   {q:"O telefone toca. Você diz:", opts:["I'm going to answer it!","I answer it!","I'll answer it!","I answering it!"], correct:2, tip:"Decisão na hora → will."},
+   {q:"Negativa de “will”:", opts:["willn't","won't","don't will","not will"], correct:1, tip:"will not = won't."},
+   {q:"“Look at those clouds! It ___ rain.”", opts:["is going to","will to","goes to","going"], correct:0, tip:"Evidência visível → going to."},
+   {q:"Qual está CORRETA?", opts:["I will to help you.","I will help you.","I will helping you.","I will helped you."], correct:1, tip:"will + verbo base, sem “to”."}
+ ]
+},
+{day:6, title:"Comparativos, superlativos e descrever pessoas", isReview:false,
+ vocab:[
+   {en:"tall", pt:"alto", ex:"He is taller than me."},
+   {en:"short", pt:"baixo / curto", ex:"Her hair is short."},
+   {en:"friendly", pt:"simpático / amigável", ex:"She's very friendly."},
+   {en:"funny", pt:"engraçado", ex:"My brother is funny."},
+   {en:"shy", pt:"tímido", ex:"I was shy as a child."},
+   {en:"smart", pt:"inteligente", ex:"She's the smartest in the team."},
+   {en:"kind", pt:"gentil / bondoso", ex:"He is kind to everyone."},
+   {en:"hard-working", pt:"trabalhador / esforçado", ex:"They are hard-working people."},
+   {en:"quiet", pt:"quieto / calado", ex:"My office is quiet."},
+   {en:"than", pt:"do que (comparação)", ex:"This is better than that."}
+ ],
+ grammarTitle:"Comparativo (-er / more) e superlativo (the -est / the most)",
+ grammarBody:"<p><strong>Palavras curtas (1 sílaba):</strong> +er / the +est<br>tall → taller than → the tallest<br>big → bigger (dobra a consoante) → the biggest</p><p><strong>Terminadas em y:</strong> y → ier<br>easy → easier → the easiest · funny → funnier → the funniest</p><p><strong>Palavras longas (2+ sílabas):</strong> more / the most<br>interesting → more interesting than → the most interesting<br>difficult → more difficult → the most difficult</p><p><strong>Irregulares (decore):</strong><br>good → better → the best<br>bad → worse → the worst<br>far → further → the furthest</p><p>Use <strong>than</strong> na comparação (bigger <em>than</em> mine) e <strong>the</strong> no superlativo (<em>the</em> best in the world).</p>",
+ dialogue:[
+   {s:"A", en:"Is your new job better than the old one?"},
+   {s:"B", en:"Much better! The team is friendlier and the office is quieter."},
+   {s:"A", en:"Is it far from your house?"},
+   {s:"B", en:"It's further than before, but the salary is higher."},
+   {s:"A", en:"And your boss?"},
+   {s:"B", en:"She's the kindest boss I've had. She's also very hard-working."}
+ ],
+ writingPrompt:"Compare duas coisas da sua vida (duas cidades, dois trabalhos, duas pessoas) em 4-5 frases, usando pelo menos dois comparativos e um superlativo.",
+ chatTopic:"Comparações", chatTopicPt:"Compare pessoas, lugares ou coisas.",
+ chatOpening:"Let's compare things! Tell me: what is the best city in Brazil, and why?",
+ quiz:[
+   {q:"“He is ___ than me.”", opts:["taller","more tall","tallest","the taller"], correct:0, tip:"Palavra curta → taller than."},
+   {q:"Superlativo de “big”:", opts:["the bigest","the biggest","the most big","bigger"], correct:1, tip:"Dobra a consoante: the biggest."},
+   {q:"“This book is ___ than that one.”", opts:["interestinger","more interesting","most interesting","the interesting"], correct:1, tip:"Palavra longa → more interesting."},
+   {q:"Comparativo de “good”:", opts:["gooder","more good","better","best"], correct:2, tip:"good → better (irregular)."},
+   {q:"“It was ___ day of my life.”", opts:["worse","the worst","worst","more bad"], correct:1, tip:"Superlativo: the worst."}
+ ]
+},
+{day:7, title:"Revisão 1 · Checkpoint", isReview:true,
+ vocab:[],
+ grammarTitle:"Recapitulando: passado, presente contínuo, futuro e comparativos",
+ grammarBody:"<p>Sem conteúdo novo hoje — é dia de consolidar. Se precisar, volte rapidamente nos pontos dos dias 1 a 6:</p><p><strong>Dia 1-2:</strong> passado com was/were, -ed e irregulares.<br><strong>Dia 3:</strong> did / didn't + verbo base.<br><strong>Dia 4:</strong> present continuous (agora) vs. present simple (rotina).<br><strong>Dia 5:</strong> going to (plano) vs. will (decisão na hora).<br><strong>Dia 6:</strong> comparativos e superlativos.</p><p>Depois do quiz, aproveite a conversa para juntar tudo numa história só: o que você fez, o que está fazendo e o que vai fazer.</p>",
+ dialogue:[
+   {s:"A", en:"Hey! How was your week?"},
+   {s:"B", en:"Busy! I had three meetings and I finished a big project."},
+   {s:"A", en:"Was it harder than the last one?"},
+   {s:"B", en:"Much harder, but it was the most interesting project this year."},
+   {s:"A", en:"What are you doing now?"},
+   {s:"B", en:"I'm resting. And tomorrow I'm going to start something new."}
+ ],
+ writingPrompt:"Escreva um parágrafo (6-8 frases) contando: o que você fez na semana passada, o que está fazendo agora, e o que vai fazer na semana que vem. Use passado, present continuous e futuro.",
+ chatTopic:"Passado, presente e futuro", chatTopicPt:"Junte tudo o que você viu nos dias 1 a 6.",
+ chatOpening:"Checkpoint time! Tell me three things: what you did last week, what you're doing now, and what you're going to do next week.",
+ quiz:[
+   {q:"“I ___ tired yesterday.”", opts:["was","were"], correct:0, tip:"I → was."},
+   {q:"“She ___ to the office yesterday.”", opts:["goed","went"], correct:1, tip:"go → went."},
+   {q:"“I didn't ___ the message.”", opts:["saw","see"], correct:1, tip:"didn't + forma base."},
+   {q:"“___ you finish the report?”", opts:["Did","Do"], correct:0, tip:"Passado → Did."},
+   {q:"“I ___ on a project right now.”", opts:["work","am working"], correct:1, tip:"Right now → present continuous."},
+   {q:"“Every day I ___ at 7.”", opts:["am waking up","wake up"], correct:1, tip:"Rotina → present simple."},
+   {q:"“I already decided: I ___ study tonight.”", opts:["will","am going to"], correct:1, tip:"Plano decidido → going to."},
+   {q:"“This project is ___ than the last one.”", opts:["more hard","harder"], correct:1, tip:"Palavra curta → harder."},
+   {q:"“She is ___ person in the team.”", opts:["the kindest","the most kind"], correct:0, tip:"kind é curto → the kindest."},
+   {q:"Comparativo de “bad”:", opts:["badder","worse"], correct:1, tip:"bad → worse."}
+ ]
+},
+{day:8, title:"Quantidade, compras e restaurante", isReview:false,
+ vocab:[
+   {en:"money", pt:"dinheiro (incontável)", ex:"I don't have much money."},
+   {en:"information", pt:"informação (incontável)", ex:"I need more information."},
+   {en:"advice", pt:"conselho (incontável)", ex:"She gave me good advice."},
+   {en:"bottle", pt:"garrafa", ex:"A bottle of water, please."},
+   {en:"cup", pt:"xícara", ex:"Two cups of coffee."},
+   {en:"expensive", pt:"caro", ex:"This phone is too expensive."},
+   {en:"cheap", pt:"barato", ex:"That restaurant is cheap and good."},
+   {en:"enough", pt:"suficiente", ex:"I don't have enough time."},
+   {en:"order", pt:"pedir (no restaurante)", ex:"Can I order now?"},
+   {en:"bill", pt:"conta (a pagar)", ex:"Could we have the bill, please?"}
+ ],
+ grammarTitle:"Contáveis e incontáveis · much, many, a few, a little",
+ grammarBody:"<p><strong>Contáveis</strong> você pode contar: one book, two books, three apples.<br><strong>Incontáveis</strong> não têm plural e não usam “a”: water, money, information, advice, time, rice.</p><p>⚠️ Cuidado: em português dizemos “uma informação” e “os conselhos”, mas em inglês é <strong>information</strong> e <strong>advice</strong> — sempre no singular. <s>an information</s>, <s>advices</s>.</p><p><strong>Perguntando quantidade:</strong><br>How <strong>many</strong> + contável → How many people came?<br>How <strong>much</strong> + incontável → How much money do you need?</p><p><strong>Quantificadores:</strong><br>a lot of → serve para os dois (a lot of friends, a lot of money)<br>much / many → mais comuns em negativas e perguntas (I don't have much time)<br>a few → poucos, contáveis (a few friends)<br>a little → um pouco, incontáveis (a little sugar)<br>enough → suficiente (enough money)</p><p><strong>Medidas úteis:</strong> a bottle of water · a cup of coffee · a slice of bread · a piece of advice.</p>",
+ dialogue:[
+   {s:"A", en:"Good evening. Are you ready to order?"},
+   {s:"B", en:"Yes. I'd like the chicken with rice, please."},
+   {s:"A", en:"Of course. Anything to drink?"},
+   {s:"B", en:"A bottle of water, please. How much is the dessert?"},
+   {s:"A", en:"It's fifteen reais. It's not expensive."},
+   {s:"B", en:"Great, I'll take one. And could we have the bill after that?"}
+ ],
+ writingPrompt:"Escreva um diálogo curto (5-6 linhas) em um restaurante ou loja: peça algo, pergunte o preço (How much…?) e use pelo menos um incontável (money, water, time, information).",
+ chatTopic:"Compras e restaurante", chatTopicPt:"Peça comida, pergunte preços, fale de quantidade.",
+ chatOpening:"Let's role-play! I'm a waiter in a restaurant. “Good evening! Are you ready to order?”",
+ quiz:[
+   {q:"“How ___ money do you need?”", opts:["many","much"], correct:1, tip:"money é incontável → much."},
+   {q:"“How ___ people came to the meeting?”", opts:["many","much"], correct:0, tip:"people é contável → many."},
+   {q:"Qual está CORRETA?", opts:["She gave me a good advice.","She gave me good advice."], correct:1, tip:"advice é incontável: sem “a”, sem plural."},
+   {q:"“I only have ___ time before the meeting.”", opts:["a few","a little"], correct:1, tip:"time é incontável → a little."},
+   {q:"“I invited ___ friends to dinner.”", opts:["a few","a little"], correct:0, tip:"friends é contável → a few."}
+ ]
+},
+{day:9, title:"Should, have to e must — trabalho e regras", isReview:false,
+ vocab:[
+   {en:"meeting", pt:"reunião", ex:"I have a meeting at 10."},
+   {en:"deadline", pt:"prazo final", ex:"The deadline is Friday."},
+   {en:"report", pt:"relatório", ex:"I have to finish this report."},
+   {en:"boss", pt:"chefe", ex:"My boss is on vacation."},
+   {en:"team", pt:"equipe / time", ex:"Our team is small."},
+   {en:"task", pt:"tarefa", ex:"This task is difficult."},
+   {en:"rule", pt:"regra", ex:"That's the company rule."},
+   {en:"allowed", pt:"permitido", ex:"Phones aren't allowed here."},
+   {en:"on time", pt:"na hora / pontual", ex:"Please arrive on time."},
+   {en:"take a break", pt:"fazer uma pausa", ex:"You should take a break."}
+ ],
+ grammarTitle:"should (conselho) · have to (obrigação) · must (regra forte)",
+ grammarBody:"<p><strong>should</strong> = conselho, opinião. O que é uma boa ideia.<br>You <strong>should</strong> take a break. · You <strong>shouldn't</strong> work so late.</p><p><strong>have to / has to</strong> = obrigação que vem de fora (do trabalho, da lei, da situação).<br>I <strong>have to</strong> finish this today. · She <strong>has to</strong> work on Saturday.<br>No passado: I <strong>had to</strong> work late.</p><p><strong>must</strong> = obrigação forte, normalmente em regras escritas.<br>You <strong>must</strong> wear a badge in the building.</p><p>⚠️ A diferença que confunde muita gente:<br><strong>don't have to</strong> = NÃO é necessário (mas pode, se quiser) — You don't have to come on Friday.<br><strong>mustn't</strong> = é PROIBIDO — You mustn't share your password.</p><p>Todos vêm seguidos do <strong>verbo na forma base</strong>: should go, have to go, must go.</p>",
+ dialogue:[
+   {s:"A", en:"You look tired. Is everything OK?"},
+   {s:"B", en:"I have to finish this report before Friday. It's the deadline."},
+   {s:"A", en:"You should ask the team for help."},
+   {s:"B", en:"Maybe. But I must send it to my boss myself."},
+   {s:"A", en:"Do you have to work this weekend?"},
+   {s:"B", en:"No, I don't have to. I just want to finish early."},
+   {s:"A", en:"Then you should take a break now!"}
+ ],
+ writingPrompt:"Escreva 5 frases sobre seu trabalho ou estudo: duas coisas que você TEM que fazer (have to), uma que NÃO precisa fazer (don't have to), e dois conselhos para alguém (should).",
+ chatTopic:"Trabalho, prazos e conselhos", chatTopicPt:"Fale de obrigações e peça conselhos.",
+ chatOpening:"Tell me about your work. What do you have to do this week? Is there a deadline?",
+ quiz:[
+   {q:"“You look sick. You ___ see a doctor.” (conselho)", opts:["should","have to","must not"], correct:0, tip:"Conselho → should."},
+   {q:"“I ___ work on Saturday — my boss asked me.”", opts:["should","have to","shouldn't"], correct:1, tip:"Obrigação externa → have to."},
+   {q:"“She ___ finish the report today.”", opts:["have to","has to","having to"], correct:1, tip:"She → has to."},
+   {q:"“You ___ share your password.” (é proibido)", opts:["don't have to","mustn't","shouldn't have"], correct:1, tip:"Proibido → mustn't."},
+   {q:"“It's optional. You ___ come.”", opts:["mustn't","don't have to"], correct:1, tip:"Não é necessário → don't have to."}
+ ]
+},
+{day:10, title:"Viagem, direções e transporte", isReview:false,
+ vocab:[
+   {en:"airport", pt:"aeroporto", ex:"The airport is far from here."},
+   {en:"flight", pt:"voo", ex:"My flight is at 9 p.m."},
+   {en:"ticket", pt:"passagem / ingresso", ex:"I bought my ticket online."},
+   {en:"luggage", pt:"bagagem (incontável)", ex:"My luggage is heavy."},
+   {en:"gate", pt:"portão de embarque", ex:"Gate 12, please."},
+   {en:"straight ahead", pt:"em frente / reto", ex:"Go straight ahead."},
+   {en:"turn left", pt:"vire à esquerda", ex:"Turn left at the corner."},
+   {en:"turn right", pt:"vire à direita", ex:"Turn right after the bank."},
+   {en:"corner", pt:"esquina", ex:"It's on the corner."},
+   {en:"block", pt:"quarteirão", ex:"It's two blocks from here."}
+ ],
+ grammarTitle:"Pedir informação com educação · direções · meios de transporte",
+ grammarBody:"<p><strong>Pedindo informação educadamente</strong> — comece com “Excuse me”:<br>Excuse me, where is the bus station?<br><strong>Could you tell me</strong> how to get to the airport?<br><strong>How do I get to</strong> the hotel?<br><strong>How long does it take?</strong> — quanto tempo leva?</p><p><strong>Dando direções (imperativo, sem sujeito):</strong><br>Go straight ahead. · Turn left at the corner. · Take the second street on the right. · It's next to the bank.</p><p><strong>Meios de transporte:</strong> use <strong>by</strong> — by bus, by car, by train, by plane.<br>Exceção: a pé é <strong>on foot</strong>. (I go to work on foot.)</p><p>Útil no aeroporto: Where is gate 12? · Is the flight on time? · My flight is delayed. · I'd like a window seat, please.</p>",
+ dialogue:[
+   {s:"A", en:"Excuse me, how do I get to the train station?"},
+   {s:"B", en:"Go straight ahead for two blocks, then turn left at the corner."},
+   {s:"A", en:"Is it far? Should I take a taxi?"},
+   {s:"B", en:"No, it's close. It takes about ten minutes on foot."},
+   {s:"A", en:"Great, thank you! And how long does it take to the airport by train?"},
+   {s:"B", en:"Around forty minutes. The trains are usually on time."}
+ ],
+ writingPrompt:"Escreva um diálogo curto pedindo e dando direções: alguém pergunta como chegar a um lugar da sua cidade e você explica o caminho (go straight, turn left/right, it's next to…).",
+ chatTopic:"Viagem e direções", chatTopicPt:"Peça informação e explique caminhos.",
+ chatOpening:"Imagine I'm a tourist in your city. “Excuse me, how do I get to the city center from here?”",
+ quiz:[
+   {q:"“___ me, where is the bus station?”", opts:["Sorry","Excuse","Please","Pardon me for"], correct:1, tip:"Excuse me = com licença, para pedir informação."},
+   {q:"“Turn ___ at the corner.” (à esquerda)", opts:["left","right","straight","on"], correct:0, tip:"left = esquerda."},
+   {q:"“I go to work ___ bus.”", opts:["on","by","in","with"], correct:1, tip:"Transporte → by bus."},
+   {q:"“It's close. I go ___ foot.”", opts:["by","on","in","at"], correct:1, tip:"A pé é exceção: on foot."},
+   {q:"“How long ___ it take?”", opts:["does","is","do","did"], correct:0, tip:"How long does it take? = quanto tempo leva?"}
+ ]
+},
+{day:11, title:"Saúde e corpo — no médico", isReview:false,
+ vocab:[
+   {en:"headache", pt:"dor de cabeça", ex:"I have a headache."},
+   {en:"stomachache", pt:"dor de barriga", ex:"She has a stomachache."},
+   {en:"sore throat", pt:"dor de garganta", ex:"I have a sore throat."},
+   {en:"fever", pt:"febre", ex:"He has a fever."},
+   {en:"cough", pt:"tosse / tossir", ex:"I have a bad cough."},
+   {en:"medicine", pt:"remédio", ex:"Take this medicine twice a day."},
+   {en:"hurt", pt:"doer / machucar", ex:"My back hurts."},
+   {en:"sick", pt:"doente", ex:"I feel sick today."},
+   {en:"rest", pt:"descansar / descanso", ex:"You need to rest."},
+   {en:"appointment", pt:"consulta / hora marcada", ex:"I have an appointment at 3."}
+ ],
+ grammarTitle:"Falar de sintomas e dar conselhos de saúde",
+ grammarBody:"<p>Há duas formas principais de dizer que algo dói:</p><p><strong>have + a + sintoma:</strong> I have a headache. · She has a fever. · I have a cold.<br><strong>hurt:</strong> My back hurts. · My legs hurt. (o sujeito é a parte do corpo)</p><p>⚠️ Em português dizemos “estou com dor de cabeça” — em inglês é <strong>I have</strong> a headache, nunca <s>I am with</s>.</p><p><strong>Perguntando:</strong> How do you feel? · What's wrong? · Are you OK?<br><strong>Respondendo:</strong> I feel sick. · I don't feel well. · I feel better today.</p><p><strong>Dando conselho</strong> (retomando o <em>should</em> do dia 9):<br>You should drink water and rest. · You shouldn't go to work today. · You should see a doctor.</p><p><strong>Partes do corpo:</strong> head, throat, stomach, back, arm, leg, foot/feet, hand, eye, tooth/teeth.</p>",
+ dialogue:[
+   {s:"A", en:"Good morning. What's wrong?"},
+   {s:"B", en:"I don't feel well. I have a sore throat and a fever."},
+   {s:"A", en:"How long have you had these symptoms?"},
+   {s:"B", en:"Since Monday. My head hurts too."},
+   {s:"A", en:"OK. You should take this medicine twice a day and rest."},
+   {s:"B", en:"Do I have to stay home?"},
+   {s:"A", en:"Yes, for two days. You shouldn't go to work this week."}
+ ],
+ writingPrompt:"Escreva um diálogo curto no médico: descreva dois sintomas (I have… / My … hurts) e receba dois conselhos (You should…).",
+ chatTopic:"Saúde", chatTopicPt:"Descreva sintomas e peça conselhos.",
+ chatOpening:"Let's role-play at the doctor's office. “Good morning! What's wrong? How do you feel today?”",
+ quiz:[
+   {q:"Como se diz “estou com dor de cabeça”?", opts:["I am with headache.","I have a headache.","I have headache.","My headache hurts."], correct:1, tip:"have + a + sintoma."},
+   {q:"“My back ___.”", opts:["hurt","hurts","is hurt","have hurt"], correct:1, tip:"My back (singular) → hurts."},
+   {q:"“I have a ___ throat.”", opts:["sore","hurt","pain","sick"], correct:0, tip:"sore throat = dor de garganta."},
+   {q:"Conselho correto:", opts:["You should to rest.","You should rest.","You should resting.","You shoulds rest."], correct:1, tip:"should + verbo base, sem “to”."},
+   {q:"“He has a ___ of 39 degrees.”", opts:["fever","cough","sick","hurt"], correct:0, tip:"fever = febre."}
+ ]
+},
+{day:12, title:"Present Perfect — experiências de vida", isReview:false,
+ vocab:[
+   {en:"ever", pt:"alguma vez (em perguntas)", ex:"Have you ever been to Chile?"},
+   {en:"never", pt:"nunca", ex:"I've never tried sushi."},
+   {en:"already", pt:"já (antes do esperado)", ex:"I've already finished."},
+   {en:"just", pt:"acabou de", ex:"She has just arrived."},
+   {en:"yet", pt:"ainda (negativas e perguntas)", ex:"I haven't finished yet."},
+   {en:"been", pt:"estado / ido (particípio de be)", ex:"I've been to Lisbon."},
+   {en:"done", pt:"feito (particípio de do)", ex:"I've done my homework."},
+   {en:"seen", pt:"visto (particípio de see)", ex:"Have you seen this movie?"},
+   {en:"eaten", pt:"comido (particípio de eat)", ex:"I've never eaten octopus."},
+   {en:"twice", pt:"duas vezes", ex:"I've been there twice."}
+ ],
+ grammarTitle:"Present Perfect (have/has + particípio)",
+ grammarBody:"<p>Usamos o present perfect para <strong>experiências de vida</strong>, quando NÃO dizemos exatamente quando aconteceu.</p><p>I <strong>have been</strong> to Chile. (I've been) · She <strong>has seen</strong> that movie. (She's seen)<br>Negativa: I <strong>haven't</strong> finished. · He <strong>hasn't</strong> called.<br>Pergunta: <strong>Have</strong> you ever been to the US?</p><p><strong>Particípios comuns:</strong> be→been · do→done · see→seen · eat→eaten · go→gone · have→had · make→made · write→written · take→taken.</p><p><strong>A grande diferença (preste atenção aqui):</strong><br>I <strong>have been</strong> to Chile. → experiência, em algum momento da vida.<br>I <strong>went</strong> to Chile in 2020. → momento definido no passado.<br>👉 Se a frase diz <em>quando</em> (yesterday, in 2020, last week), use <strong>past simple</strong>.</p><p><strong>Palavrinhas que acompanham:</strong><br>ever / never → experiência: Have you ever…? / I've never…<br>already → já: I've already eaten.<br>just → acabou de: He has just left.<br>yet → ainda (só em negativas e perguntas): I haven't started yet. · Have you finished yet?</p>",
+ dialogue:[
+   {s:"A", en:"Have you ever been to another country?"},
+   {s:"B", en:"Yes, I have. I've been to Argentina twice."},
+   {s:"A", en:"Nice! When did you go?"},
+   {s:"B", en:"I went there in 2023 and last year."},
+   {s:"A", en:"Have you tried their food?"},
+   {s:"B", en:"Of course! But I've never eaten anything better than Brazilian barbecue."},
+   {s:"A", en:"Have you booked your next trip yet?"},
+   {s:"B", en:"Not yet. I've just started planning it."}
+ ],
+ writingPrompt:"Escreva 5 frases sobre suas experiências: duas coisas que você já fez (I have…), duas que nunca fez (I have never…), e uma dizendo QUANDO você fez algo (aí use o past simple).",
+ chatTopic:"Experiências de vida", chatTopicPt:"Fale do que você já fez e nunca fez.",
+ chatOpening:"Have you ever traveled outside Brazil? And is there something you have never tried but want to?",
+ quiz:[
+   {q:"“___ you ever been to the US?”", opts:["Did","Have","Are","Do"], correct:1, tip:"Experiência → Have you ever…?"},
+   {q:"“I ___ never eaten sushi.”", opts:["have","did","am","was"], correct:0, tip:"I have never eaten."},
+   {q:"Particípio de “see”:", opts:["saw","seen","seed","sees"], correct:1, tip:"see → saw → seen."},
+   {q:"Qual está CORRETA?", opts:["I have been to Chile in 2020.","I went to Chile in 2020."], correct:1, tip:"Momento definido (in 2020) → past simple."},
+   {q:"“I haven't finished ___.”", opts:["already","yet","just","ever"], correct:1, tip:"Negativa → yet."}
+ ]
+},
+{day:13, title:"Convites, planos e first conditional", isReview:false,
+ vocab:[
+   {en:"invite", pt:"convidar", ex:"I want to invite you to dinner."},
+   {en:"join", pt:"participar / se juntar", ex:"Do you want to join us?"},
+   {en:"available", pt:"disponível", ex:"Are you available on Friday?"},
+   {en:"I'd love to", pt:"eu adoraria", ex:"I'd love to come!"},
+   {en:"How about…?", pt:"Que tal…?", ex:"How about Saturday?"},
+   {en:"Let's…", pt:"Vamos… (sugestão)", ex:"Let's meet at seven."},
+   {en:"maybe next time", pt:"talvez na próxima", ex:"Sorry, maybe next time."},
+   {en:"pick up", pt:"buscar (alguém)", ex:"I'll pick you up at eight."},
+   {en:"be late", pt:"estar atrasado", ex:"Sorry, I'm late."},
+   {en:"cancel", pt:"cancelar", ex:"We had to cancel the meeting."}
+ ],
+ grammarTitle:"Convidar, aceitar, recusar · If + present, will (first conditional)",
+ grammarBody:"<p><strong>Convidando:</strong><br>Would you like to have dinner with us?<br>Do you want to join us?<br><strong>How about</strong> going to the movies? (How about + verbo-ing)<br><strong>Let's</strong> meet at seven. (Let's + verbo base)</p><p><strong>Aceitando:</strong> Sure, I'd love to! · That sounds great. · Yes, why not?<br><strong>Recusando com educação:</strong> I'd love to, but I'm busy. · Sorry, I can't — maybe next time. · Thanks for the invitation, but I have other plans.</p><p>⚠️ Em inglês, recusar direto (“No.”) soa rude. Use sempre: agradeça + justifique + deixe a porta aberta.</p><p><strong>First conditional — planos com condição:</strong><br><strong>If</strong> + present simple, <strong>will</strong> + verbo base.<br><strong>If</strong> it rains, we <strong>will</strong> stay home. (If it rains, we'll stay home.)<br><strong>If</strong> I finish early, I <strong>'ll</strong> call you.</p><p>⚠️ Depois de “if” usamos o <strong>presente</strong>, mesmo falando do futuro: <s>If it will rain</s> → <strong>If it rains</strong>.</p>",
+ dialogue:[
+   {s:"A", en:"Are you available on Saturday? We're going to have dinner at my place."},
+   {s:"B", en:"I'd love to! What time?"},
+   {s:"A", en:"How about seven? I'll pick you up if you want."},
+   {s:"B", en:"Thanks, but I'll take an Uber. If I finish work early, I'll arrive before seven."},
+   {s:"A", en:"Perfect. And don't worry if you're late."},
+   {s:"B", en:"Great. Should I bring anything?"},
+   {s:"A", en:"Just yourself! Let's make it a relaxed night."}
+ ],
+ writingPrompt:"Escreva um convite para um amigo (com horário e local), e depois escreva duas respostas possíveis: uma aceitando e uma recusando educadamente. Inclua uma frase com “If…, I'll…”.",
+ chatTopic:"Convites e combinados", chatTopicPt:"Convide, aceite e recuse planos.",
+ chatOpening:"Let's make plans! I'm going to a café on Saturday afternoon. Would you like to join me? And what will you do if it rains?",
+ quiz:[
+   {q:"“How about ___ to the movies?”", opts:["go","going","to go","goes"], correct:1, tip:"How about + verbo-ing."},
+   {q:"“Let's ___ at seven.”", opts:["meeting","to meet","meet","met"], correct:2, tip:"Let's + verbo base."},
+   {q:"Recusa educada:", opts:["No.","I'd love to, but I'm busy.","I don't want.","Never."], correct:1, tip:"Agradeça e justifique."},
+   {q:"“If it ___, we'll stay home.”", opts:["will rain","rains","rained","is raining"], correct:1, tip:"Depois de if → presente."},
+   {q:"“If I finish early, I ___ call you.”", opts:["will","would","am","did"], correct:0, tip:"If + present, will + base."}
+ ]
+},
+{day:14, title:"Revisão 2 · Checkpoint final A2", isReview:true,
+ vocab:[],
+ grammarTitle:"Recapitulando o Módulo A2 inteiro",
+ grammarBody:"<p>Último dia da trilha A2! Hoje é revisão de tudo:</p><p><strong>Dias 1-3:</strong> passado (was/were, -ed, irregulares, did/didn't).<br><strong>Dia 4:</strong> present continuous vs. present simple.<br><strong>Dia 5:</strong> going to e will.<br><strong>Dia 6:</strong> comparativos e superlativos.<br><strong>Dia 8:</strong> contáveis/incontáveis, much/many, a few/a little.<br><strong>Dia 9:</strong> should, have to, must.<br><strong>Dias 10-11:</strong> viagem, direções, saúde.<br><strong>Dia 12:</strong> present perfect.<br><strong>Dia 13:</strong> convites e first conditional.</p><p>Depois deste checkpoint você terá coberto a base do A2 — o nível em que já dá para se virar sozinho numa viagem, numa conversa de trabalho simples e no dia a dia.</p>",
+ dialogue:[
+   {s:"A", en:"Hi! I haven't seen you in weeks. How have you been?"},
+   {s:"B", en:"Busy! I had to finish a big project, but it's done now."},
+   {s:"A", en:"Was it harder than the last one?"},
+   {s:"B", en:"Much harder. It was the most difficult project I've done."},
+   {s:"A", en:"What are you doing these days?"},
+   {s:"B", en:"I'm learning English every day. If I keep studying, I'll travel next year."},
+   {s:"A", en:"Have you ever been abroad?"},
+   {s:"B", en:"Not yet! But I'm going to change that soon."}
+ ],
+ writingPrompt:"Escreva um texto final (8-10 frases) sobre você: o que você fez no último ano, o que está fazendo agora, o que já fez na vida (present perfect), e o que vai fazer no futuro. Esse é seu checkpoint do A2 — capriche!",
+ chatTopic:"Checkpoint final A2", chatTopicPt:"Uma conversa completa usando tudo do módulo.",
+ chatOpening:"Final checkpoint! 🎓 Tell me about yourself using everything you learned: something you did last year, something you're doing now, something you have never done, and a plan for the future.",
+ quiz:[
+   {q:"“I ___ to the office yesterday.”", opts:["go","went","have gone"], correct:1, tip:"yesterday → past simple."},
+   {q:"“She didn't ___ the email.”", opts:["sent","send"], correct:1, tip:"didn't + forma base."},
+   {q:"“I ___ on a project at the moment.”", opts:["work","am working"], correct:1, tip:"At the moment → present continuous."},
+   {q:"“It's decided: we ___ move next month.”", opts:["will","are going to"], correct:1, tip:"Plano decidido → going to."},
+   {q:"“This is ___ project of the year.”", opts:["the most difficult","the difficultest"], correct:0, tip:"Palavra longa → the most difficult."},
+   {q:"“How ___ information do you need?”", opts:["many","much"], correct:1, tip:"information é incontável → much."},
+   {q:"“It's optional — you ___ come.”", opts:["mustn't","don't have to"], correct:1, tip:"Não é necessário → don't have to."},
+   {q:"“___ you ever been to Europe?”", opts:["Did","Have"], correct:1, tip:"Experiência de vida → Have you ever…?"},
+   {q:"“I haven't finished ___.”", opts:["yet","already"], correct:0, tip:"Negativa → yet."},
+   {q:"“If it ___ tomorrow, we'll stay home.”", opts:["will rain","rains"], correct:1, tip:"Depois de if → presente."}
+ ]
+}
+];
+
+var TOTAL_DAYS = LESSONS.length;
+var BOX_INTERVALS = [1,2,4,7,14,30];
+
+/* =========================================================
+   STATE
+   ========================================================= */
+var db = null, ai = null, aiAvailable = false;
+var progress = {unlockedDay:1, completedDays:[], lastActivityDate:null, streak:0, longestStreak:0, totalLessonsCompleted:0};
+var srsCards = [];
+var newWords = [];
+var currentLessonDay = null;
+var chatTurns = [];
+var quizChecked = false;
+var hasInteracted = false;
+var lockedTapDay = null;
+
+function pad(n){ return String(n).padStart(2,'0'); }
+function dateStr(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+function todayStr(){ return dateStr(new Date()); }
+function addDaysStr(base, days){ var d = new Date(base); d.setDate(d.getDate()+days); return dateStr(d); }
+function yesterdayStr(){ return addDaysStr(new Date(), -1); }
+
+function showToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2400);
+}
+
+/* ---------- storage layer (db capability with localStorage fallback) ---------- */
+
+// The artifact database hands back FROZEN documents — its snapshots and their
+// data() are read-only, and nested arrays/objects are frozen too. Everything
+// this app keeps in memory gets mutated (card.box, progress.completedDays.push),
+// which throws in strict mode against a frozen object. So every value crossing
+// the boundary out of a snapshot is deep-cloned into plain mutable data first.
+function deepClone(v){
+  try{ return v == null ? v : JSON.parse(JSON.stringify(v)); }
+  catch(e){ return v; }
+}
+
+function lsGet(key, fallback){
+  try{ var v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }catch(e){ return fallback; }
+}
+function lsSet(key, val){
+  try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){}
+}
+
+// safeDb: runs fn() (which must return a Promise) and always resolves —
+// catches BOTH a synchronous throw (a raw exception from the call itself)
+// and an asynchronous rejection (the store answering with an error), and
+// falls back to fallbackFn() in either case. No db-related failure should
+// ever propagate as an uncaught exception into the UI code.
+function safeDb(fn, fallbackFn){
+  try{
+    return Promise.resolve(fn()).catch(function(){ return fallbackFn(); });
+  }catch(e){
+    return Promise.resolve(fallbackFn());
+  }
+}
+function safeDbWrite(fn, fallbackFn){
+  try{
+    Promise.resolve(fn()).catch(function(){ fallbackFn(); });
+  }catch(e){
+    fallbackFn();
+  }
+}
+
+function loadProgress(){
+  if(db){
+    return safeDb(function(){
+      return db.doc('progress/state').get().then(function(snap){
+        return snap.exists ? Object.assign({}, progress, deepClone(snap.data())) : progress;
+      });
+    }, function(){ return lsGet('trilhaA2_progress', progress); });
+  }
+  return Promise.resolve(lsGet('trilhaA2_progress', progress));
+}
+function saveProgress(){
+  if(db){
+    safeDbWrite(function(){ return db.doc('progress/state').set(progress); }, function(){ lsSet('trilhaA2_progress', progress); });
+  } else {
+    lsSet('trilhaA2_progress', progress);
+  }
+}
+function loadSRS(){
+  if(db){
+    return safeDb(function(){
+      return db.doc('srs/allcards').get().then(function(snap){
+        return snap.exists && snap.data().cards ? deepClone(snap.data().cards) : [];
+      });
+    }, function(){ return lsGet('trilhaA2_srs', []); });
+  }
+  return Promise.resolve(lsGet('trilhaA2_srs', []));
+}
+function saveSRS(){
+  if(db){
+    safeDbWrite(function(){ return db.doc('srs/allcards').set({cards: srsCards}); }, function(){ lsSet('trilhaA2_srs', srsCards); });
+  } else {
+    lsSet('trilhaA2_srs', srsCards);
+  }
+}
+function loadNewWords(){
+  if(db){
+    return safeDb(function(){
+      return db.doc('vocab/newwords').get().then(function(snap){
+        return snap.exists && snap.data().words ? deepClone(snap.data().words) : [];
+      });
+    }, function(){ return lsGet('trilhaA2_newwords', []); });
+  }
+  return Promise.resolve(lsGet('trilhaA2_newwords', []));
+}
+function saveNewWords(){
+  if(db){
+    safeDbWrite(function(){ return db.doc('vocab/newwords').set({words: newWords}); }, function(){ lsSet('trilhaA2_newwords', newWords); });
+  } else {
+    lsSet('trilhaA2_newwords', newWords);
+  }
+}
+function saveCheckin(dateKey, patch){
+  if(db){
+    safeDbWrite(function(){
+      var ref = db.collection('checkins').doc(dateKey);
+      return ref.get().then(function(snap){
+        var data = snap.exists ? deepClone(snap.data()) : {date:dateKey, lessonsCompleted:[], manual:false};
+        Object.assign(data, patch);
+        if(patch.addLessonDay && data.lessonsCompleted.indexOf(patch.addLessonDay) === -1){
+          data.lessonsCompleted.push(patch.addLessonDay);
+        }
+        delete data.addLessonDay;
+        return ref.set(data);
+      });
+    }, function(){ saveCheckinLocal(dateKey, patch); });
+  } else {
+    saveCheckinLocal(dateKey, patch);
+  }
+}
+function saveCheckinLocal(dateKey, patch){
+  var key = 'trilhaA2_checkin_' + dateKey;
+  var data = lsGet(key, {date:dateKey, lessonsCompleted:[], manual:false});
+  Object.assign(data, patch);
+  if(patch.addLessonDay && data.lessonsCompleted.indexOf(patch.addLessonDay) === -1){
+    data.lessonsCompleted.push(patch.addLessonDay);
+  }
+  delete data.addLessonDay;
+  lsSet(key, data);
+}
+function getLast7Checkins(){
+  var dates = [];
+  for(var i=6;i>=0;i--) dates.push(addDaysStr(new Date(), -i));
+  var localFallback = function(){
+    return dates.map(function(dt){ return lsGet('trilhaA2_checkin_'+dt, {date:dt, lessonsCompleted:[], manual:false}); });
+  };
+  if(db){
+    return safeDb(function(){
+      return db.collection('checkins').where('date','in',dates).get().then(function(qs){
+        var map = {};
+        qs.docs.forEach(function(d){ map[d.id] = deepClone(d.data()); });
+        return dates.map(function(dt){ return map[dt] || {date:dt, lessonsCompleted:[], manual:false}; });
+      });
+    }, localFallback);
+  }
+  return Promise.resolve(localFallback());
+}
+
+/* =========================================================
+   TTS (shadowing)
+   ========================================================= */
+var ttsVoices = [];
+function loadVoices(){ try{ ttsVoices = window.speechSynthesis.getVoices(); }catch(e){} }
+if('speechSynthesis' in window){
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+function speak(text){
+  try{
+    if(!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US'; u.rate = 0.88;
+    var v = ttsVoices.find(function(v){ return v.lang === 'en-US'; }) || ttsVoices.find(function(v){ return v.lang && v.lang.indexOf('en') === 0; });
+    if(v) u.voice = v;
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+/* =========================================================
+   ACTIVITY / STREAK / CHECK-IN
+   ========================================================= */
+function registerActivity(){
+  var t = todayStr();
+  if(progress.lastActivityDate === t){ /* already counted today */ }
+  else if(progress.lastActivityDate === yesterdayStr()){ progress.streak = (progress.streak||0) + 1; }
+  else { progress.streak = 1; }
+  progress.lastActivityDate = t;
+  progress.longestStreak = Math.max(progress.longestStreak||0, progress.streak);
+}
+
+/* =========================================================
+   RENDER: HOME
+   ========================================================= */
+function completedToday(){
+  // count lessons whose completion happened today — approximated via checkins fetch on demand;
+  // for the stat tile we just show how many lessons were completed overall today by checking the flag we set at completion time.
+  return progress._completedTodayCount || 0;
+}
+
+// Combine saved state with whatever is already in memory, losing nothing from
+// either side: completed days are unioned, counters take the higher value.
+function mergeProgress(saved, current){
+  var base = {unlockedDay:1, completedDays:[], lastActivityDate:null, streak:0, longestStreak:0, totalLessonsCompleted:0, bonusUnlockedDay:0};
+  var a = Object.assign({}, base, deepClone(saved) || {});
+  var b = Object.assign({}, base, deepClone(current) || {});
+  var days = (a.completedDays || []).slice();
+  (b.completedDays || []).forEach(function(d){ if(days.indexOf(d) === -1) days.push(d); });
+  days.sort(function(x,y){ return x-y; });
+  var latestDate = (a.lastActivityDate || '') > (b.lastActivityDate || '') ? a.lastActivityDate : b.lastActivityDate;
+  return {
+    completedDays: days,
+    unlockedDay: Math.max(a.unlockedDay||1, b.unlockedDay||1),
+    bonusUnlockedDay: Math.max(a.bonusUnlockedDay||0, b.bonusUnlockedDay||0),
+    totalLessonsCompleted: Math.max(a.totalLessonsCompleted||0, b.totalLessonsCompleted||0, days.length),
+    streak: Math.max(a.streak||0, b.streak||0),
+    longestStreak: Math.max(a.longestStreak||0, b.longestStreak||0, a.streak||0, b.streak||0),
+    lastActivityDate: latestDate || null,
+    _completedTodayDate: b._completedTodayDate || a._completedTodayDate,
+    _completedTodayCount: Math.max(a._completedTodayCount||0, b._completedTodayCount||0)
+  };
+}
+
+// Same idea for the flashcards: keep every card either side knows about, and for
+// a card both sides have, keep the one reviewed furthest along.
+function mergeCards(saved, current){
+  var byId = {};
+  (saved || []).forEach(function(c){ if(c && c.id) byId[c.id] = c; });
+  (current || []).forEach(function(c){
+    if(!c || !c.id) return;
+    var existing = byId[c.id];
+    if(!existing || (c.nextReview || '') > (existing.nextReview || '')) byId[c.id] = c;
+  });
+  // deepClone so no frozen snapshot object survives into the mutable card pool
+  return deepClone(Object.keys(byId).map(function(k){ return byId[k]; })) || [];
+}
+
+// Notebook entries from both sides, deduped on the word pair.
+function mergeWordLists(saved, current){
+  var out = [];
+  var seen = {};
+  (saved || []).concat(current || []).forEach(function(w){
+    if(!w || !w.en || !w.pt) return;
+    var key = String(w.pt).toLowerCase() + '|' + String(w.en).toLowerCase();
+    if(seen[key]){
+      if(w.inDeck) seen[key].inDeck = true;
+      return;
+    }
+    var copy = deepClone(w) || w;
+    seen[key] = copy;
+    out.push(copy);
+  });
+  return out;
+}
+
+// A day is open when it is the first day, when it is already done, or when the
+// PREVIOUS day is done. Availability is derived from completedDays — the single
+// source of truth — so a stale or out-of-sync unlockedDay counter can never
+// leave the viewer stuck on a day they already finished.
+function isDayOpen(day){
+  if(day === 1) return true;
+  if(progress.completedDays.indexOf(day) !== -1) return true;
+  if(progress.completedDays.indexOf(day - 1) !== -1) return true;
+  // Days unlocked explicitly — by finishing a lesson, or by checking in after
+  // studying somewhere else.
+  return (progress.bonusUnlockedDay || 0) >= day;
+}
+
+// Opens the next day beyond whatever is currently reachable.
+function unlockNextDay(){
+  var next = Math.min(currentDayNumber() + 1, TOTAL_DAYS);
+  progress.bonusUnlockedDay = Math.max(progress.bonusUnlockedDay || 0, next);
+  return next;
+}
+
+// Highest day the viewer may open right now, derived the same way.
+function currentDayNumber(){
+  var d = 1;
+  for(var i=1;i<=TOTAL_DAYS;i++){ if(isDayOpen(i)) d = i; }
+  return d;
+}
+
+function renderHome(){
+  document.getElementById('statDay').textContent = currentDayNumber() + '/' + TOTAL_DAYS;
+  document.getElementById('statStreak').textContent = progress.streak || 0;
+  document.getElementById('statToday').textContent = completedToday();
+  var due = srsCards.filter(function(c){ return c.nextReview <= todayStr(); });
+  document.getElementById('statWords').textContent = due.length;
+  document.getElementById('streakChip').textContent = '🔥 ' + (progress.streak || 0);
+
+  var teaser = document.getElementById('reviewTeaser');
+  if(due.length > 0){ teaser.hidden = false; document.getElementById('dueCount').textContent = due.length; }
+  else { teaser.hidden = true; }
+  updateWordsBadge();
+
+  // week strip
+  getLast7Checkins().then(function(list){
+    var strip = document.getElementById('weekStrip');
+    strip.innerHTML = '';
+    var labels = ['D','S','T','Q','Q','S','S'];
+    list.forEach(function(c){
+      var d = document.createElement('div');
+      var jsDate = new Date(c.date + 'T00:00:00');
+      var wd = jsDate.getDay();
+      var done = (c.lessonsCompleted && c.lessonsCompleted.length>0) || c.manual;
+      d.className = 'day-dot' + (done ? ' done' : '') + (c.date === todayStr() ? ' today' : '');
+      d.textContent = labels[wd];
+      d.title = c.date + (done ? ' — praticou' : '');
+      strip.appendChild(d);
+    });
+  });
+
+  // path
+  var path = document.getElementById('pathRow');
+  path.innerHTML = '';
+  LESSONS.forEach(function(L){
+    var state = 'locked';
+    if(progress.completedDays.indexOf(L.day) !== -1) state = 'done';
+    else if(isDayOpen(L.day)) state = 'available';
+    var node = document.createElement('div');
+    node.className = 'node ' + state + (L.isReview ? ' review' : '');
+    var icon = state === 'done' ? '✅' : (state === 'locked' ? '🔒' : (L.isReview ? '🔁' : '▶️'));
+    node.innerHTML = '<div class="num mono">D' + L.day + '</div><div class="ic">' + icon + '</div><div class="t">' + L.title.split(' ').slice(0,2).join(' ') + '</div>';
+    if(state !== 'locked'){
+      node.addEventListener('click', function(day){ return function(){ openLesson(day); }; }(L.day));
+    } else {
+      // Escape hatch: a second tap opens the day anyway, so a wrong saved state
+      // can never leave the viewer unable to study.
+      node.addEventListener('click', function(day){
+        return function(){
+          if(lockedTapDay === day){
+            lockedTapDay = null;
+            openLesson(day);
+          } else {
+            lockedTapDay = day;
+            showToast('Complete a aula anterior primeiro — ou toque de novo para abrir o Dia ' + day + ' assim mesmo.');
+            setTimeout(function(){ if(lockedTapDay === day) lockedTapDay = null; }, 6000);
+          }
+        };
+      }(L.day));
+    }
+    path.appendChild(node);
+  });
+}
+
+/* =========================================================
+   VIEW SWITCHING
+   ========================================================= */
+function showView(name){
+  document.getElementById('view-home').hidden = name !== 'home';
+  document.getElementById('view-lesson').hidden = name !== 'lesson';
+  document.getElementById('view-review').hidden = name !== 'review';
+  document.getElementById('view-words').hidden = name !== 'words';
+  window.scrollTo(0,0);
+}
+
+/* =========================================================
+   RENDER: LESSON
+   ========================================================= */
+function openLesson(day){
+  currentLessonDay = day;
+  var L = LESSONS[day-1];
+  quizChecked = false;
+  chatTurns = [];
+
+  document.getElementById('lessonEyebrow').textContent = 'Dia ' + day + ' de ' + TOTAL_DAYS + (L.isReview ? ' · Revisão' : '');
+  document.getElementById('lessonTitle').textContent = L.title;
+
+  // vocab
+  var vocabSection = document.getElementById('sec-vocab');
+  var grid = document.getElementById('vocabGrid');
+  grid.innerHTML = '';
+  if(L.vocab.length === 0){
+    document.getElementById('vocabIntro').textContent = '';
+    grid.innerHTML = '<div class="review-banner">🔁 Hoje não há palavras novas — o foco é consolidar tudo o que você já viu. Aproveite para revisar os cartões pendentes na tela inicial.</div>';
+  } else {
+    document.getElementById('vocabIntro').textContent = 'Ouça cada palavra (🔊) antes de seguir. Isso já é o começo do shadowing.';
+    L.vocab.forEach(function(v){
+      var card = document.createElement('div');
+      card.className = 'vcard';
+      card.innerHTML = '<div class="en"><button class="speak-btn" aria-label="Ouvir">🔊</button>' + v.en + '</div><div class="pt">' + v.pt + '</div><div class="ex">“' + v.ex + '”</div>';
+      card.querySelector('.speak-btn').addEventListener('click', function(){ speak(v.en); });
+      grid.appendChild(card);
+    });
+  }
+
+  // grammar
+  document.getElementById('grammarTitle').textContent = L.grammarTitle;
+  document.getElementById('grammarBody').innerHTML = L.grammarBody;
+
+  // dialogue
+  var dbox = document.getElementById('dialogueBox');
+  dbox.innerHTML = '';
+  L.dialogue.forEach(function(line){
+    var row = document.createElement('div');
+    row.className = 'dlg-line';
+    row.innerHTML = '<div class="dlg-avatar ' + line.s + '">' + line.s + '</div><div class="dlg-bubble"><button class="speak-btn" aria-label="Ouvir">🔊</button><span>' + line.en + '</span></div>';
+    row.querySelector('.speak-btn').addEventListener('click', function(t){ return function(){ speak(t); }; }(line.en));
+    dbox.appendChild(row);
+  });
+
+  // writing
+  document.getElementById('writingPrompt').textContent = L.writingPrompt;
+  document.getElementById('writingInput').value = '';
+  document.getElementById('correctionOut').hidden = true;
+  document.getElementById('correctionOut').textContent = '';
+  document.getElementById('aiNoteWrite').hidden = aiAvailable;
+  document.getElementById('btnCorrect').disabled = !aiAvailable;
+
+  // chat
+  document.getElementById('chatTopicLine').textContent = L.chatTopic + ' — ' + L.chatTopicPt;
+  document.getElementById('chatLog').innerHTML = '';
+  addChatBubble('bot', L.chatOpening);
+  document.getElementById('chatInput').value = '';
+  document.getElementById('aiNoteChat').hidden = aiAvailable;
+  document.getElementById('chatInput').disabled = !aiAvailable;
+  document.getElementById('btnSendChat').disabled = !aiAvailable;
+
+  // quiz
+  var qbox = document.getElementById('quizBox');
+  qbox.innerHTML = '';
+  L.quiz.forEach(function(item, qi){
+    var div = document.createElement('div');
+    div.className = 'quiz-item';
+    var optsHtml = item.opts.map(function(opt, oi){
+      return '<label class="quiz-opt"><input type="radio" name="q'+qi+'" value="'+oi+'"> ' + opt + '</label>';
+    }).join('');
+    div.innerHTML = '<div class="quiz-q">' + (qi+1) + '. ' + item.q + '</div>' + optsHtml + '<div class="quiz-tip" id="tip'+qi+'">💡 ' + item.tip + '</div>';
+    qbox.appendChild(div);
+  });
+  document.getElementById('quizScore').textContent = '';
+  document.getElementById('completeHint').hidden = false;
+  document.getElementById('completeHint').textContent = 'Dica: corrija o quiz antes de concluir, para ver o que acertou.';
+
+  var already = progress.completedDays.indexOf(day) !== -1;
+  document.getElementById('btnComplete').textContent = already ? 'Aula já concluída ✓' : 'Concluir aula ✓';
+  if(already){
+    document.getElementById('completeHint').hidden = true;
+  }
+
+  showView('lesson');
+}
+
+function checkQuiz(){
+  var L = LESSONS[currentLessonDay-1];
+  var score = 0;
+  L.quiz.forEach(function(item, qi){
+    var chosen = document.querySelector('input[name="q'+qi+'"]:checked');
+    var opts = document.querySelectorAll('input[name="q'+qi+'"]');
+    opts.forEach(function(opt){
+      var label = opt.closest('.quiz-opt');
+      label.classList.remove('correct','wrong');
+      if(parseInt(opt.value,10) === item.correct) label.classList.add('correct');
+      else if(chosen && opt === chosen) label.classList.add('wrong');
+    });
+    document.getElementById('tip'+qi).classList.add('show');
+    if(chosen && parseInt(chosen.value,10) === item.correct) score++;
+  });
+  document.getElementById('quizScore').textContent = 'Você acertou ' + score + ' de ' + L.quiz.length + '.';
+  quizChecked = true;
+  document.getElementById('completeHint').hidden = true;
+}
+
+function completeLesson(){
+  var day = currentLessonDay;
+  var L = LESSONS[day-1];
+  var alreadyDone = progress.completedDays.indexOf(day) !== -1;
+
+  if(!alreadyDone && !quizChecked){
+    checkQuiz();
+  }
+
+  if(!alreadyDone){
+    hasInteracted = true;
+    // concat, not push — the array may have come from a frozen database document
+    progress.completedDays = (progress.completedDays || []).concat([day]);
+    progress.totalLessonsCompleted = (progress.totalLessonsCompleted||0) + 1;
+    // Unlock the next day explicitly, on top of the derived rule, so finishing a
+    // lesson always opens what comes next.
+    progress.unlockedDay = Math.max(progress.unlockedDay || 1, Math.min(day+1, TOTAL_DAYS));
+    progress.bonusUnlockedDay = Math.max(progress.bonusUnlockedDay || 0, Math.min(day+1, TOTAL_DAYS));
+
+    var t = todayStr();
+    progress._completedTodayDate = progress._completedTodayDate || t;
+    if(progress._completedTodayDate !== t){ progress._completedTodayCount = 0; progress._completedTodayDate = t; }
+    progress._completedTodayCount = (progress._completedTodayCount||0) + 1;
+
+    // add vocab to SRS pool (rebuild the array rather than pushing into one that
+    // may have come from a frozen database document)
+    var newCards = [];
+    L.vocab.forEach(function(v, vi){
+      var id = 'd' + day + '-' + vi;
+      if(!srsCards.find(function(c){ return c && c.id === id; })){
+        newCards.push({id:id, en:v.en, pt:v.pt, ex:v.ex, day:day, box:0, nextReview: addDaysStr(new Date(),1)});
+      }
+    });
+    if(newCards.length) srsCards = srsCards.concat(newCards);
+
+    // show the result to the viewer FIRST — the UI must never depend on persistence succeeding.
+    showCompleteModal(day);
+
+    try{
+      registerActivity();
+      saveProgress();
+      saveCheckin(t, {addLessonDay: day});
+      saveSRS();
+    }catch(e){
+      showToast('Aula concluída, mas seu progresso pode não ter sido salvo.');
+    }
+  } else {
+    showView('home');
+    renderHome();
+  }
+}
+
+function showCompleteModal(day){
+  var isLast = day >= TOTAL_DAYS;
+  var backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  var nextAvailable = !isLast;
+  backdrop.innerHTML = '<div class="modal">' +
+    '<div style="font-size:2rem;">🎉</div>' +
+    '<h3 class="display">Aula do Dia ' + day + ' concluída!</h3>' +
+    '<p>' + (isLast ? 'Você terminou a trilha A2 inteira! 🎓 Continue revisando os cartões para não esquecer.' : 'Quer adiantar a trilha e já começar o Dia ' + (day+1) + ' agora?') + '</p>' +
+    '<div class="row">' +
+      (nextAvailable ? '<button class="btn btn-primary" id="modalNext">Começar Dia ' + (day+1) + ' agora</button>' : '') +
+      '<button class="btn btn-ghost" id="modalHome">Voltar para a trilha</button>' +
+    '</div></div>';
+  document.body.appendChild(backdrop);
+  if(nextAvailable){
+    backdrop.querySelector('#modalNext').addEventListener('click', function(){
+      document.body.removeChild(backdrop);
+      openLesson(day+1);
+    });
+  }
+  backdrop.querySelector('#modalHome').addEventListener('click', function(){
+    document.body.removeChild(backdrop);
+    showView('home');
+    renderHome();
+  });
+}
+
+/* =========================================================
+   AI: WRITING CORRECTION
+   ========================================================= */
+function requestCorrection(){
+  if(!ai) return;
+  var L = LESSONS[currentLessonDay-1];
+  var text = document.getElementById('writingInput').value.trim();
+  if(!text){ showToast('Escreva algo antes de enviar.'); return; }
+  var out = document.getElementById('correctionOut');
+  out.hidden = false;
+  out.textContent = 'Pensando...';
+  var btn = document.getElementById('btnCorrect');
+  btn.disabled = true;
+
+  var prompt = 'Você é um tutor de inglês gentil e encorajador, corrigindo o texto de um aluno brasileiro de nível A2 (básico consolidado, indo para o pré-intermediário). ' +
+    'O tema da lição é: "' + L.title + '". Instrução original dada ao aluno: "' + L.writingPrompt + '". ' +
+    'Texto do aluno:\n"""\n' + text + '\n"""\n\n' +
+    'Responda em português. Estrutura da resposta, em no máximo 90 palavras: ' +
+    '1) Uma frase dizendo se está muito bem, bem, ou se precisa de ajustes (seja encorajador, nunca duro). ' +
+    '2) A versão corrigida das frases, em inglês. ' +
+    '3) Uma explicação curta (1-2 frases) do principal ponto a melhorar, ou um elogio específico se estiver tudo certo.';
+
+  ai(prompt, {modelTier:'default', cache:false, onText:function(u){ out.textContent = u.text; }})
+    .then(function(res){ out.textContent = res.text; btn.disabled = false; })
+    .catch(function(e){
+      btn.disabled = false;
+      if(e.code === 'not_granted'){ aiAvailable = false; document.getElementById('aiNoteWrite').hidden = false; btn.disabled = true; out.hidden = true; showToast('Você não permitiu o uso da IA nesta visualização.'); }
+      else if(e.code === 'rate_limited'){ out.textContent = 'Muitas solicitações agora. Tente novamente em instantes.'; }
+      else { out.textContent = e.text || 'Não foi possível corrigir agora. Tente novamente.'; }
+    });
+}
+
+/* =========================================================
+   AI: FREE CHAT
+   ========================================================= */
+function addChatBubble(who, text){
+  var log = document.getElementById('chatLog');
+  var el = document.createElement('div');
+  el.className = 'msg ' + (who === 'me' ? 'me' : 'bot');
+  el.textContent = text;
+  log.appendChild(el);
+  log.scrollTop = log.scrollHeight;
+  return el;
+}
+
+/* ---------- new words the viewer asked for mid-conversation ---------- */
+
+// The tutor appends "%%WORDS: casa=house | cachorro=dog%%" whenever the viewer
+// typed a Portuguese word because they didn't know it in English. That line is
+// bookkeeping, never shown in the chat bubble.
+var WORDS_MARKER = /%%\s*WORDS\s*:([\s\S]*?)(?:%%|$)/i;
+
+function stripWordsMarker(text){
+  return String(text || '').replace(WORDS_MARKER, '').replace(/\s+$/, '');
+}
+
+function parseWordsMarker(text){
+  var m = WORDS_MARKER.exec(String(text || ''));
+  if(!m || !m[1]) return [];
+  return m[1].split('|').map(function(pair){
+    var parts = pair.split('=');
+    if(parts.length < 2) return null;
+    var pt = parts[0].replace(/[“”"']/g, '').trim();
+    var en = parts.slice(1).join('=').replace(/[“”"']/g, '').trim();
+    if(!pt || !en || pt.length > 60 || en.length > 60) return null;
+    return {pt: pt, en: en};
+  }).filter(Boolean).slice(0, 5);
+}
+
+function captureNewWords(found, day){
+  var added = [];
+  found.forEach(function(w){
+    var key = w.pt.toLowerCase() + '|' + w.en.toLowerCase();
+    var exists = newWords.some(function(x){
+      return (String(x.pt).toLowerCase() + '|' + String(x.en).toLowerCase()) === key;
+    });
+    if(!exists){
+      added.push({
+        id: 'w' + Date.now() + '-' + Math.random().toString(36).slice(2,7),
+        pt: w.pt, en: w.en, day: day || null, addedAt: todayStr(), inDeck: false
+      });
+    }
+  });
+  if(!added.length) return;
+  newWords = newWords.concat(added);
+  updateWordsBadge();
+  showToast('📒 ' + (added.length === 1
+    ? '"' + added[0].en + '" salva em Novas palavras'
+    : added.length + ' palavras salvas em Novas palavras'));
+  try{ saveNewWords(); }catch(e){}
+}
+
+function sendChat(){
+  if(!ai) return;
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if(!text) return;
+  var L = LESSONS[currentLessonDay-1];
+
+  addChatBubble('me', text);
+  input.value = '';
+  var thinkingBubble = addChatBubble('bot', 'Thinking...');
+
+  var RULES = 'Você é um parceiro de prática de inglês, gentil e encorajador, para um aluno brasileiro de nível A2 (básico consolidado, indo para o pré-intermediário). Ele já domina o presente simples, o verbo to be, there is/are e can. Regras: ' +
+    '(1) Responda em inglês simples de nível A2 — frases um pouco mais longas que A1, podendo usar passado, futuro e present perfect, mas sem vocabulário raro. ' +
+    '(2) Quando usar uma palavra que pode ser nova, coloque a tradução curta em português entre parênteses. ' +
+    '(3) Se o aluno errar algo, corrija gentilmente mostrando a versão certa, em 1 frase, sem explicações longas. ' +
+    '(4) Faça UMA pergunta por vez para manter a conversa fluindo. ' +
+    '(5) No máximo 4 frases por resposta. ' +
+    '(6) O tema desta conversa é: "' + L.chatTopic + '" (' + L.chatTopicPt + '). ' +
+    '(7) IMPORTANTE — palavras em português no meio da frase: o aluno vai escrever em inglês, mas quando não souber uma palavra ' +
+    'ele vai escrevê-la em português no meio da frase. Sempre que isso acontecer: mostre a frase dele completa em inglês, ' +
+    'com a palavra traduzida (ex.: "Nice! You can say: I have a dog."), e destaque a tradução da palavra. ' +
+    'Além disso, termine sua mensagem com uma ÚLTIMA LINHA exatamente neste formato, sem nenhum texto depois dela: ' +
+    '%%WORDS: palavra_em_portugues=word_in_english | outra_palavra=other_word%% ' +
+    'Inclua nessa linha APENAS as palavras que o aluno escreveu em português nesta mensagem (no máximo 5). ' +
+    'Se ele não escreveu nenhuma palavra em português, NÃO escreva essa linha de forma alguma.';
+
+  if(chatTurns.length === 0){
+    chatTurns.push({role:'user', content: RULES});
+  }
+  chatTurns.push({role:'user', content: text});
+
+  ai(chatTurns, {modelTier:'quick', cache:false, onText:function(u){ thinkingBubble.textContent = stripWordsMarker(u.text); }})
+    .then(function(res){
+      thinkingBubble.textContent = stripWordsMarker(res.text);
+      chatTurns.push({role:'assistant', content: res.text});
+      var found = parseWordsMarker(res.text);
+      if(found.length) captureNewWords(found, L.day);
+    })
+    .catch(function(e){
+      chatTurns.pop(); // remove the unanswered user turn to keep alternation clean
+      if(e.code === 'not_granted'){
+        aiAvailable = false;
+        document.getElementById('aiNoteChat').hidden = false;
+        document.getElementById('chatInput').disabled = true;
+        document.getElementById('btnSendChat').disabled = true;
+        thinkingBubble.textContent = 'Você não permitiu o uso da IA nesta visualização.';
+      } else if(e.code === 'rate_limited'){
+        thinkingBubble.textContent = 'Muitas mensagens agora — espere um instante e tente de novo.';
+      } else {
+        thinkingBubble.textContent = e.text || 'Não consegui responder agora. Tente novamente.';
+      }
+    });
+}
+
+/* =========================================================
+   RENDER: NEW WORDS (the viewer's own notebook)
+   ========================================================= */
+function updateWordsBadge(){
+  var el = document.getElementById('wordsCount');
+  if(el) el.textContent = '(' + newWords.length + ')';
+}
+
+function wordToDeck(word){
+  var id = 'nw-' + word.id;
+  if(!srsCards.some(function(c){ return c && c.id === id; })){
+    srsCards = srsCards.concat([{
+      id: id, en: word.en, pt: word.pt,
+      ex: 'Palavra que você perguntou na conversa.',
+      day: word.day || 0, box: 0, nextReview: addDaysStr(new Date(), 1)
+    }]);
+  }
+  return srsCards;
+}
+
+function openWords(){
+  showView('words');
+  renderWords();
+}
+
+function renderWords(){
+  updateWordsBadge();
+  var list = document.getElementById('wordsList');
+  var actions = document.getElementById('wordsActions');
+  list.innerHTML = '';
+
+  if(!newWords.length){
+    actions.hidden = true;
+    list.innerHTML = '<div class="review-banner">Seu caderno está vazio por enquanto. Na conversa de qualquer aula, escreva sua frase em inglês e deixe em português a palavra que você não souber — eu traduzo e ela aparece aqui.</div>';
+    return;
+  }
+
+  var pending = newWords.filter(function(w){ return !w.inDeck; }).length;
+  actions.hidden = pending === 0;
+  var allBtn = document.getElementById('btnAllToDeck');
+  if(allBtn) allBtn.textContent = 'Enviar ' + pending + ' para a revisão';
+
+  var grid = document.createElement('div');
+  grid.className = 'vocab-grid';
+  newWords.slice().reverse().forEach(function(w){
+    var card = document.createElement('div');
+    card.className = 'vcard';
+    var meta = 'Dia ' + (w.day || '—') + ' · ' + w.addedAt;
+    card.innerHTML =
+      '<div class="en"><button class="speak-btn" aria-label="Ouvir">🔊</button>' + w.en + '</div>' +
+      '<div class="pt">' + w.pt + '</div>' +
+      '<div class="ex mono" style="font-style:normal;font-size:.72rem;">' + meta + '</div>' +
+      '<div class="word-actions">' +
+        (w.inDeck
+          ? '<span class="ai-note">✓ Na revisão</span>'
+          : '<button class="btn btn-progress" data-act="deck">Revisar depois</button>') +
+        '<button class="btn btn-ghost" data-act="del">Remover</button>' +
+      '</div>';
+    card.querySelector('.speak-btn').addEventListener('click', function(){ speak(w.en); });
+    var deckBtn = card.querySelector('[data-act="deck"]');
+    if(deckBtn){
+      deckBtn.addEventListener('click', function(){
+        wordToDeck(w);
+        newWords = newWords.map(function(x){
+          return x.id === w.id ? Object.assign({}, x, {inDeck:true}) : x;
+        });
+        renderWords();
+        showToast('"' + w.en + '" entrou na revisão de amanhã.');
+        try{ saveNewWords(); saveSRS(); }catch(e){}
+      });
+    }
+    card.querySelector('[data-act="del"]').addEventListener('click', function(){
+      newWords = newWords.filter(function(x){ return x.id !== w.id; });
+      renderWords();
+      try{ saveNewWords(); }catch(e){}
+    });
+    grid.appendChild(card);
+  });
+  list.appendChild(grid);
+}
+
+/* =========================================================
+   RENDER: REVIEW (SRS flashcards)
+   ========================================================= */
+var reviewQueue = [];
+var reviewIndex = 0;
+var reviewCorrect = 0;
+
+function openReview(){
+  reviewQueue = srsCards.filter(function(c){ return c.nextReview <= todayStr(); });
+  reviewIndex = 0; reviewCorrect = 0;
+  showView('review');
+  renderReviewCard();
+}
+
+function renderReviewCard(){
+  var area = document.getElementById('reviewArea');
+  if(reviewQueue.length === 0){
+    area.innerHTML = '<div class="review-banner">✨ Nada para revisar hoje! Volte amanhã ou avance para a próxima aula.</div>';
+    return;
+  }
+  if(reviewIndex >= reviewQueue.length){
+    area.innerHTML = '<div class="panel" style="text-align:center;"><div style="font-size:2rem;">🎉</div><h3 class="display">Revisão concluída!</h3><p class="lede">Você acertou ' + reviewCorrect + ' de ' + reviewQueue.length + '.</p><button class="btn btn-primary" id="btnReviewHome">Voltar para a trilha</button></div>';
+    document.getElementById('btnReviewHome').addEventListener('click', function(){ showView('home'); renderHome(); });
+    return;
+  }
+  var card = reviewQueue[reviewIndex];
+  area.innerHTML =
+    '<p class="lede" style="margin-bottom:10px;">Cartão ' + (reviewIndex+1) + ' de ' + reviewQueue.length + '</p>' +
+    '<div class="flash">' +
+      '<div class="word">' + card.en + ' <button class="speak-btn" id="reviewSpeak" aria-label="Ouvir" style="vertical-align:middle;">🔊</button></div>' +
+      '<div class="trans" id="revTrans"></div>' +
+      '<div class="ex2" id="revEx"></div>' +
+      '<div class="flash-controls" id="flashControls">' +
+        '<button class="btn btn-ghost" id="btnReveal">Mostrar tradução</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('reviewSpeak').addEventListener('click', function(){ speak(card.en); });
+  document.getElementById('btnReveal').addEventListener('click', function(){
+    document.getElementById('revTrans').textContent = card.pt;
+    document.getElementById('revEx').textContent = '“' + card.ex + '”';
+    document.getElementById('flashControls').innerHTML =
+      '<button class="btn" style="background:var(--danger-soft);color:var(--danger);" id="btnMiss">😵 Não lembrei</button>' +
+      '<button class="btn btn-progress" id="btnHit">🙂 Lembrei</button>';
+    document.getElementById('btnMiss').addEventListener('click', function(){ gradeCard(card, false); });
+    document.getElementById('btnHit').addEventListener('click', function(){ gradeCard(card, true); });
+  });
+}
+
+function gradeCard(card, correct){
+  hasInteracted = true;
+
+  // Build a NEW card object rather than writing into the existing one: a card
+  // loaded from the database may be frozen, and assigning to it would throw
+  // before the queue could move on.
+  var nextBox = correct ? Math.min((card.box||0)+1, BOX_INTERVALS.length-1) : 0;
+  if(correct) reviewCorrect++;
+  var updated = {
+    id: card.id, en: card.en, pt: card.pt, ex: card.ex, day: card.day,
+    box: nextBox,
+    nextReview: addDaysStr(new Date(), BOX_INTERVALS[nextBox])
+  };
+  reviewQueue[reviewIndex] = updated;
+  for(var i=0;i<srsCards.length;i++){
+    if(srsCards[i] && srsCards[i].id === card.id){ srsCards[i] = updated; break; }
+  }
+
+  // advance the card on screen FIRST — this must never depend on persistence succeeding.
+  reviewIndex++;
+  renderReviewCard();
+
+  try{
+    registerActivity();
+    saveProgress();
+    saveSRS();
+    saveCheckin(todayStr(), {reviewDone:true});
+  }catch(e){
+    showToast('Cartão registrado, mas seu progresso pode não ter sido salvo.');
+  }
+}
+
+/* =========================================================
+   SECTION NAV (inside lesson)
+   ========================================================= */
+function buildSectionNav(){
+  var nav = document.getElementById('sectionNav');
+  var items = [
+    ['sec-vocab','1 Vocabulário'],
+    ['sec-grammar','2 Gramática'],
+    ['sec-dialogue','3 Diálogo'],
+    ['sec-write','4 Escrita'],
+    ['sec-chat','5 Conversa'],
+    ['sec-quiz','6 Quiz']
+  ];
+  nav.innerHTML = items.map(function(it){ return '<a href="#'+it[0]+'">'+it[1]+'</a>'; }).join('');
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+function wireEvents(){
+  document.getElementById('btnBackHome').addEventListener('click', function(){ showView('home'); renderHome(); });
+  document.getElementById('btnBackHome2').addEventListener('click', function(){ showView('home'); renderHome(); });
+  document.getElementById('btnBackHome3').addEventListener('click', function(){ showView('home'); renderHome(); });
+  document.getElementById('btnGoReview').addEventListener('click', openReview);
+  document.getElementById('btnGoWords').addEventListener('click', openWords);
+  document.getElementById('btnAllToDeck').addEventListener('click', function(){
+    var pending = newWords.filter(function(w){ return !w.inDeck; });
+    if(!pending.length) return;
+    pending.forEach(wordToDeck);
+    newWords = newWords.map(function(x){ return Object.assign({}, x, {inDeck:true}); });
+    renderWords();
+    showToast(pending.length + ' palavra(s) na fila de revisão de amanhã.');
+    try{ saveNewWords(); saveSRS(); }catch(e){}
+  });
+  document.getElementById('btnManualCheckin').addEventListener('click', function(){
+    hasInteracted = true;
+    registerActivity();
+    var opened = unlockNextDay();
+    renderHome();
+    showToast('Check-in registrado! 🔥 Dia ' + opened + ' liberado.');
+    try{ saveProgress(); saveCheckin(todayStr(), {manual:true}); }catch(e){}
+  });
+  document.getElementById('btnCheckQuiz').addEventListener('click', checkQuiz);
+  document.getElementById('btnComplete').addEventListener('click', completeLesson);
+  document.getElementById('btnCorrect').addEventListener('click', requestCorrection);
+  document.getElementById('btnSendChat').addEventListener('click', sendChat);
+  document.getElementById('chatInput').addEventListener('keydown', function(e){ if(e.key === 'Enter') sendChat(); });
+}
+
+function init(){
+  buildSectionNav();
+  wireEvents();
+  renderHome();
+
+  Promise.resolve(window.claude ? window.claude.use('db') : null).then(function(handle){
+    db = handle;
+    return loadProgress();
+  }).then(function(p){
+    // Merge, never replace. If the viewer already completed a lesson or graded a
+    // card while this load was still in flight, both sides matter: the fetched
+    // history AND what they just did. Taking the union of completed days and the
+    // best of each counter means neither can erase the other.
+    progress = mergeProgress(p, progress);
+    return loadSRS();
+  }).then(function(cards){
+    srsCards = mergeCards(cards || [], srsCards);
+    return loadNewWords();
+  }).then(function(words){
+    newWords = mergeWordLists(words || [], newWords);
+    renderHome();
+  }).catch(function(){ renderHome(); });
+
+  Promise.resolve(window.claude ? window.claude.use('sample') : null).then(function(handle){
+    ai = handle;
+    aiAvailable = !!ai;
+    if(currentLessonDay){
+      document.getElementById('aiNoteWrite').hidden = aiAvailable;
+      document.getElementById('aiNoteChat').hidden = aiAvailable;
+      document.getElementById('btnCorrect').disabled = !aiAvailable;
+      document.getElementById('chatInput').disabled = !aiAvailable;
+      document.getElementById('btnSendChat').disabled = !aiAvailable;
+    }
+  });
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+})();
+</script>
+
+</body></html>

@@ -4,8 +4,8 @@ import { TRILHA_URL } from '../data/aulas'
 const etiquetas = [
   { texto: 'Curso gratuito', cor: 'vermelho' },
   { texto: 'On-line', cor: 'dourado' },
-  { texto: '12 aulas', cor: 'branco' },
-  { texto: 'Nível A1', cor: 'celeste' },
+  { texto: '26 aulas', cor: 'branco' },
+  { texto: 'Níveis A1 e A2', cor: 'celeste' },
 ]
 
 function Hero() {
@@ -31,7 +31,7 @@ function Hero() {
             Começar a Trilha 1 →
           </a>
           <a className="botao botao-contorno" href="#aulas">
-            Ver as 12 aulas
+            Ver as aulas
           </a>
         </div>
 

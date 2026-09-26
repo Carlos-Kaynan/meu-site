@@ -34,6 +34,12 @@ Não há framework de testes configurado.
 - Publicado no GitHub Pages em https://carlos-kaynan.github.io/meu-site/ — cada push na `main` roda `.github/workflows/deploy.yml`, que faz o build e publica `dist/`.
 - Por isso `vite.config.js` tem `base: '/meu-site/'`: sem isso, os caminhos de CSS/JS quebram no Pages.
 
+## Trilhas do curso
+
+- As trilhas e suas aulas ficam em `src/data/aulas.js` (array `trilhas`); a seção de aulas (`Trilha.jsx`) mostra uma aba por trilha.
+- Trilha 1 (A1): projeto separado `trilha-a1`, linkado pelo GitHub Pages.
+- Trilha 2 (A2): cópia de um artifact do Claude em `public/trilha-2/index.html` (HTML estático, fora do React). Fora do Claude, a correção por IA, a conversa e o caderno "Novas palavras" ficam desativados; o progresso usa `localStorage`.
+
 ## Estrutura
 
 - `index.html` é o ponto de entrada; carrega `src/main.jsx`, que monta `<App />` (de `src/App.jsx`) na div `#root`.
