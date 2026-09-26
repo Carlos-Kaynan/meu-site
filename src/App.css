@@ -42,6 +42,22 @@ section[id] {
   padding: 7px 16px;
   font-size: 0.9rem;
 }
+/* Botões principais do banner: maiores, com borda dourada e um "brilho" em volta */
+.botao-destaque {
+  padding: 16px 30px;
+  border: 3px solid var(--dourado);
+  font-size: 1.1rem;
+  box-shadow:
+    0 0 0 4px rgba(229, 181, 58, 0.25),
+    0 12px 24px -10px rgba(0, 0, 0, 0.6);
+}
+.botao-destaque:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--uk-branco);
+  box-shadow:
+    0 0 0 6px rgba(229, 181, 58, 0.35),
+    0 16px 28px -10px rgba(0, 0, 0, 0.7);
+}
 
 /* ---------- Menu do topo ---------- */
 .topo {
@@ -912,4 +928,130 @@ section[id] {
 }
 .dialogo-navegacao .botao-contorno {
   color: var(--titulo);
+}
+
+/* ---------- Conversa do dia (faixa azul) ---------- */
+.faixa-azul {
+  padding: 64px 0;
+  color: var(--uk-branco);
+  background:
+    radial-gradient(circle at 85% 20%, rgba(156, 195, 255, 0.18), transparent 45%),
+    var(--uk-azul);
+}
+.conversa {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+}
+.conversa-texto h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+}
+.conversa-texto p {
+  max-width: 40ch;
+  margin-bottom: 24px;
+  font-size: 1.05rem;
+}
+@media (max-width: 800px) {
+  .conversa {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* O cartão é sempre branco, como o da Palavra do dia */
+.conversa-cartao {
+  padding: 22px;
+  border-radius: 20px;
+  border-bottom: 8px solid var(--uk-vermelho);
+  background: var(--uk-branco);
+  color: var(--uk-azul);
+  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.6);
+}
+.conversa-topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.conversa-numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--uk-vermelho);
+  color: var(--uk-branco);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.conversa-titulo {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.conversa-titulo-en {
+  margin: 2px 0 0;
+  color: #4a5675;
+  font-style: italic;
+}
+.conversa-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+.conversa-categoria {
+  padding: 4px 12px;
+  border: 1px solid #dde3f0;
+  border-radius: 999px;
+  color: #4a5675;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.conversa-falas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.conversa-falas li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+/* A fala que está tocando fica destacada */
+.conversa-falas li.ativa {
+  background: #fdecef;
+}
+.conversa-falas .avatar {
+  width: 34px;
+  height: 34px;
+  font-size: 0.9rem;
+}
+.conversa-en {
+  display: block;
+  font-weight: 600;
+}
+.conversa-pt {
+  display: block;
+  color: #4a5675;
+  font-size: 0.9rem;
+}
+.conversa-continua {
+  margin: 10px 0 0;
+  color: #4a5675;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+.faixa-azul .botao[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

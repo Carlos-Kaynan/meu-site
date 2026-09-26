@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Hero from './components/Hero'
 import PalavraDoDia from './components/PalavraDoDia'
+import ConversaDoDia from './components/ConversaDoDia'
 import Trilha from './components/Trilha'
 import Dialogos from './pages/Dialogos'
 import { TRILHA_URL } from './data/aulas'
@@ -67,6 +68,7 @@ function App() {
           <>
             <Hero />
             <PalavraDoDia />
+            <ConversaDoDia />
             <Trilha />
           </>
         )}

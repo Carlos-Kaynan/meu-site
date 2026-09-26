@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { palavras } from '../data/aulas'
 import { falar } from '../utils/falar'
+import { diaDoAno } from '../utils/diaDoAno'
 
 // Escolhe uma palavra diferente para cada dia do ano
 function indiceDeHoje() {
-  const hoje = new Date()
-  const inicioDoAno = new Date(hoje.getFullYear(), 0, 0)
-  const diaDoAno = Math.floor((hoje - inicioDoAno) / 86400000)
-  return diaDoAno % palavras.length
+  return diaDoAno() % palavras.length
 }
 
 function PalavraDoDia() {
