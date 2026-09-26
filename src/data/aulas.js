@@ -54,7 +54,56 @@ export const trilhas = [
       { dia: 14, icone: '🎓', titulo: 'Revisão 2 · Checkpoint final A2', revisao: true },
     ],
   },
+  {
+    id: 'b1',
+    nome: 'Trilha 3',
+    icone: '🧗',
+    nivel: 'B1',
+    titulo: 'Threshold — o limiar da independência',
+    // Fica na pasta public/trilha-3 deste site
+    url: `${import.meta.env.BASE_URL}trilha-3/index.html`,
+    descricao:
+      '30 aulas em 5 blocos: narrar o passado, opinar e levantar hipóteses, inglês profissional, fluência natural e precisão. Toda aula tem um texto para ler e a "armadilha de brasileiro" daquele tema. Os dias 6, 12, 18, 24 e 30 fecham cada bloco com revisão.',
+    // Aqui cada aula também diz a qual "bloco" pertence, para a lista aparecer separada
+    aulas: [
+      { dia: 1, bloco: 'Bloco 1 · Narrar o passado', icone: '🎬', titulo: 'Past Continuous — cenário e interrupção' },
+      { dia: 2, bloco: 'Bloco 1 · Narrar o passado', icone: '🧸', titulo: 'Used to, would e be used to' },
+      { dia: 3, bloco: 'Bloco 1 · Narrar o passado', icone: '⏪', titulo: 'Past Perfect — o passado antes do passado' },
+      { dia: 4, bloco: 'Bloco 1 · Narrar o passado', icone: '⏳', titulo: 'Present Perfect Continuous · for e since' },
+      { dia: 5, bloco: 'Bloco 1 · Narrar o passado', icone: '🔗', titulo: 'Conectar ideias e contar histórias' },
+      { dia: 6, bloco: 'Bloco 1 · Narrar o passado', icone: '🔁', titulo: 'Revisão · Bloco 1', revisao: true },
+      { dia: 7, bloco: 'Bloco 2 · Opinar e hipotetizar', icone: '💭', titulo: 'Second Conditional — hipóteses' },
+      { dia: 8, bloco: 'Bloco 2 · Opinar e hipotetizar', icone: '😔', titulo: 'Third Conditional e I wish — arrependimento' },
+      { dia: 9, bloco: 'Bloco 2 · Opinar e hipotetizar', icone: '🕵️', titulo: "Modais de dedução — must, might, can't" },
+      { dia: 10, bloco: 'Bloco 2 · Opinar e hipotetizar', icone: '🗣️', titulo: 'Opinar, concordar e discordar' },
+      { dia: 11, bloco: 'Bloco 2 · Opinar e hipotetizar', icone: '⚖️', titulo: 'Conectivos de argumentação' },
+      { dia: 12, bloco: 'Bloco 2 · Opinar e hipotetizar', icone: '🔁', titulo: 'Revisão · Bloco 2', revisao: true },
+      { dia: 13, bloco: 'Bloco 3 · Inglês profissional', icone: '⚙️', titulo: 'Voz passiva — processos e sistemas' },
+      { dia: 14, bloco: 'Bloco 3 · Inglês profissional', icone: '💬', titulo: 'Discurso indireto — relatar conversas' },
+      { dia: 15, bloco: 'Bloco 3 · Inglês profissional', icone: '🔍', titulo: 'Relative clauses — dar detalhes' },
+      { dia: 16, bloco: 'Bloco 3 · Inglês profissional', icone: '📧', titulo: 'Reuniões e e-mails profissionais' },
+      { dia: 17, bloco: 'Bloco 3 · Inglês profissional', icone: '🧑‍💻', titulo: 'Inglês técnico e falsos amigos' },
+      { dia: 18, bloco: 'Bloco 3 · Inglês profissional', icone: '🔁', titulo: 'Revisão · Bloco 3', revisao: true },
+      { dia: 19, bloco: 'Bloco 4 · Fluência natural', icone: '🧩', titulo: 'Phrasal verbs I — get, take, put, go' },
+      { dia: 20, bloco: 'Bloco 4 · Fluência natural', icone: '🔄', titulo: 'Phrasal verbs II — come, look, turn, run' },
+      { dia: 21, bloco: 'Bloco 4 · Fluência natural', icone: '🤝', titulo: 'Collocations — as combinações certas' },
+      { dia: 22, bloco: 'Bloco 4 · Fluência natural', icone: '😄', titulo: 'Expressões do dia a dia' },
+      { dia: 23, bloco: 'Bloco 4 · Fluência natural', icone: '🎙️', titulo: 'Soar natural — reagir e ganhar tempo' },
+      { dia: 24, bloco: 'Bloco 4 · Fluência natural', icone: '🔁', titulo: 'Revisão · Bloco 4', revisao: true },
+      { dia: 25, bloco: 'Bloco 5 · Precisão', icone: '🔀', titulo: 'Gerúndio ou infinitivo?' },
+      { dia: 26, bloco: 'Bloco 5 · Precisão', icone: '🅰️', titulo: 'Artigos — a, an, the e o artigo zero' },
+      { dia: 27, bloco: 'Bloco 5 · Precisão', icone: '📌', titulo: 'Preposições dependentes' },
+      { dia: 28, bloco: 'Bloco 5 · Precisão', icone: '🚫', titulo: 'Some, any, every, no — e a dupla negativa' },
+      { dia: 29, bloco: 'Bloco 5 · Precisão', icone: '✍️', titulo: 'Escrita: e-mail, mensagem e texto de opinião' },
+      { dia: 30, bloco: 'Bloco 5 · Precisão', icone: '🏆', titulo: 'Checkpoint final B1', revisao: true },
+    ],
+  },
 ]
+
+// Totais usados no banner (calculados, para não ficarem desatualizados)
+// .reduce() percorre a lista somando: começa em 0 e soma as aulas de cada trilha
+export const totalDeAulas = trilhas.reduce((soma, t) => soma + t.aulas.length, 0)
+export const niveisDasTrilhas = trilhas.map((t) => t.nivel) // ['A1', 'A2', 'B1']
 
 // Palavras do cartão "Palavra do dia"
 export const palavras = [

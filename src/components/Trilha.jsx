@@ -18,6 +18,9 @@ function ListaDeAulas({ trilha }) {
     return true
   })
 
+  // new Set() remove repetidos: sobra um item para cada bloco diferente
+  const blocos = [...new Set(aulasVisiveis.map((aula) => aula.bloco))]
+
   return (
     <div role="tabpanel" id={`painel-${trilha.id}`} aria-labelledby={`aba-${trilha.id}`}>
       <p className="sobretitulo">
@@ -40,22 +43,31 @@ function ListaDeAulas({ trilha }) {
         ))}
       </div>
 
-      <ol className="aulas">
-        {aulasVisiveis.map((aula) => (
-          <li key={aula.dia}>
-            <a
-              className={`aula ${aula.revisao ? 'revisao' : ''}`}
-              href={trilha.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="aula-dia">Dia {aula.dia}</span>
-              <span className="aula-icone">{aula.icone}</span>
-              <span className="aula-titulo">{aula.titulo}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
+      {/* Trilhas com "bloco" (como a B1) mostram as aulas agrupadas.
+          Nas outras, "blocos" fica [undefined] e aparece uma lista só, sem título. */}
+      {blocos.map((bloco) => (
+        <div key={bloco ?? 'todas'}>
+          {bloco && <h3 className="bloco-titulo">{bloco}</h3>}
+          <ol className="aulas">
+            {aulasVisiveis
+              .filter((aula) => aula.bloco === bloco)
+              .map((aula) => (
+                <li key={aula.dia}>
+                  <a
+                    className={`aula ${aula.revisao ? 'revisao' : ''}`}
+                    href={trilha.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="aula-dia">Dia {aula.dia}</span>
+                    <span className="aula-icone">{aula.icone}</span>
+                    <span className="aula-titulo">{aula.titulo}</span>
+                  </a>
+                </li>
+              ))}
+          </ol>
+        </div>
+      ))}
 
       <div className="trilha-fim">
         <a className="botao botao-principal" href={trilha.url} target="_blank" rel="noreferrer">

@@ -38,7 +38,9 @@ Não há framework de testes configurado.
 
 - As trilhas e suas aulas ficam em `src/data/aulas.js` (array `trilhas`); a seção de aulas (`Trilha.jsx`) mostra uma aba por trilha.
 - Trilha 1 (A1): projeto separado `trilha-a1`, linkado pelo GitHub Pages.
-- Trilha 2 (A2): cópia de um artifact do Claude em `public/trilha-2/index.html` (HTML estático, fora do React). Fora do Claude, a correção por IA, a conversa e o caderno "Novas palavras" ficam desativados; o progresso usa `localStorage`.
+- Trilha 2 (A2) e Trilha 3 (B1): cópias de artifacts do Claude em `public/trilha-2/index.html` e `public/trilha-3/index.html` (HTML estático, fora do React). Fora do Claude, a correção por IA, a conversa e o caderno "Novas palavras" ficam desativados; o progresso usa `localStorage`.
+- Ao copiar um artifact novo para `public/`: pôr `<title>`, `lang="pt-BR"` e as fontes dentro do `<head>` (o artifact vem com um invólucro próprio), adicionar `body{margin:0}`, fazer o logo `.brand` apontar para `../` e trocar frases que dizem "volte para conversar comigo".
+- Aulas com o campo `bloco` (Trilha 3) aparecem agrupadas por bloco. O total de aulas e os níveis do banner são calculados de `trilhas` (`totalDeAulas`, `niveisDasTrilhas`).
 
 ## Estrutura
 

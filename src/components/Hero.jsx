@@ -1,11 +1,17 @@
 import CenaEUA from './CenaEUA'
-import { TRILHA_URL } from '../data/aulas'
+import { TRILHA_URL, niveisDasTrilhas, totalDeAulas } from '../data/aulas'
+
+// ['A1', 'A2', 'B1'] vira "A1, A2 e B1"
+const listaDeNiveis =
+  niveisDasTrilhas.length > 1
+    ? `${niveisDasTrilhas.slice(0, -1).join(', ')} e ${niveisDasTrilhas.at(-1)}`
+    : niveisDasTrilhas[0]
 
 const etiquetas = [
   { texto: 'Curso gratuito', cor: 'vermelho' },
   { texto: 'On-line', cor: 'dourado' },
-  { texto: '26 aulas', cor: 'branco' },
-  { texto: 'Níveis A1 e A2', cor: 'celeste' },
+  { texto: `${totalDeAulas} aulas`, cor: 'branco' },
+  { texto: `Níveis ${listaDeNiveis}`, cor: 'celeste' },
 ]
 
 function Hero() {

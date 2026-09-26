@@ -422,7 +422,7 @@ section[id] {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
-  max-width: 760px;
+  max-width: 900px; /* cabem 3 trilhas lado a lado */
   margin-bottom: 44px;
 }
 .aba {
@@ -1054,4 +1054,22 @@ section[id] {
 .faixa-azul .botao[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Título de cada bloco de aulas (Trilha 3 · B1) */
+.bloco-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0 12px;
+  color: var(--titulo);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+.bloco-titulo::before {
+  content: '';
+  width: 6px;
+  height: 22px;
+  border-radius: 3px;
+  background: var(--uk-vermelho);
 }
