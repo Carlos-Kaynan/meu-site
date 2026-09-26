@@ -43,6 +43,8 @@ Não há framework de testes configurado.
 ## Estrutura
 
 - `index.html` é o ponto de entrada; carrega `src/main.jsx`, que monta `<App />` (de `src/App.jsx`) na div `#root`.
+- Navegação sem biblioteca: `App.jsx` lê `window.location.hash`. `#/dialogos` e `#/dialogos/N` abrem `src/pages/Dialogos.jsx`; qualquer outro hash (inclusive âncoras como `#aulas`) mostra a página inicial.
+- Diálogos: textos em `src/data/dialogos.js` (cada fala aponta para a pessoa pelo índice `quem`); o áudio usa a voz do navegador via `src/utils/falar.js` (`falarDialogo` toca em sequência e devolve uma função para parar).
 - Estilos globais em `src/index.css`; estilos do componente App em `src/App.css`.
 - Imagens importadas pelo código ficam em `src/assets/`; arquivos servidos direto pela raiz do site ficam em `public/`.
 - ESLint (`eslint.config.js`, flat config): regras recomendadas de JS + `react-hooks` + `react-refresh` (componentes exportados de arquivos `.jsx` devem ser só componentes, para o hot reload funcionar).

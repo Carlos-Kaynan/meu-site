@@ -594,3 +594,325 @@ section[id] {
 .rodape p {
   margin: 0;
 }
+
+/* ---------- Botão "Diálogos" no menu do topo ---------- */
+.topo .botao-contorno {
+  color: var(--uk-branco);
+}
+@media (max-width: 640px) {
+  .topo {
+    padding: 10px 14px;
+  }
+  .menu {
+    gap: 8px;
+  }
+  .marca {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 420px) {
+  /* no celular pequeno não cabe tudo; o banner já tem o botão "Começar" */
+  .menu .botao-principal {
+    display: none;
+  }
+}
+
+/* ---------- Página de Diálogos ---------- */
+.pagina-dialogos {
+  min-height: 70vh;
+  padding: 36px 0 72px;
+  background: var(--bg);
+}
+.voltar {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--ink-muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+.voltar:hover {
+  color: var(--uk-vermelho);
+}
+.pagina-titulo {
+  color: var(--titulo);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+}
+.pagina-intro {
+  max-width: 65ch;
+  color: var(--ink-muted);
+}
+
+/* Cores dos níveis */
+.nivel-iniciante,
+.borda-iniciante { --cor-nivel: #1f9d55; }
+.nivel-basico,
+.borda-basico { --cor-nivel: var(--dourado); }
+.nivel-intermediario,
+.borda-intermediario { --cor-nivel: var(--uk-vermelho); }
+
+.grupo-nivel {
+  margin-top: 30px;
+}
+.grupo-nivel h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin-bottom: 14px;
+  color: var(--titulo);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.grupo-descricao {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.dialogos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dialogo-cartao {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  height: 100%;
+  padding: 16px;
+  border: 2px solid var(--border);
+  border-left: 6px solid var(--cor-nivel);
+  border-radius: 16px;
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.dialogo-cartao:hover {
+  transform: translateY(-4px);
+  border-color: var(--cor-nivel);
+  box-shadow: var(--sombra);
+}
+.dialogo-numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--uk-azul);
+  color: var(--uk-branco);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.dialogo-numero.pequeno {
+  width: 42px;
+  height: 42px;
+  font-size: 1.1rem;
+  background: var(--cor-nivel);
+}
+.borda-basico .dialogo-numero.pequeno {
+  color: var(--azul-noite);
+}
+.cartao-textos {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cartao-titulo {
+  font-weight: 700;
+}
+.cartao-en {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.cartao-meta {
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+}
+
+/* ---------- Um diálogo aberto ---------- */
+.dialogo-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.dialogo-cabecalho h1 {
+  color: var(--titulo);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 800;
+}
+.dialogo-titulo-en {
+  margin: 4px 0 0;
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  font-style: italic;
+}
+.dialogo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.nivel,
+.meta-item {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.nivel {
+  background: var(--cor-nivel);
+  color: var(--uk-branco);
+}
+.nivel-basico {
+  color: var(--azul-noite);
+}
+.meta-item {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-muted);
+}
+.dialogo-contexto {
+  margin: 16px 0 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink-muted);
+}
+.dialogo-controles {
+  position: sticky;
+  top: 60px; /* fica grudado logo abaixo do menu enquanto rola */
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 8px;
+  padding: 12px 0;
+  background: var(--bg);
+}
+.dialogo-controles .botao[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.aviso {
+  color: var(--uk-vermelho);
+  font-size: 0.9rem;
+}
+
+.falas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fala {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* inglês à esquerda, português à direita */
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  scroll-margin: 140px 0 40px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.falas.sem-traducao .fala {
+  grid-template-columns: 1fr;
+}
+/* A fala que está tocando fica destacada */
+.fala.ativa {
+  border-color: var(--uk-vermelho);
+  box-shadow: 0 10px 24px -12px rgba(200, 16, 46, 0.6);
+  transform: scale(1.01);
+}
+.fala-en {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--uk-branco);
+  font-weight: 800;
+}
+.pessoa-0 { background: var(--uk-azul); }
+.pessoa-1 { background: var(--uk-vermelho); }
+.pessoa-2 { background: #1f9d55; }
+.pessoa-3 { background: #8a4fd3; }
+.fala-texto {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.fala-quem {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.fala-papel {
+  font-weight: 500;
+  text-transform: none;
+}
+.fala-ouvir {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--bg);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.fala-ouvir:hover {
+  transform: scale(1.12);
+}
+.fala-pt {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--border);
+  color: var(--ink-muted);
+}
+@media (max-width: 700px) {
+  /* no celular a tradução vai para baixo de cada fala */
+  .fala {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .fala-pt {
+    padding: 8px 0 0 52px;
+    border-left: 0;
+    border-top: 1px dashed var(--border);
+  }
+}
+
+.dialogo-navegacao {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+}
+.dialogo-navegacao .botao-contorno {
+  color: var(--titulo);
+}

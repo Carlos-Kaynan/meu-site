@@ -33,6 +33,9 @@ function Hero() {
           <a className="botao botao-contorno" href="#aulas">
             Ver as aulas
           </a>
+          <a className="botao botao-contorno" href="#/dialogos">
+            💬 Diálogos
+          </a>
         </div>
 
         <p className="hero-nota">* Estude no computador ou no celular, no seu ritmo.</p>
