@@ -595,10 +595,7 @@ section[id] {
   margin: 0;
 }
 
-/* ---------- Botão "Diálogos" no menu do topo ---------- */
-.topo .botao-contorno {
-  color: var(--uk-branco);
-}
+/* ---------- Menu do topo no celular ---------- */
 @media (max-width: 640px) {
   .topo {
     padding: 10px 14px;
@@ -612,7 +609,7 @@ section[id] {
 }
 @media (max-width: 420px) {
   /* no celular pequeno não cabe tudo; o banner já tem o botão "Começar" */
-  .menu .botao-principal {
+  .menu .menu-comecar {
     display: none;
   }
 }

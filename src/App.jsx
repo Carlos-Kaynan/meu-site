@@ -46,10 +46,15 @@ function App() {
         <nav className="menu">
           <a href="#aulas">Aulas</a>
           <a href="#palavra">Palavra do dia</a>
-          <a className="botao botao-contorno botao-pequeno" href="#/dialogos">
+          <a className="botao botao-principal botao-pequeno" href="#/dialogos">
             💬 Diálogos
           </a>
-          <a className="botao botao-principal botao-pequeno" href={TRILHA_URL} target="_blank" rel="noreferrer">
+          <a
+            className="botao botao-principal botao-pequeno menu-comecar"
+            href={TRILHA_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
             Começar
           </a>
         </nav>

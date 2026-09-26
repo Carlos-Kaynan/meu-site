@@ -30,11 +30,11 @@ function Hero() {
           <a className="botao botao-principal" href={TRILHA_URL} target="_blank" rel="noreferrer">
             Começar a Trilha 1 →
           </a>
+          <a className="botao botao-principal" href="#/dialogos">
+            💬 Diálogos →
+          </a>
           <a className="botao botao-contorno" href="#aulas">
             Ver as aulas
-          </a>
-          <a className="botao botao-contorno" href="#/dialogos">
-            💬 Diálogos
           </a>
         </div>
 
