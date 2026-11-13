@@ -3,18 +3,44 @@ import Hero from './components/Hero'
 import PalavraDoDia from './components/PalavraDoDia'
 import ConversaDoDia from './components/ConversaDoDia'
 import Trilha from './components/Trilha'
+import MenuConta from './components/MenuConta'
 import Dialogos from './pages/Dialogos'
+import CriarConta from './pages/CriarConta'
+import Entrar from './pages/Entrar'
+import Aviso from './pages/Aviso'
 import { TRILHA_URL } from './data/aulas'
 import './App.css'
 
 // Descobre qual página mostrar olhando o endereço depois do "#".
-// "#/dialogos" → lista de diálogos · "#/dialogos/5" → diálogo 5 · resto → página inicial
+// "#/dialogos" → lista de diálogos · "#/dialogos/5" → diálogo 5
+// "#/entrar", "#/criar-conta", "#/aviso" → páginas de conta · resto → página inicial
+// O que vem depois do "?" (ex.: "#/aviso?trilha=a2&dia=5") vira "parametros".
 function lerRota(hash) {
-  const encontrado = hash.match(/^#\/dialogos(?:\/(\d+))?/)
+  const [caminho, busca = ''] = hash.split('?')
+  const parametros = new URLSearchParams(busca)
+  const encontrado = caminho.match(/^#\/dialogos(?:\/(\d+))?$/)
   if (encontrado) {
     return { pagina: 'dialogos', numero: encontrado[1] ? Number(encontrado[1]) : null }
   }
+  if (caminho === '#/entrar') return { pagina: 'entrar', parametros }
+  if (caminho === '#/criar-conta') return { pagina: 'criar-conta', parametros }
+  if (caminho === '#/aviso') return { pagina: 'aviso', parametros }
   return { pagina: 'inicio' }
+}
+
+function PaginaAtual({ rota }) {
+  if (rota.pagina === 'dialogos') return <Dialogos numero={rota.numero} />
+  if (rota.pagina === 'entrar') return <Entrar key={rota.parametros.toString()} parametros={rota.parametros} />
+  if (rota.pagina === 'criar-conta') return <CriarConta parametros={rota.parametros} />
+  if (rota.pagina === 'aviso') return <Aviso parametros={rota.parametros} />
+  return (
+    <>
+      <Hero />
+      <PalavraDoDia />
+      <ConversaDoDia />
+      <Trilha />
+    </>
+  )
 }
 
 function App() {
@@ -47,26 +73,18 @@ function App() {
         <nav className="menu">
           <a href="#aulas">Aulas</a>
           <a href="#palavra">Palavra do dia</a>
-          <a className="botao botao-principal botao-pequeno" href="#/dialogos">
+          <a className="botao botao-principal botao-pequeno menu-dialogos" href="#/dialogos">
             💬 Diálogos
           </a>
           <a className="botao botao-principal botao-pequeno menu-comecar" href={TRILHA_URL}>
             Começar
           </a>
+          <MenuConta />
         </nav>
       </header>
 
       <main>
-        {rota.pagina === 'dialogos' ? (
-          <Dialogos numero={rota.numero} />
-        ) : (
-          <>
-            <Hero />
-            <PalavraDoDia />
-            <ConversaDoDia />
-            <Trilha />
-          </>
-        )}
+        <PaginaAtual rota={rota} />
       </main>
 
       <footer className="rodape">

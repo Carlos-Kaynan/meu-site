@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { auth } from '../conta/firebase'
+import { useUsuario } from '../conta/sessao'
 import { trilhas } from '../data/aulas'
 
 const filtros = [
@@ -10,6 +12,10 @@ const filtros = [
 // Mostra as aulas de UMA trilha. A trilha chega como "prop", vinda do componente pai.
 function ListaDeAulas({ trilha }) {
   const [filtro, setFiltro] = useState('todas')
+  const usuario = useUsuario()
+  // Só o Dia 1 é livre. Sem login (usuario === null), os outros dias levam para a página de aviso.
+  // Enquanto as contas não estiverem configuradas (auth null), nada fica bloqueado.
+  const pedirLogin = (dia) => Boolean(auth) && usuario === null && dia > 1
 
   // .filter() cria uma lista nova só com os itens que passam no teste
   const aulasVisiveis = trilha.aulas.filter((aula) => {
@@ -37,6 +43,13 @@ function ListaDeAulas({ trilha }) {
         <span className="trilha-acoes-dica">Veja os dias que você já estudou, sua sequência de dias e as palavras para revisar.</span>
       </div>
 
+      {pedirLogin(2) && (
+        <p className="trilha-aviso-conta">
+          🔓 A <strong>Aula 1</strong> é livre para você testar. Para as outras, <a href="#/criar-conta">crie uma conta grátis</a>{' '}
+          ou <a href="#/entrar">entre</a>.
+        </p>
+      )}
+
       <div className="filtros" role="group" aria-label="Filtrar aulas">
         {filtros.map((f) => (
           <button
@@ -63,8 +76,22 @@ function ListaDeAulas({ trilha }) {
                 <li key={aula.dia}>
                   {/* "#dia-5" no fim do endereço faz a página da trilha abrir direto no Dia 5.
                       Sem target="_blank", a aula abre na mesma aba (e o "Voltar" do navegador funciona). */}
-                  <a className={`aula ${aula.revisao ? 'revisao' : ''}`} href={`${trilha.url}#dia-${aula.dia}`}>
-                    <span className="aula-dia">Dia {aula.dia}</span>
+                  <a
+                    className={`aula ${aula.revisao ? 'revisao' : ''}`}
+                    href={
+                      pedirLogin(aula.dia)
+                        ? `#/aviso?trilha=${trilha.id}&dia=${aula.dia}`
+                        : `${trilha.url}#dia-${aula.dia}`
+                    }
+                  >
+                    <span className="aula-dia">
+                      Dia {aula.dia}
+                      {pedirLogin(aula.dia) && (
+                        <span className="aula-cadeado" title="Precisa de conta">
+                          🔒
+                        </span>
+                      )}
+                    </span>
                     <span className="aula-icone">{aula.icone}</span>
                     <span className="aula-titulo">{aula.titulo}</span>
                   </a>

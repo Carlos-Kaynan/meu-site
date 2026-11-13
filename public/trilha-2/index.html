@@ -1248,6 +1248,28 @@ function renderHome(){
    VIEW SWITCHING
    ========================================================= */
 /* =========================================================
+   CONTA: só o Dia 1 é livre; os outros dias pedem login.
+   O login é feito na página principal (meu-site). Quando alguém entra, ela grava a marca
+   "ingles-basico:login" no navegador, e esta página lê essa marca.
+   ========================================================= */
+var CHAVE_LOGIN = 'ingles-basico:login';
+var PAGINA_PRINCIPAL = '../';
+var ID_DA_TRILHA = 'a2';
+
+function estaLogado(){
+  try{ return !!JSON.parse(localStorage.getItem(CHAVE_LOGIN)); }catch(e){ return false; }
+}
+
+function podeAbrirAula(day){
+  return day === 1 || estaLogado();
+}
+
+// replace() troca a página sem deixar esta no histórico: o "Voltar" do navegador não fica preso aqui.
+function irParaAvisoDeConta(day){
+  location.replace(PAGINA_PRINCIPAL + '#/aviso?trilha=' + ID_DA_TRILHA + '&dia=' + day);
+}
+
+/* =========================================================
    ABRIR UM DIA PELO ENDEREÇO (ex.: index.html#dia-5)
    A página principal (meu-site) manda o aluno direto para o dia que ele clicou.
    ========================================================= */
@@ -1277,6 +1299,7 @@ function showView(name){
    RENDER: LESSON
    ========================================================= */
 function openLesson(day){
+  if(!podeAbrirAula(day)){ irParaAvisoDeConta(day); return; }
   currentLessonDay = day;
   marcarDiaNoEndereco(day);
   var L = LESSONS[day-1];

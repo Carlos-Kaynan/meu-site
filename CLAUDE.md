@@ -44,6 +44,13 @@ Não há framework de testes configurado.
 - O botão "📊 Acompanhar progresso" (abaixo da descrição da trilha e no fim da lista) aponta para a URL da trilha **sem** `#dia-N`, que abre a página inicial da trilha (dias estudados, sequência, revisão). O "Começar a Trilha" do fim da lista abre `#dia-1`.
 - Aulas com o campo `bloco` (Trilha 3) aparecem agrupadas por bloco. O total de aulas e os níveis do banner são calculados de `trilhas` (`totalDeAulas`, `niveisDasTrilhas`).
 
+## Contas (login)
+
+- Firebase Authentication (e-mail e senha), pacote `firebase`. Código em `src/conta/`: `firebaseConfig.js` (config do projeto; enquanto tiver `COLE_AQUI`, `auth` fica `null` e as contas ficam desligadas), `firebase.js` (cria o `auth`), `sessao.js` (`useUsuario()`: `undefined` carregando, `null` sem login, objeto logado), `destino.js` (monta o endereço da aula pedida só para trilhas/dias que existem), `mensagens.js` (erros do Firebase em português).
+- Páginas: `#/criar-conta` (e-mail, confirmar e-mail, senha, confirmar senha; ao criar, faz `signOut` e vai para o login), `#/entrar` (e-mail, senha, "Esqueci minha senha" com `sendPasswordResetEmail`), `#/aviso?trilha=a2&dia=5` (aula bloqueada). Os parâmetros `trilha` e `dia` passam de uma página para outra, e o login leva de volta para a aula pedida.
+- Só o Dia 1 de cada trilha é livre. `Trilha.jsx` manda os outros dias para `#/aviso` quando não há login. As páginas das trilhas não usam o Firebase: `sessao.js` grava a marca `ingles-basico:login` no `localStorage` (mesmo endereço carlos-kaynan.github.io), e `openLesson` nas trilhas (`podeAbrirAula`) lê essa marca; sem ela, `location.replace` para o aviso. O bloqueio é só no navegador (as páginas continuam públicas).
+- Testes locais com o emulador do Firebase (não precisa de Java): `npx firebase emulators:start --only auth --project demo-ingles` (com `firebase.json` configurando a porta 9099) e rodar o site com `VITE_EMULADOR=sim`. No build normal o código do emulador some.
+
 ## Estrutura
 
 - `index.html` é o ponto de entrada; carrega `src/main.jsx`, que monta `<App />` (de `src/App.jsx`) na div `#root`.

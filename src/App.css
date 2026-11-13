@@ -1089,3 +1089,199 @@ section[id] {
   border-radius: 3px;
   background: var(--uk-vermelho);
 }
+
+/* ---------- Conta: menu do topo ---------- */
+.menu-conta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.menu-usuario {
+  max-width: 14ch;
+  overflow: hidden;
+  color: #dbe4ff;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis; /* e-mail comprido termina em "…" */
+}
+.topo .botao-contorno {
+  color: var(--uk-branco);
+}
+/* No celular os links de texto do menu somem, mas o "Entrar" precisa continuar visível */
+.menu a.menu-entrar {
+  display: inline;
+}
+
+/* ---------- Conta: páginas Criar conta, Entrar e Aviso ---------- */
+.pagina-conta {
+  min-height: 70vh;
+  padding: 48px 20px 72px;
+  background: var(--bg);
+}
+.conta-cartao {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 32px clamp(20px, 5vw, 36px);
+  border-top: 6px solid var(--uk-vermelho);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--sombra);
+}
+.conta-icone {
+  margin: 0;
+  font-size: 2.6rem;
+  text-align: center;
+}
+.conta-titulo {
+  margin: 4px 0 12px;
+  color: var(--titulo);
+  font-size: 1.9rem;
+  font-weight: 800;
+  text-align: center;
+}
+.conta-texto {
+  margin: 0 0 14px;
+  color: var(--ink-muted);
+  text-align: center;
+}
+.conta-formulario {
+  display: grid;
+  gap: 14px;
+  margin-top: 8px;
+}
+.campo {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+.campo input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 400;
+}
+.campo input:focus {
+  border-color: var(--uk-azul);
+  outline: none;
+}
+.campo-marcar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+.conta-linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.link-botao {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--uk-vermelho);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.conta-mensagem {
+  margin: 0 0 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+.conta-mensagem-erro {
+  border: 1px solid #f3b4bf;
+  background: #fdecef;
+  color: #8c1022;
+}
+.conta-mensagem-ok {
+  margin-bottom: 14px;
+  border: 1px solid #a8dcb9;
+  background: #e6f6ec;
+  color: #14532d;
+}
+.conta-botao {
+  justify-content: center;
+  width: 100%;
+  margin-top: 4px;
+}
+.botao:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+.conta-botoes {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+.conta-botoes .botao-contorno {
+  color: var(--titulo);
+}
+.conta-link-teste {
+  margin-top: 6px;
+  color: var(--ink-muted);
+  font-weight: 600;
+  text-align: center;
+}
+.conta-rodape {
+  margin: 20px 0 0;
+  color: var(--ink-muted);
+  text-align: center;
+}
+.conta-rodape a {
+  color: var(--uk-vermelho);
+  font-weight: 700;
+}
+
+/* ---------- Conta: lista de aulas ---------- */
+.aula-cadeado {
+  margin-left: 6px;
+  font-size: 0.8rem;
+}
+.trilha-aviso-conta {
+  margin: 18px 0 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--revisao-bg);
+  color: var(--ink);
+}
+.trilha-aviso-conta a {
+  color: var(--uk-vermelho);
+  font-weight: 700;
+}
+
+/* Celular estreito: o topo ganha "Entrar / Criar conta", então ele fica mais enxuto.
+   O botão Diálogos sai do topo (continua no "Ver todos os diálogos" da Conversa do dia). */
+@media (max-width: 480px) {
+  .topo {
+    padding: 10px 14px;
+  }
+  .menu,
+  .menu-conta {
+    gap: 10px;
+  }
+  .menu .menu-dialogos {
+    display: none;
+  }
+  .marca,
+  .menu .botao-pequeno {
+    white-space: nowrap;
+  }
+  .menu .botao-pequeno {
+    padding: 7px 12px;
+  }
+  .menu-usuario {
+    max-width: 9ch;
+  }
+}
