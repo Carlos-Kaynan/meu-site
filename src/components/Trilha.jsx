@@ -29,6 +29,14 @@ function ListaDeAulas({ trilha }) {
       <h2>{trilha.aulas.length} aulas, uma por dia</h2>
       <p className="trilha-intro">{trilha.descricao}</p>
 
+      {/* O endereço da trilha SEM "#dia-N" abre a página inicial dela: dias estudados, sequência e revisão. */}
+      <div className="trilha-acoes">
+        <a className="botao botao-principal" href={trilha.url}>
+          📊 Acompanhar progresso
+        </a>
+        <span className="trilha-acoes-dica">Veja os dias que você já estudou, sua sequência de dias e as palavras para revisar.</span>
+      </div>
+
       <div className="filtros" role="group" aria-label="Filtrar aulas">
         {filtros.map((f) => (
           <button
@@ -67,8 +75,11 @@ function ListaDeAulas({ trilha }) {
       ))}
 
       <div className="trilha-fim">
-        <a className="botao botao-principal" href={trilha.url}>
+        <a className="botao botao-principal" href={`${trilha.url}#dia-1`}>
           Começar a {trilha.nome} →
+        </a>
+        <a className="botao botao-contorno" href={trilha.url}>
+          📊 Acompanhar progresso
         </a>
       </div>
     </div>

@@ -595,9 +595,25 @@ section[id] {
 .aula-titulo {
   font-weight: 600;
 }
+/* Botão "Acompanhar progresso" + dica, logo abaixo da descrição da trilha */
+.trilha-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-top: 18px;
+}
+.trilha-acoes-dica {
+  max-width: 40ch;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+}
 .trilha-fim {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
   margin-top: 36px;
-  text-align: center;
 }
 
 /* ---------- Rodapé ---------- */
