@@ -13,15 +13,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Projeto
 
-- `meu-site`: criado com Vite + React 19 + JavaScript (sem TypeScript) + ESLint.
-- Repositório no GitHub, conta `Carlos-Kaynan`, branch `main`.
-- A Trilha 1 era o projeto separado `Documents\trilha-a1`; agora mora em `public/trilha-1/`. O repositório `trilha-a1` só redireciona o endereço antigo (`carlos-kaynan.github.io/trilha-a1/`) para o novo, mantendo o `#dia-N`, e fica arquivado.
+- Pasta local `Documents\meu-site`: criado com Vite + React 19 + JavaScript (sem TypeScript) + ESLint.
+- Repositório no GitHub `Carlos-Kaynan/meu-site-curso-ingles` (antes se chamava `meu-site`; o endereço antigo `carlos-kaynan.github.io/meu-site/` não funciona mais), branch `main`.
+- A Trilha 1 era o projeto separado `Documents\trilha-a1`; agora mora em `public/trilha-1/`. O repositório `trilha-a1` foi apagado do GitHub (o endereço antigo `carlos-kaynan.github.io/trilha-a1/` dá 404); a pasta local `Documents\trilha-a1` guarda uma cópia com o histórico antigo.
 
 ## Comandos
 
 ```powershell
 npm install       # instala dependências
-npm run dev       # servidor de desenvolvimento em http://localhost:5173/meu-site/ (com hot reload)
+npm run dev       # servidor de desenvolvimento em http://localhost:5173/meu-site-curso-ingles/ (com hot reload)
 npm run build     # gera a versão de produção em dist/
 npm run preview   # serve o build de dist/ localmente
 npm run lint      # roda o ESLint no projeto
@@ -31,8 +31,9 @@ Não há framework de testes configurado.
 
 ## Publicação
 
-- Publicado no GitHub Pages em https://carlos-kaynan.github.io/meu-site/ — cada push na `main` roda `.github/workflows/deploy.yml`, que faz o build e publica `dist/`.
-- Por isso `vite.config.js` tem `base: '/meu-site/'`: sem isso, os caminhos de CSS/JS quebram no Pages.
+- Publicado no GitHub Pages em https://carlos-kaynan.github.io/meu-site-curso-ingles/ — cada push na `main` roda `.github/workflows/deploy.yml`, que faz o build e publica `dist/`.
+- Por isso `vite.config.js` tem `base: '/meu-site-curso-ingles/'` (o nome do repositório): sem isso, os caminhos de CSS/JS quebram no Pages. Se o repositório for renomeado, mudar o `base` junto (e o `git remote set-url`).
+- O Firebase (domínio autorizado e restrição da chave de API) está configurado pelo domínio `carlos-kaynan.github.io`, então não depende do nome do repositório. A restrição da chave também aceita `http://localhost:5173/*`.
 
 ## Trilhas do curso
 

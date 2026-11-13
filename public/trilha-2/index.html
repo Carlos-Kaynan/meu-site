@@ -1261,7 +1261,7 @@ function renderHome(){
    ========================================================= */
 /* =========================================================
    CONTA: só o Dia 1 é livre; os outros dias pedem login.
-   O login é feito na página principal (meu-site). Quando alguém entra, ela grava a marca
+   O login é feito na página principal do site. Quando alguém entra, ela grava a marca
    "ingles-basico:login" no navegador, e esta página lê essa marca.
    ========================================================= */
 var CHAVE_LOGIN = 'ingles-basico:login';
@@ -1300,7 +1300,7 @@ function marcarDonoDoProgresso(){
 
 /* =========================================================
    ABRIR UM DIA PELO ENDEREÇO (ex.: index.html#dia-5)
-   A página principal (meu-site) manda o aluno direto para o dia que ele clicou.
+   A página principal do site manda o aluno direto para o dia que ele clicou.
    ========================================================= */
 function diaDoEndereco(){
   var m = location.hash.match(/^#dia-(\d+)$/);

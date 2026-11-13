@@ -1,5 +1,5 @@
 // Endereço da Trilha 1, que fica na pasta public/trilha-1 deste site (antes era o projeto separado trilha-a1).
-// BASE_URL é o "/meu-site/" do vite.config.js
+// BASE_URL é o "/meu-site-curso-ingles/" do vite.config.js
 export const TRILHA_URL = `${import.meta.env.BASE_URL}trilha-1/index.html`
 
 // As trilhas do curso. Em cada aula, "revisao: true" marca os dias só de revisão.
@@ -34,7 +34,7 @@ export const trilhas = [
     icone: '🗺️',
     nivel: 'A2',
     titulo: 'Do básico ao pré-intermediário',
-    // Fica na pasta public/trilha-2 deste site. BASE_URL é o "/meu-site/" do vite.config.js
+    // Fica na pasta public/trilha-2 deste site. BASE_URL é o "/meu-site-curso-ingles/" do vite.config.js
     url: `${import.meta.env.BASE_URL}trilha-2/index.html`,
     descricao:
       'O próximo passo depois do A1: falar do passado, do que está acontecendo agora e dos seus planos; comparar, viajar, ir ao médico e contar suas experiências. Os dias 7 e 14 são para revisar.',

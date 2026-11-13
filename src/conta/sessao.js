@@ -3,7 +3,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
 
 // Chave que as páginas das trilhas (HTML puro, fora do React) leem para saber se há alguém logado.
-// Funciona porque o meu-site e as trilhas estão no mesmo endereço (carlos-kaynan.github.io)
+// Funciona porque a página principal e as trilhas estão no mesmo endereço (carlos-kaynan.github.io)
 // e por isso dividem o mesmo localStorage.
 export const CHAVE_LOGIN = 'ingles-basico:login'
 
