@@ -23,6 +23,21 @@ export function guardarMarcaParaAsTrilhas(usuario) {
   }
 }
 
+// Ao clicar em Sair, o progresso das trilhas sai deste navegador (continua salvo na conta).
+// Assim, num computador compartilhado, a próxima pessoa não vê o progresso de quem saiu.
+const PREFIXOS_DO_PROGRESSO = ['trilhaA1_', 'trilhaA2_', 'trilhaB1_']
+export function apagarProgressoDoNavegador() {
+  try {
+    const chaves = Object.keys(localStorage)
+    chaves
+      .filter((chave) => PREFIXOS_DO_PROGRESSO.some((prefixo) => chave.startsWith(prefixo)))
+      .forEach((chave) => localStorage.removeItem(chave))
+    localStorage.removeItem('ingles-basico:dono-progresso')
+  } catch {
+    // sem localStorage: não há nada para apagar
+  }
+}
+
 // O Firebase avisa sempre que alguém entra ou sai (e também logo ao abrir o site).
 if (auth) {
   onAuthStateChanged(auth, (usuario) => {

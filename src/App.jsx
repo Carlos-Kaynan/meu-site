@@ -8,7 +8,6 @@ import Dialogos from './pages/Dialogos'
 import CriarConta from './pages/CriarConta'
 import Entrar from './pages/Entrar'
 import Aviso from './pages/Aviso'
-import { TRILHA_URL } from './data/aulas'
 import './App.css'
 
 // Descobre qual página mostrar olhando o endereço depois do "#".
@@ -75,9 +74,6 @@ function App() {
           <a href="#palavra">Palavra do dia</a>
           <a className="botao botao-principal botao-pequeno menu-dialogos" href="#/dialogos">
             💬 Diálogos
-          </a>
-          <a className="botao botao-principal botao-pequeno menu-comecar" href={TRILHA_URL}>
-            Começar
           </a>
           <MenuConta />
         </nav>

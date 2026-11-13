@@ -289,6 +289,18 @@
   }
   .back-link.principal:hover{ border-color:var(--ink-muted); }
 </style>
+<script>
+/* Progresso na conta (Firestore). O arquivo conta/nuvem.js, carregado logo abaixo, entrega às
+   funções de salvar desta página um "db" ligado à conta do aluno. Sem login, entrega null e tudo
+   continua só no navegador. As funções da página pedem esse db com window.claude.use('db'). */
+window.TRILHA_DA_PAGINA = 'b1';
+window.contaNuvemPronta = new Promise(function(resolver){
+  window.entregarDbDaConta = resolver;
+  setTimeout(function(){ resolver(null); }, 10000); // se a nuvem não responder, segue só com o navegador
+});
+window.claude = { use: function(nome){ return nome === 'db' ? window.contaNuvemPronta : null; } };
+</script>
+<script type="module" src="../conta/nuvem.js"></script>
 </head>
 <body>
 
@@ -1989,54 +2001,47 @@ function loadProgress(){
   if(db){
     return safeDb(function(){
       return db.doc('progress/state').get().then(function(snap){
-        return snap.exists ? Object.assign({}, progress, deepClone(snap.data())) : progress;
+        // Junta o que está na conta com o que está no navegador (se for do mesmo aluno).
+        return mergeProgress(snap.exists ? deepClone(snap.data()) : null, localDoAluno('trilhaB1_progress', null));
       });
     }, function(){ return lsGet('trilhaB1_progress', progress); });
   }
   return Promise.resolve(lsGet('trilhaB1_progress', progress));
 }
 function saveProgress(){
-  if(db){
-    safeDbWrite(function(){ return db.doc('progress/state').set(progress); }, function(){ lsSet('trilhaB1_progress', progress); });
-  } else {
-    lsSet('trilhaB1_progress', progress);
-  }
+  lsSet('trilhaB1_progress', progress); // sempre no navegador; com login, também na conta
+  if(db) safeDbWrite(function(){ return db.doc('progress/state').set(progress); }, function(){});
 }
 function loadSRS(){
   if(db){
     return safeDb(function(){
       return db.doc('srs/allcards').get().then(function(snap){
-        return snap.exists && snap.data().cards ? deepClone(snap.data().cards) : [];
+        return mergeCards(snap.exists && snap.data().cards ? deepClone(snap.data().cards) : [], localDoAluno('trilhaB1_srs', []));
       });
     }, function(){ return lsGet('trilhaB1_srs', []); });
   }
   return Promise.resolve(lsGet('trilhaB1_srs', []));
 }
 function saveSRS(){
-  if(db){
-    safeDbWrite(function(){ return db.doc('srs/allcards').set({cards: srsCards}); }, function(){ lsSet('trilhaB1_srs', srsCards); });
-  } else {
-    lsSet('trilhaB1_srs', srsCards);
-  }
+  lsSet('trilhaB1_srs', srsCards); // sempre no navegador; com login, também na conta
+  if(db) safeDbWrite(function(){ return db.doc('srs/allcards').set({cards: srsCards}); }, function(){});
 }
 function loadNewWords(){
   if(db){
     return safeDb(function(){
       return db.doc('vocab/newwords').get().then(function(snap){
-        return snap.exists && snap.data().words ? deepClone(snap.data().words) : [];
+        return mergeWordLists(snap.exists && snap.data().words ? deepClone(snap.data().words) : [], localDoAluno('trilhaB1_newwords', []));
       });
     }, function(){ return lsGet('trilhaB1_newwords', []); });
   }
   return Promise.resolve(lsGet('trilhaB1_newwords', []));
 }
 function saveNewWords(){
-  if(db){
-    safeDbWrite(function(){ return db.doc('vocab/newwords').set({words: newWords}); }, function(){ lsSet('trilhaB1_newwords', newWords); });
-  } else {
-    lsSet('trilhaB1_newwords', newWords);
-  }
+  lsSet('trilhaB1_newwords', newWords); // sempre no navegador; com login, também na conta
+  if(db) safeDbWrite(function(){ return db.doc('vocab/newwords').set({words: newWords}); }, function(){});
 }
 function saveCheckin(dateKey, patch){
+  saveCheckinLocal(dateKey, patch); // sempre no navegador; com login, também na conta
   if(db){
     safeDbWrite(function(){
       var ref = db.collection('checkins').doc(dateKey);
@@ -2049,9 +2054,7 @@ function saveCheckin(dateKey, patch){
         delete data.addLessonDay;
         return ref.set(data);
       });
-    }, function(){ saveCheckinLocal(dateKey, patch); });
-  } else {
-    saveCheckinLocal(dateKey, patch);
+    }, function(){});
   }
 }
 function saveCheckinLocal(dateKey, patch){
@@ -2075,7 +2078,16 @@ function getLast7Checkins(){
       return db.collection('checkins').where('date','in',dates).get().then(function(qs){
         var map = {};
         qs.docs.forEach(function(d){ map[d.id] = deepClone(d.data()); });
-        return dates.map(function(dt){ return map[dt] || {date:dt, lessonsCompleted:[], manual:false}; });
+        // Dias estudados antes do login (no navegador) que ainda não estão na conta: sobem para a conta.
+        var locais = progressoLocalEhDoAluno() ? localFallback() : null;
+        return dates.map(function(dt, i){
+          var local = locais && locais[i];
+          if(!map[dt] && local && (local.lessonsCompleted.length || local.manual)){
+            db.collection('checkins').doc(dt).set(local).catch(function(){});
+            return local;
+          }
+          return map[dt] || {date:dt, lessonsCompleted:[], manual:false};
+        });
       });
     }, localFallback);
   }
@@ -2292,6 +2304,23 @@ function podeAbrirAula(day){
 // replace() troca a página sem deixar esta no histórico: o "Voltar" do navegador não fica preso aqui.
 function irParaAvisoDeConta(day){
   location.replace(PAGINA_PRINCIPAL + '#/aviso?trilha=' + ID_DA_TRILHA + '&dia=' + day);
+}
+
+// De quem é o progresso guardado neste navegador (id do aluno). Vazio = de quem estudou sem login.
+// Assim, num computador compartilhado, o progresso de uma pessoa não vai parar na conta de outra.
+var CHAVE_DONO = 'ingles-basico:dono-progresso';
+function progressoLocalEhDoAluno(){
+  if(!db || !db.uid) return true;
+  var dono = null;
+  try{ dono = localStorage.getItem(CHAVE_DONO); }catch(e){}
+  return !dono || dono === db.uid;
+}
+// Lê do navegador só se o progresso for do aluno logado (ou de antes do login).
+function localDoAluno(chave, padrao){
+  return progressoLocalEhDoAluno() ? lsGet(chave, padrao) : padrao;
+}
+function marcarDonoDoProgresso(){
+  try{ if(db && db.uid) localStorage.setItem(CHAVE_DONO, db.uid); }catch(e){}
 }
 
 /* =========================================================
@@ -2954,6 +2983,8 @@ function init(){
     return loadNewWords();
   }).then(function(words){
     newWords = mergeWordLists(words || [], newWords);
+    // Com login: guarda na conta o resultado já juntado (inclui o que foi feito antes do login).
+    if(db){ saveProgress(); saveSRS(); saveNewWords(); marcarDonoDoProgresso(); }
     renderHome();
   }).catch(function(){ renderHome(); });
 

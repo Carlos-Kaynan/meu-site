@@ -6,6 +6,14 @@ import { firebaseConfig } from './firebaseConfig'
 // Ele só é usado quando o site é rodado com VITE_EMULADOR=sim (nunca no site publicado).
 const usarEmulador = import.meta.env.VITE_EMULADOR === 'sim'
 
+// As páginas das trilhas (public/conta/nuvem.js) leem esta marca para usar o emulador também.
+try {
+  if (usarEmulador) localStorage.setItem('ingles-basico:emulador', 'sim')
+  else localStorage.removeItem('ingles-basico:emulador')
+} catch {
+  // sem localStorage: sem problema
+}
+
 // Enquanto a configuração não for colada em firebaseConfig.js, as contas ficam desligadas.
 export const firebaseConfigurado = !firebaseConfig.apiKey.startsWith('COLE_')
 

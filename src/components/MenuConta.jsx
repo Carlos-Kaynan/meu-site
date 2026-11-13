@@ -1,6 +1,6 @@
 import { signOut } from 'firebase/auth'
 import { auth } from '../conta/firebase'
-import { useUsuario } from '../conta/sessao'
+import { apagarProgressoDoNavegador, useUsuario } from '../conta/sessao'
 
 // Parte do menu do topo: "Entrar / Criar conta" ou "e-mail + Sair".
 function MenuConta() {
@@ -12,6 +12,7 @@ function MenuConta() {
   if (usuario) {
     async function sair() {
       await signOut(auth)
+      apagarProgressoDoNavegador()
       window.location.hash = '#/'
     }
     return (
