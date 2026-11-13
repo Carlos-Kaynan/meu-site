@@ -1,5 +1,6 @@
-// Endereço do curso publicado no GitHub Pages (projeto trilha-a1)
-export const TRILHA_URL = 'https://carlos-kaynan.github.io/trilha-a1/'
+// Endereço da Trilha 1, que fica na pasta public/trilha-1 deste site (antes era o projeto separado trilha-a1).
+// BASE_URL é o "/meu-site/" do vite.config.js
+export const TRILHA_URL = `${import.meta.env.BASE_URL}trilha-1/index.html`
 
 // As trilhas do curso. Em cada aula, "revisao: true" marca os dias só de revisão.
 export const trilhas = [

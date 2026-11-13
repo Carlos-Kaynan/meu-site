@@ -1,0 +1,1750 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mini curso de Inglês · passo a passo, sem dificuldades</title>
+<meta name="description" content="Mini curso de Inglês em 12 aulas, passo a passo e sem dificuldades: vocabulário, gramática, diálogo, escrita, fala e revisão.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📓</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;padding:0;}
+  img{max-width:100%}
+  :root{
+    --bg:#F3F6F4; --surface:#FFFFFF; --surface-2:#E7EFEB; --surface-3:#DCE8E2;
+    --ink:#16211E; --ink-muted:#4B5D57; --border:#D3DED8;
+    --accent:#E0A72E; --accent-ink:#241900; --accent-soft:#FBEBC7;
+    --progress:#1F7A6C; --progress-ink:#FFFFFF; --progress-soft:#D9EEE9;
+    --danger:#B5493A; --danger-soft:#F6DEDA;
+    --locked:#AAB6B0; --locked-soft:#E4E9E6;
+    --shadow: 0 1px 2px rgba(20,30,27,.06), 0 6px 20px -8px rgba(20,30,27,.18);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1917; --surface:#142523; --surface-2:#1B322D; --surface-3:#213D36;
+      --ink:#E7F0EC; --ink-muted:#9FB3AC; --border:#24413B;
+      --accent:#F0B93E; --accent-ink:#241900; --accent-soft:#3A2C0C;
+      --progress:#33A08E; --progress-ink:#052420; --progress-soft:#12332C;
+      --danger:#E48A79; --danger-soft:#3B211C;
+      --locked:#4C625B; --locked-soft:#1B302B;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -10px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1917; --surface:#142523; --surface-2:#1B322D; --surface-3:#213D36;
+    --ink:#E7F0EC; --ink-muted:#9FB3AC; --border:#24413B;
+    --accent:#F0B93E; --accent-ink:#241900; --accent-soft:#3A2C0C;
+    --progress:#33A08E; --progress-ink:#052420; --progress-soft:#12332C;
+    --danger:#E48A79; --danger-soft:#3B211C;
+    --locked:#4C625B; --locked-soft:#1B302B;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -10px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Work Sans', system-ui, sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{ font-family:'Fraunces', Georgia, serif; text-wrap:balance; }
+  .mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  a{ color:inherit; }
+  button{ font-family:inherit; }
+  button:focus-visible, textarea:focus-visible, input:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px;
+  }
+  ::selection{ background:var(--accent-soft); }
+
+  .wrap{ max-width:840px; margin:0 auto; padding:28px 20px 80px; }
+  [hidden]{ display:none !important; }
+
+  /* ---------- Topbar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 20px; border-bottom:1px solid var(--border);
+    background:var(--surface); position:sticky; top:0; z-index:20;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; }
+  .brand .mark{
+    width:30px; height:30px; border-radius:9px; background:var(--accent); color:var(--accent-ink);
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex:none;
+  }
+  .streak-chip{
+    display:flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px;
+    background:var(--accent-soft); color:var(--ink); font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.85rem;
+    border:1px solid var(--border);
+  }
+
+  /* ---------- Sections / cards ---------- */
+  .panel{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px; box-shadow:var(--shadow);
+  }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:.08em; font-size:.72rem; font-weight:600; color:var(--ink-muted);
+  }
+  .lede{ color:var(--ink-muted); font-size:.98rem; max-width:62ch; }
+
+  /* ---------- Hero (cabeçalho da página inicial) ---------- */
+  .hero{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:26px 22px; box-shadow:var(--shadow); text-align:center;
+  }
+  .school-icons{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; font-size:1.7rem; margin-bottom:10px; }
+  .school-icons span{
+    width:48px; height:48px; border-radius:12px; background:var(--surface-2);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero h1{ font-size:2.1rem; margin:6px 0 2px; }
+  .hero .subtitle{ font-family:'Fraunces',serif; font-style:italic; font-size:1.2rem; color:var(--progress); margin:0 0 12px; }
+  .hero .lede{ margin:0 auto; }
+  @media (max-width:640px){ .hero h1{ font-size:1.7rem; } .school-icons{ font-size:1.4rem; } .school-icons span{ width:40px; height:40px; } }
+
+  /* ---------- Stat row ---------- */
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:22px 0; }
+  .stat{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:16px; text-align:left;
+  }
+  .stat .n{ font-family:'IBM Plex Mono',monospace; font-size:1.7rem; font-weight:600; line-height:1; }
+  .stat .l{ font-size:.76rem; color:var(--ink-muted); margin-top:6px; }
+  @media (max-width:640px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---------- Check-in strip ---------- */
+  .checkin-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:14px; }
+  .week-strip{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; width:100%; }
+  .day-dot{
+    border-radius:10px; background:var(--surface-2); border:1px solid var(--border);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+    padding:8px 2px; color:var(--ink-muted);
+  }
+  .day-dot .ic{ font-size:1.3rem; line-height:1; }
+  .day-dot .wd{ font-size:.72rem; font-weight:600; }
+  .day-dot.done{ background:var(--progress-soft); color:var(--ink); border-color:var(--progress); }
+  .day-dot.today{ box-shadow:0 0 0 2px var(--accent); color:var(--ink); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:10px;
+    border:1px solid transparent; font-weight:600; font-size:.92rem; cursor:pointer; transition:transform .08s ease;
+  }
+  .btn:active{ transform:scale(.98); }
+  .btn-primary{ background:var(--accent); color:var(--accent-ink); }
+  .btn-progress{ background:var(--progress); color:var(--progress-ink); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--border); }
+  .btn-ghost:hover{ background:var(--surface-2); }
+  .btn[disabled]{ opacity:.5; cursor:not-allowed; }
+  .btn-sm{ padding:6px 12px; font-size:.8rem; border-radius:8px; }
+
+  /* ---------- Journey path ---------- */
+  .path{
+    display:flex; gap:10px; overflow-x:auto; padding:6px 2px 14px; margin-top:10px;
+  }
+  .node{
+    flex:none; width:88px; height:104px; border-radius:12px; border:1px solid var(--border);
+    background:var(--surface); display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:6px; cursor:pointer; position:relative;
+  }
+  .node .num{ font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:1rem; }
+  .node .ic{ font-size:1.4rem; }
+  .node .t{ font-size:.64rem; color:var(--ink-muted); text-align:center; padding:0 4px; line-height:1.15; }
+  .node.locked{ background:var(--locked-soft); color:var(--locked); cursor:not-allowed; }
+  .node.locked .num, .node.locked .t{ color:var(--locked); }
+  .node.available{ border-color:var(--accent); box-shadow:0 0 0 1px var(--accent); }
+  .node.done{ background:var(--progress-soft); border-color:var(--progress); }
+  .node.review{ background:var(--accent-soft); }
+
+  /* ---------- Vocab cards ---------- */
+  .vocab-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
+  .vcard{ background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
+  .vcard .en{ font-weight:600; font-size:1.02rem; display:flex; align-items:center; gap:8px; }
+  .vcard .pt{ color:var(--ink-muted); font-size:.85rem; margin-top:2px; }
+  .vcard .ex{ font-size:.82rem; margin-top:6px; font-style:italic; color:var(--ink-muted); }
+  .speak-btn{
+    border:none; background:var(--surface-3); color:var(--ink); width:26px; height:26px; border-radius:50%;
+    font-size:.8rem; cursor:pointer; flex:none; display:flex; align-items:center; justify-content:center;
+  }
+  .speak-btn:hover{ background:var(--accent-soft); }
+
+  /* ---------- Dialogue ---------- */
+  .dlg-line{ display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; }
+  .dlg-avatar{
+    width:28px; height:28px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.78rem;
+  }
+  .dlg-avatar.A{ background:var(--accent-soft); color:var(--ink); }
+  .dlg-avatar.B{ background:var(--progress-soft); color:var(--ink); }
+  .dlg-bubble{
+    background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:8px 12px;
+    display:flex; align-items:center; gap:8px; font-size:.94rem;
+  }
+
+  /* ---------- Section nav (inside lesson) ---------- */
+  .section-nav{
+    display:flex; gap:6px; overflow-x:auto; padding-bottom:2px; margin-bottom:22px;
+    position:sticky; top:57px; background:var(--bg); z-index:10; padding-top:8px;
+  }
+  .section-nav a{
+    flex:none; font-size:.78rem; padding:7px 12px; border-radius:999px; border:1px solid var(--border);
+    background:var(--surface); text-decoration:none; color:var(--ink-muted); font-weight:500;
+  }
+  .section-nav a.seen{ color:var(--ink); border-color:var(--progress); }
+
+  .lesson-section{
+    margin-bottom:22px; scroll-margin-top:110px;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px;
+  }
+  .lesson-section h2{ font-size:1.3rem; margin:0 0 6px; display:flex; align-items:center; gap:10px; }
+  .lesson-section .sec-icon{
+    font-size:1.3rem; width:40px; height:40px; border-radius:10px; background:var(--accent-soft);
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .lesson-section .step-num{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--ink-muted); border:1px solid var(--border);
+    border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; flex:none;
+  }
+
+  textarea{
+    width:100%; min-height:96px; padding:12px; border-radius:10px; border:1px solid var(--border);
+    background:var(--surface); color:var(--ink); font-family:inherit; font-size:.94rem; resize:vertical;
+  }
+  .ai-out{
+    margin-top:12px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:14px;
+    font-size:.92rem; white-space:pre-wrap;
+  }
+  .ai-note{ font-size:.78rem; color:var(--ink-muted); margin-top:8px; }
+
+  .chat-box{ background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:12px; }
+  .chat-log{ display:flex; flex-direction:column; gap:8px; max-height:340px; overflow-y:auto; margin-bottom:10px; }
+  .msg{ padding:8px 12px; border-radius:10px; font-size:.9rem; max-width:82%; }
+  .msg.bot{ background:var(--surface); border:1px solid var(--border); align-self:flex-start; }
+  .msg.me{ background:var(--accent); color:var(--accent-ink); align-self:flex-end; }
+  .chat-input-row{ display:flex; gap:8px; }
+  .chat-input-row input{
+    flex:1; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--ink);
+    font-family:inherit; font-size:.92rem;
+  }
+
+  .quiz-item{ border:1px solid var(--border); border-radius:10px; padding:14px; margin-bottom:10px; background:var(--surface-2); }
+  .quiz-q{ font-weight:600; margin-bottom:8px; }
+  .quiz-opt{ display:flex; align-items:center; gap:8px; padding:6px 4px; border-radius:8px; cursor:pointer; font-size:.92rem; }
+  .quiz-opt:hover{ background:var(--surface-3); }
+  .quiz-opt.correct{ background:var(--progress-soft); }
+  .quiz-opt.wrong{ background:var(--danger-soft); }
+  .quiz-tip{ font-size:.8rem; color:var(--ink-muted); margin-top:8px; display:none; }
+  .quiz-tip.show{ display:block; }
+  .quiz-score{ font-family:'IBM Plex Mono',monospace; font-weight:600; margin-top:6px; }
+
+  .word-actions{ margin-top:10px; display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+  .word-actions .btn{ font-size:.74rem; padding:5px 10px; }
+  .word-actions .ai-note{ margin:0; }
+
+  .review-banner{
+    background:var(--accent-soft); border:1px solid var(--accent); border-radius:10px; padding:14px 16px; font-size:.92rem;
+  }
+
+  .lesson-footer{
+    display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:30px;
+    padding-top:18px; border-top:1px solid var(--border); flex-wrap:wrap;
+  }
+
+  .toast{
+    position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:var(--ink); color:var(--bg);
+    padding:10px 18px; border-radius:10px; font-size:.88rem; z-index:50; box-shadow:var(--shadow); opacity:0; pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .toast.show{ opacity:1; }
+
+  .modal-backdrop{
+    position:fixed; inset:0; background:rgba(10,15,14,.55); display:flex; align-items:center; justify-content:center;
+    z-index:60; padding:20px;
+  }
+  .modal{
+    background:var(--surface); border-radius:var(--radius); padding:26px; max-width:400px; width:100%;
+    box-shadow:var(--shadow); text-align:center; border:1px solid var(--border);
+  }
+  .modal h3{ margin:6px 0 6px; }
+  .modal p{ color:var(--ink-muted); font-size:.92rem; margin-bottom:18px; }
+  .modal .row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .about-details{ margin-top:18px; font-size:.88rem; color:var(--ink-muted); }
+  .about-details summary{ cursor:pointer; color:var(--ink); font-weight:600; font-size:.88rem; }
+  .about-details p{ margin:10px 0 0; }
+
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; font-size:.85rem; color:var(--ink-muted);
+    text-decoration:none; margin-bottom:14px; cursor:pointer; background:none; border:none; padding:0;
+  }
+
+  /* review flashcards */
+  .flash{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:40px 24px;
+    text-align:center; box-shadow:var(--shadow);
+  }
+  .flash .word{ font-family:'Fraunces',serif; font-size:1.8rem; font-weight:600; }
+  .flash .trans{ margin-top:14px; font-size:1.1rem; color:var(--progress); min-height:1.4em; }
+  .flash .ex2{ margin-top:6px; font-size:.9rem; color:var(--ink-muted); font-style:italic; min-height:1.3em; }
+  .flash-controls{ margin-top:26px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+  /* Topo da aula: "Voltar para a trilha" e "Página principal" lado a lado */
+  .lesson-top{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px; margin-bottom:14px; }
+  .lesson-top .back-link{ margin-bottom:0; }
+  .back-link.principal{
+    color:var(--ink); font-weight:600; border:1px solid var(--border); border-radius:999px;
+    padding:6px 14px; background:var(--surface);
+  }
+  .back-link.principal:hover{ border-color:var(--ink-muted); }
+</style>
+<script>
+/* Progresso na conta (Firestore). O arquivo conta/nuvem.js, carregado logo abaixo, entrega às
+   funções de salvar desta página um "db" ligado à conta do aluno. Sem login, entrega null e tudo
+   continua só no navegador. As funções da página pedem esse db com window.claude.use('db'). */
+window.TRILHA_DA_PAGINA = 'a1';
+window.contaNuvemPronta = new Promise(function(resolver){
+  window.entregarDbDaConta = resolver;
+  setTimeout(function(){ resolver(null); }, 10000); // se a nuvem não responder, segue só com o navegador
+});
+window.claude = { use: function(nome){ return nome === 'db' ? window.contaNuvemPronta : null; } };
+</script>
+<script type="module" src="../conta/nuvem.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="../#aulas" style="text-decoration:none;" title="Voltar para a página principal do Inglês Básico"><span class="mark">📓</span> Mini curso de Inglês</a>
+  <div class="streak-chip" id="streakChip">🔥 0</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ================= HOME VIEW ================= -->
+  <section id="view-home">
+    <header class="hero">
+      <div class="school-icons" aria-hidden="true">
+        <span>📓</span><span>✏️</span><span>🖊️</span><span>📚</span><span>🎒</span><span>🍎</span>
+      </div>
+      <div class="eyebrow">Nível A1 · 12 aulas</div>
+      <h1 class="display">Mini curso de Inglês</h1>
+      <p class="subtitle">passo a passo, sem dificuldades</p>
+      <p class="lede">Uma aula por dia, no seu ritmo. Em cada aula você aprende palavras novas, ouve e repete frases, escreve, fala em voz alta e faz um quiz rápido para fixar.</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><div class="n mono" id="statDay">1/12</div><div class="l">Aula atual</div></div>
+      <div class="stat"><div class="n mono" id="statStreak">0</div><div class="l">Sequência de dias</div></div>
+      <div class="stat"><div class="n mono" id="statToday">0</div><div class="l">Aulas feitas hoje</div></div>
+      <div class="stat"><div class="n mono" id="statWords">0</div><div class="l">Palavras na revisão</div></div>
+    </div>
+
+    <div class="panel">
+      <div class="eyebrow">📅 Sua semana de estudos</div>
+      <div class="checkin-row">
+        <div class="week-strip" id="weekStrip"></div>
+        <button class="btn btn-ghost btn-sm" id="btnManualCheckin">Já estudei hoje de outra forma</button>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+        <span id="reviewTeaser" hidden>
+          <button class="btn btn-primary" id="btnGoReview">🗂️ Revisar <span id="dueCount">0</span> palavra(s) de hoje</button>
+        </span>
+        <button class="btn btn-ghost" id="btnGoWords">📒 Novas palavras <span class="mono" id="wordsCount">(0)</span></button>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:18px;">
+      <div class="eyebrow">📚 Suas aulas</div>
+      <div class="path" id="pathRow"></div>
+    </div>
+
+    <details class="about-details">
+      <summary>Como este método foi montado</summary>
+      <p>Cada aula combina <strong>input compreensível</strong> (vocabulário e diálogos no seu nível), <strong>repetição espaçada</strong> (as palavras voltam para revisão em intervalos crescentes, como no Anki), <strong>recuperação ativa</strong> (quiz em vez de reler) e <strong>produção</strong> — escrever e falar em voz alta, porque produzir a língua é o que consolida o que você aprendeu. Dias 6 e 12 são dias de revisão espaçada, sem conteúdo novo.</p>
+    </details>
+  </section>
+
+  <!-- ================= LESSON VIEW ================= -->
+  <section id="view-lesson" hidden>
+    <div class="lesson-top">
+      <button class="back-link" id="btnBackHome">← Voltar para a trilha</button>
+      <a class="back-link principal" href="../#aulas" title="Voltar para a página principal do Inglês Básico">🏠 Página principal</a>
+    </div>
+    <div class="eyebrow" id="lessonEyebrow">Dia 1 de 12</div>
+    <h1 class="display" style="font-size:1.7rem;margin:4px 0 16px;" id="lessonTitle"></h1>
+
+    <nav class="section-nav" id="sectionNav"></nav>
+
+    <div class="lesson-section" id="sec-vocab">
+      <h2><span class="sec-icon">📖</span> 1. Vocabulário novo</h2>
+      <p class="lede" id="vocabIntro">Ouça cada palavra (🔊) antes de seguir. Isso já é o começo do shadowing.</p>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </div>
+
+    <div class="lesson-section" id="sec-grammar">
+      <h2><span class="sec-icon">✏️</span> 2. Gramática</h2>
+      <h3 id="grammarTitle" style="margin:0 0 8px;font-size:1.05rem;"></h3>
+      <div id="grammarBody" class="lede" style="max-width:70ch;"></div>
+    </div>
+
+    <div class="lesson-section" id="sec-dialogue">
+      <h2><span class="sec-icon">💬</span> 3. Diálogo · shadowing</h2>
+      <p class="lede">Toque em 🔊 e repita em voz alta, imitando o ritmo. Depois tente ler sem áudio.</p>
+      <div id="dialogueBox" style="margin-top:12px;"></div>
+    </div>
+
+    <div class="lesson-section" id="sec-write">
+      <h2><span class="sec-icon">📝</span> 4. Produção escrita</h2>
+      <p class="lede" id="writingPrompt"></p>
+      <textarea id="writingInput" placeholder="Write your sentences here…"></textarea>
+      <div style="margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" id="btnListenText">🔊 Ouvir meu texto</button>
+        <button class="btn btn-ghost" id="btnSelfCheck">Revisar meu texto</button>
+      </div>
+      <div class="ai-out" id="selfCheckOut" hidden>Confira antes de seguir:
+✓ Cada frase começa com letra maiúscula e termina com ponto?
+✓ Usei a gramática da aula de hoje?
+✓ O verbo combina com o sujeito (I am / she is / he works)?
+✓ Consigo ler o texto em voz alta sem travar?
+Dica: compare com os exemplos do vocabulário e do diálogo acima.</div>
+    </div>
+
+    <div class="lesson-section" id="sec-chat">
+      <h2><span class="sec-icon">🎤</span> 5. Prática de fala</h2>
+      <p class="lede" id="chatTopicLine"></p>
+      <div class="chat-box">
+        <div class="dlg-bubble" style="background:var(--surface);"><button class="speak-btn" id="btnSpeakQuestion" aria-label="Ouvir">🔊</button><span id="speakQuestion"></span></div>
+        <p class="ai-note" style="margin-top:12px;">Ouça a pergunta e responda <strong>em voz alta</strong>, com 2–3 frases. Depois, grave sua resposta no celular e compare com o áudio das frases da aula. Não sabe uma palavra? Adicione ela em <strong>📒 Novas palavras</strong>.</p>
+      </div>
+    </div>
+
+    <div class="lesson-section" id="sec-quiz">
+      <h2><span class="sec-icon">🏆</span> 6. Quiz de fixação</h2>
+      <p class="lede">Tente responder de memória antes de olhar o vocabulário acima — é o jeito mais eficaz de fixar.</p>
+      <div id="quizBox" style="margin-top:12px;"></div>
+      <button class="btn btn-progress" id="btnCheckQuiz">Corrigir quiz</button>
+      <div class="quiz-score" id="quizScore"></div>
+    </div>
+
+    <div class="lesson-footer">
+      <span class="ai-note" id="completeHint">Dica: corrija o quiz antes de concluir, para ver o que acertou.</span>
+      <button class="btn btn-progress" id="btnComplete">Concluir aula ✓</button>
+    </div>
+  </section>
+
+  <!-- ================= NEW WORDS VIEW ================= -->
+  <section id="view-words" hidden>
+    <button class="back-link" id="btnBackHome3">← Voltar para a trilha</button>
+    <div class="eyebrow">Seu caderno</div>
+    <h1 class="display" style="font-size:1.7rem;margin:4px 0 6px;">Novas palavras</h1>
+    <p class="lede">Anote aqui as palavras que você quer aprender. Depois, envie para a revisão espaçada.</p>
+    <form id="addWordForm" class="panel" style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+      <label style="flex:1;min-width:140px;font-size:.8rem;color:var(--ink-muted);">Português<input id="newPt" required maxlength="60" style="display:block;width:100%;margin-top:4px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;"></label>
+      <label style="flex:1;min-width:140px;font-size:.8rem;color:var(--ink-muted);">Inglês<input id="newEn" required maxlength="60" style="display:block;width:100%;margin-top:4px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;"></label>
+      <button class="btn btn-primary" type="submit">Adicionar</button>
+    </form>
+    <div style="margin:18px 0;display:flex;gap:10px;flex-wrap:wrap;" id="wordsActions" hidden>
+      <button class="btn btn-progress" id="btnAllToDeck">Enviar todas para a revisão</button>
+    </div>
+    <div id="wordsList"></div>
+  </section>
+
+  <!-- ================= REVIEW VIEW ================= -->
+  <section id="view-review" hidden>
+    <button class="back-link" id="btnBackHome2">← Voltar para a trilha</button>
+    <div class="eyebrow">Revisão espaçada</div>
+    <h1 class="display" style="font-size:1.7rem;margin:4px 0 20px;">Cartões de hoje</h1>
+    <div id="reviewArea"></div>
+  </section>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* =========================================================
+   LESSON DATA
+   ========================================================= */
+var LESSONS = [
+{day:1, title:"Saudações & Verb To Be", isReview:false,
+ vocab:[
+   {en:"hello", pt:"olá", ex:"Hello! My name is Ana."},
+   {en:"hi", pt:"oi (informal)", ex:"Hi! How are you?"},
+   {en:"goodbye", pt:"tchau, adeus", ex:"Goodbye! See you tomorrow."},
+   {en:"good morning", pt:"bom dia", ex:"Good morning, teacher!"},
+   {en:"good afternoon", pt:"boa tarde", ex:"Good afternoon, everyone."},
+   {en:"good night", pt:"boa noite (despedida)", ex:"Good night! Sleep well."},
+   {en:"please", pt:"por favor", ex:"Coffee, please."},
+   {en:"thank you", pt:"obrigado(a)", ex:"Thank you very much!"},
+   {en:"name", pt:"nome", ex:"What is your name?"},
+   {en:"what", pt:"o quê / qual", ex:"What is your name?"}
+ ],
+ grammarTitle:"O verbo “to be” (am / is / are)",
+ grammarBody:"<p>“To be” significa “ser/estar” e muda de acordo com o sujeito: <strong>I am</strong>, <strong>you/we/they are</strong>, <strong>he/she/it is</strong>. No dia a dia, quase sempre usamos a forma contraída: <em>I'm, you're, he's, she's, it's, we're, they're</em>.</p><p><strong>Exemplos:</strong><br>I am Kaynan. → I'm Kaynan.<br>You are a student. → You're a student.<br>She is happy. → She's happy.<br>We are friends. → We're friends.</p>",
+ dialogue:[
+   {s:"A", en:"Hello! My name is Sara."},
+   {s:"B", en:"Hi, Sara! I'm Lucas."},
+   {s:"A", en:"Nice to meet you, Lucas."},
+   {s:"B", en:"Nice to meet you too. How are you?"},
+   {s:"A", en:"I'm fine, thank you. And you?"},
+   {s:"B", en:"I'm great, thanks!"}
+ ],
+ writingPrompt:"Escreva 3-4 frases se apresentando: seu nome, de onde você é, e como você está hoje. Use “to be” (I am / I'm).",
+ chatTopic:"Apresentações", chatTopicPt:"Pratique se apresentar em inglês bem simples.",
+ chatOpening:"Hi! What's your name? How are you today?",
+ quiz:[
+   {q:"“My name ___ Kaynan.”", opts:["am","is","are","be"], correct:1, tip:"Com “name” (3ª pessoa), usamos “is”."},
+   {q:"“We ___ friends.”", opts:["is","am","are","be"], correct:2, tip:"Com “we”, usamos “are”."},
+   {q:"Qual é a forma reduzida de “I am”?", opts:["I's","I'm","I'am","Im"], correct:1, tip:"I am → I'm."},
+   {q:"“___ morning!” (saudação até o meio-dia)", opts:["Good","Nice","Well","Fine"], correct:0, tip:"Good morning = bom dia."},
+   {q:"Como se diz “obrigado” em inglês?", opts:["Please","Sorry","Thank you","Excuse me"], correct:2, tip:"Thank you = obrigado(a)."}
+ ]
+},
+{day:2, title:"To Be negativo & países", isReview:false,
+ vocab:[
+   {en:"country", pt:"país", ex:"Brazil is a big country."},
+   {en:"city", pt:"cidade", ex:"São Paulo is a big city."},
+   {en:"from", pt:"de (origem)", ex:"I am from Brazil."},
+   {en:"Brazilian", pt:"brasileiro(a)", ex:"She is Brazilian."},
+   {en:"American", pt:"americano(a)", ex:"He is American."},
+   {en:"British", pt:"britânico(a)", ex:"They are British."},
+   {en:"live", pt:"morar, viver", ex:"I live in São Paulo."},
+   {en:"where", pt:"onde", ex:"Where are you from?"},
+   {en:"who", pt:"quem", ex:"Who is that?"}
+ ],
+ grammarTitle:"To be negativo e perguntas + where/who",
+ grammarBody:"<p><strong>Negativo:</strong> am not, isn't (is not), aren't (are not).<br>I am not tired. She isn't Brazilian, she's American.</p><p><strong>Perguntas:</strong> inverta o verbo com o sujeito.<br>Are you a student? — Yes, I am. / No, I'm not.</p><p><strong>Where</strong> (onde) e <strong>who</strong> (quem) começam perguntas:<br>Where are you from? · Who is she?</p>",
+ dialogue:[
+   {s:"A", en:"Are you from Brazil?"},
+   {s:"B", en:"Yes, I am. I'm from Rio de Janeiro. And you?"},
+   {s:"A", en:"I'm not from Brazil. I'm American."},
+   {s:"B", en:"Oh, where do you live now?"},
+   {s:"A", en:"I live in São Paulo."},
+   {s:"B", en:"Nice! Are you a student?"},
+   {s:"A", en:"No, I'm not. I'm a teacher."}
+ ],
+ writingPrompt:"Escreva sobre de onde você é e onde você mora, usando “to be” + from/live.",
+ chatTopic:"De onde você é", chatTopicPt:"Fale sobre sua cidade e seu país.",
+ chatOpening:"Where are you from? Tell me your city and your country!",
+ quiz:[
+   {q:"“___ you from Brazil?”", opts:["Is","Am","Are","Be"], correct:2, tip:"Com “you”, usamos “Are”."},
+   {q:"“She ___ American. She's Brazilian.”", opts:["isn't","am not","aren't","not is"], correct:0, tip:"3ª pessoa negativa: isn't."},
+   {q:"“___ are you from?”", opts:["Who","Where","What","When"], correct:1, tip:"Where = onde (lugar)."},
+   {q:"Resposta curta negativa para “Are you tired?”", opts:["No, I amn't","No, I not","No, I'm not","No, not I"], correct:2, tip:"A forma correta é “I'm not”."},
+   {q:"“Who ___ that man?”", opts:["is","are","am","be"], correct:0, tip:"“That man” é 3ª pessoa singular: is."}
+ ]
+},
+{day:3, title:"Possessivos & Família", isReview:false,
+ vocab:[
+   {en:"family", pt:"família", ex:"This is my family."},
+   {en:"mother", pt:"mãe", ex:"This is my mother."},
+   {en:"father", pt:"pai", ex:"My father is tall."},
+   {en:"sister", pt:"irmã", ex:"Her sister is nice."},
+   {en:"brother", pt:"irmão", ex:"His brother is a doctor."},
+   {en:"son", pt:"filho", ex:"Their son is five years old."},
+   {en:"daughter", pt:"filha", ex:"Our daughter loves music."},
+   {en:"husband", pt:"marido", ex:"Her husband works at a bank."},
+   {en:"wife", pt:"esposa", ex:"His wife is a teacher."}
+ ],
+ grammarTitle:"Pronomes possessivos (my, your, his, her…) e 's",
+ grammarBody:"<p>my (meu), your (seu/sua), his (dele), her (dela), our (nosso), their (deles/delas).</p><p><strong>Exemplos:</strong><br>This is my mother.<br>Her name is Clara.<br>His brother is tall.<br>Their house is big.</p><p><strong>Genitivo 's</strong> mostra posse: Ana's sister = a irmã da Ana.</p>",
+ dialogue:[
+   {s:"A", en:"Is this your family?"},
+   {s:"B", en:"Yes! This is my mother and this is my father."},
+   {s:"A", en:"And who is this?"},
+   {s:"B", en:"That's my sister. Her name is Julia."},
+   {s:"A", en:"Nice! Do you have brothers?"},
+   {s:"B", en:"Yes, one brother. His name is Pedro."}
+ ],
+ writingPrompt:"Descreva sua família em 3-4 frases: quem são, e use pronomes possessivos (my, his, her).",
+ chatTopic:"Família", chatTopicPt:"Conte sobre sua família.",
+ chatOpening:"Tell me about your family! Do you have brothers or sisters?",
+ quiz:[
+   {q:"“This is ___ mother.” (falando de si mesmo)", opts:["his","my","your","their"], correct:1, tip:"Falando de si mesmo: my."},
+   {q:"“___ name is Ana.” (referindo-se a uma mulher)", opts:["His","Her","Its","He"], correct:1, tip:"Para mulher: her."},
+   {q:"Genitivo correto para “o livro da Maria”:", opts:["Maria's book","Marias book","The Maria book","Book's Maria"], correct:0, tip:"Nome + 's + coisa."},
+   {q:"“We love ___ parents.” (falando de “nós”)", opts:["my","your","our","his"], correct:2, tip:"“We” → our."},
+   {q:"“Brother” significa:", opts:["irmã","irmão","filho","primo"], correct:1, tip:"Brother = irmão."}
+ ]
+},
+{day:4, title:"a/an, this/that & objetos", isReview:false,
+ vocab:[
+   {en:"book", pt:"livro", ex:"This is a book."},
+   {en:"table", pt:"mesa", ex:"The book is on the table."},
+   {en:"chair", pt:"cadeira", ex:"That is my chair."},
+   {en:"phone", pt:"telefone/celular", ex:"This is my phone."},
+   {en:"computer", pt:"computador", ex:"That is a computer."},
+   {en:"bag", pt:"bolsa/mochila", ex:"These are my bags."},
+   {en:"window", pt:"janela", ex:"Those are the windows."},
+   {en:"door", pt:"porta", ex:"That is the door."},
+   {en:"pen", pt:"caneta", ex:"This is a pen."}
+ ],
+ grammarTitle:"a / an · this / that / these / those",
+ grammarBody:"<p><strong>a/an</strong> (artigo indefinido): use “an” antes de som de vogal (an apple), e “a” antes de som de consoante (a book).</p><p><strong>this</strong> (isto, perto, singular) · <strong>that</strong> (aquilo, longe, singular) · <strong>these</strong> (estes, perto, plural) · <strong>those</strong> (aqueles, longe, plural).</p><p>This is a book. · That is an apple. · These are my keys. · Those are your shoes.</p>",
+ dialogue:[
+   {s:"A", en:"What is this?"},
+   {s:"B", en:"This is a phone. It's my phone."},
+   {s:"A", en:"And what are those?"},
+   {s:"B", en:"Those are books. They're on the table."},
+   {s:"A", en:"Is that a chair?"},
+   {s:"B", en:"Yes, it is. That's my chair."}
+ ],
+ writingPrompt:"Olhe ao seu redor. Escreva 4 frases usando this/that/these/those + a/an para descrever objetos perto e longe de você.",
+ chatTopic:"Objetos ao redor", chatTopicPt:"Descreva coisas que você vê agora.",
+ chatOpening:"Look around you right now. What objects can you see? Tell me 3 things!",
+ quiz:[
+   {q:"“___ apple” (a ou an?)", opts:["a","an","the","-"], correct:1, tip:"Apple começa com som de vogal → an."},
+   {q:"“___ is my bag” (perto, singular)", opts:["This","These","Those","That"], correct:0, tip:"Perto + singular → this."},
+   {q:"“___ are my keys” (perto, plural)", opts:["This","These","That","Those"], correct:1, tip:"Perto + plural → these."},
+   {q:"“___ book” (a ou an?)", opts:["a","an"], correct:0, tip:"Book começa com som de consoante → a."},
+   {q:"“Chair” significa:", opts:["mesa","cadeira","porta","janela"], correct:1, tip:"Chair = cadeira."}
+ ]
+},
+{day:5, title:"Números & idade", isReview:false,
+ vocab:[
+   {en:"zero", pt:"zero", ex:"My number starts with zero."},
+   {en:"one", pt:"um", ex:"I have one brother."},
+   {en:"two", pt:"dois", ex:"I have two sisters."},
+   {en:"three", pt:"três", ex:"Three plus three is six."},
+   {en:"four", pt:"quatro", ex:"I wake up at four."},
+   {en:"five", pt:"cinco", ex:"Five days a week."},
+   {en:"six", pt:"seis", ex:"Six months ago."},
+   {en:"seven", pt:"sete", ex:"Seven days in a week."},
+   {en:"eight", pt:"oito", ex:"Eight hours of sleep."},
+   {en:"nine", pt:"nove", ex:"Nine in the morning."},
+   {en:"ten", pt:"dez", ex:"Ten fingers."},
+   {en:"age", pt:"idade", ex:"What is your age?"}
+ ],
+ grammarTitle:"How old are you? + números de telefone",
+ grammarBody:"<p>Para perguntar a idade: <strong>How old are you?</strong> Para responder: <strong>I am ... years old.</strong> (I'm 25 years old.)</p><p>Números de telefone são ditos dígito por dígito: 9-8-7-6-5-4-3-2-1. O número 0 também pode ser dito como a letra “oh”.</p>",
+ dialogue:[
+   {s:"A", en:"How old are you?"},
+   {s:"B", en:"I'm 24 years old. And you?"},
+   {s:"A", en:"I'm 30. What's your phone number?"},
+   {s:"B", en:"It's nine-nine-eight-seven-six-five-four-three-two."},
+   {s:"A", en:"Thanks! I'll call you."}
+ ],
+ writingPrompt:"Escreva sua idade e um número de telefone (pode ser inventado) por extenso em inglês, dígito por dígito.",
+ chatTopic:"Idade e números", chatTopicPt:"Fale sobre sua idade.",
+ chatOpening:"How old are you? You can also tell me a phone number (a real one or a made-up one)!",
+ quiz:[
+   {q:"“How ___ are you?”", opts:["many","old","age","years"], correct:1, tip:"How old are you? = pergunta padrão de idade."},
+   {q:"“I ___ 20 years old.”", opts:["is","have","am","are"], correct:2, tip:"I am (I'm) 20 years old."},
+   {q:"Como se escreve o número 7?", opts:["six","seven","eight","nine"], correct:1, tip:"7 = seven."},
+   {q:"Como se escreve o número 10?", opts:["nine","ten","eleven","two"], correct:1, tip:"10 = ten."},
+   {q:"Ao ditar telefone, o número 0 costuma ser dito como:", opts:["a letra “oh”","null","none","not"], correct:0, tip:"É comum dizer “oh” no lugar de “zero” ao ditar números."}
+ ]
+},
+{day:6, title:"Dia de Revisão 1", isReview:true,
+ vocab:[],
+ grammarTitle:"Recapitulando: to be, possessivos, this/that, números",
+ grammarBody:"<p>Sem gramática nova hoje — a ciência mostra que revisar em intervalos espaçados é o que realmente fixa o que você aprendeu. Releia rapidamente, se precisar, os pontos dos dias 1 a 5: <strong>to be</strong> (afirmativo/negativo/pergunta), <strong>possessivos</strong> (my/your/his/her), <strong>this/that/these/those</strong> + a/an, e <strong>números</strong>.</p>",
+ dialogue:[
+   {s:"A", en:"Hi! What's your name and how old are you?"},
+   {s:"B", en:"I'm Marina, I'm 27 years old. Where are you from?"},
+   {s:"A", en:"I'm from Brazil. This is my family — this is my mother and this is my brother."},
+   {s:"B", en:"Nice! Is that your phone?"},
+   {s:"A", en:"Yes, it is. My number is six-six-six-five-five-five."}
+ ],
+ writingPrompt:"Escreva um parágrafo curto (5-6 frases) se apresentando: nome, idade, país, família e um objeto que você gosta.",
+ chatTopic:"Revisão geral", chatTopicPt:"Uma conversa livre misturando tudo o que você já viu.",
+ chatOpening:"Let's review! Tell me your name, your age, where you're from, and something about your family.",
+ quiz:[
+   {q:"“___ is my brother.”", opts:["This","These"], correct:0, tip:"Perto + singular → this."},
+   {q:"“She ___ a teacher.”", opts:["am","is","are"], correct:1, tip:"3ª pessoa: is."},
+   {q:"“___ are you from?”", opts:["Who","Where"], correct:1, tip:"Where = onde."},
+   {q:"“I ___ 22 years old.”", opts:["am","is"], correct:0, tip:"I am / I'm."},
+   {q:"“This is ___ umbrella.”", opts:["a","an"], correct:1, tip:"Umbrella começa com som de vogal → an."},
+   {q:"“What is your ___?” (o que te chamam)", opts:["age","name"], correct:1, tip:"Name = nome."},
+   {q:"“___ are my parents.” (perto, plural)", opts:["This","These"], correct:1, tip:"Perto + plural → these."},
+   {q:"“He ___ my father.”", opts:["is","are"], correct:0, tip:"He → is."},
+   {q:"“I don't ___ tired.” (negativo de to be)", opts:["am not","not am"], correct:0, tip:"I am not / I'm not."},
+   {q:"“My phone number is nine, ___, seven…” (8)", opts:["seven","eight","nine","six"], correct:1, tip:"8 = eight."}
+ ]
+},
+{day:7, title:"Present Simple & rotina", isReview:false,
+ vocab:[
+   {en:"wake up", pt:"acordar", ex:"I wake up at 7."},
+   {en:"get up", pt:"levantar da cama", ex:"She gets up early."},
+   {en:"breakfast", pt:"café da manhã", ex:"I have breakfast at 8."},
+   {en:"work", pt:"trabalhar/trabalho", ex:"He works at a hospital."},
+   {en:"study", pt:"estudar", ex:"We study English every day."},
+   {en:"sleep", pt:"dormir", ex:"I sleep eight hours."},
+   {en:"always", pt:"sempre", ex:"I always drink coffee."},
+   {en:"usually", pt:"geralmente", ex:"She usually wakes up at 6."},
+   {en:"sometimes", pt:"às vezes", ex:"They sometimes work late."},
+   {en:"never", pt:"nunca", ex:"He never sleeps late."}
+ ],
+ grammarTitle:"Present Simple (rotina) + do/does + advérbios de frequência",
+ grammarBody:"<p>Para rotina: I/you/we/they + verbo (I work). He/she/it + verbo<strong>+s</strong> (He works).</p><p>Perguntas e negativas usam <strong>do/does</strong>: Do you work? · He doesn't study at night.</p><p>Advérbios de frequência (always, usually, sometimes, never) ficam <u>antes</u> do verbo principal: I always drink coffee. — mas <u>depois</u> de “to be”: She is always tired.</p>",
+ dialogue:[
+   {s:"A", en:"What time do you wake up?"},
+   {s:"B", en:"I wake up at 6 a.m. I always have breakfast before work."},
+   {s:"A", en:"Do you work every day?"},
+   {s:"B", en:"No, I don't. I work Monday to Friday."},
+   {s:"A", en:"Does your sister work too?"},
+   {s:"B", en:"Yes, she does. She works at a hospital."}
+ ],
+ writingPrompt:"Descreva sua rotina diária em 4-5 frases usando Present Simple (I wake up, I work, I study…) e pelo menos um advérbio de frequência.",
+ chatTopic:"Rotina diária", chatTopicPt:"Fale sobre sua manhã.",
+ chatOpening:"What time do you wake up? Tell me about your morning routine!",
+ quiz:[
+   {q:"“She ___ (work) at a bank.”", opts:["work","works","working","to work"], correct:1, tip:"He/she/it + s: works."},
+   {q:"“___ you like coffee?”", opts:["Do","Does","Are","Is"], correct:0, tip:"Com “you”: Do."},
+   {q:"“He ___ (not/study) at night.”", opts:["don't study","doesn't studies","doesn't study","not studies"], correct:2, tip:"doesn't + verbo base."},
+   {q:"“I ___ drink coffee every morning.” (sempre)", opts:["never","always","sometimes","usually"], correct:1, tip:"Always = sempre."},
+   {q:"Ordem correta:", opts:["She usually wakes up at 7.","She wakes usually up at 7.","Usually she at 7 wakes up.","She wakes up usually at 7."], correct:0, tip:"Advérbio antes do verbo principal."}
+ ]
+},
+{day:8, title:"Horas & dias da semana", isReview:false,
+ vocab:[
+   {en:"Monday", pt:"segunda-feira", ex:"I study on Monday."},
+   {en:"Tuesday", pt:"terça-feira", ex:"The class is on Tuesday."},
+   {en:"Wednesday", pt:"quarta-feira", ex:"We meet on Wednesday."},
+   {en:"Thursday", pt:"quinta-feira", ex:"I'm free on Thursday."},
+   {en:"Friday", pt:"sexta-feira", ex:"Party on Friday!"},
+   {en:"Saturday", pt:"sábado", ex:"I sleep late on Saturday."},
+   {en:"Sunday", pt:"domingo", ex:"We rest on Sunday."},
+   {en:"o'clock", pt:"em ponto", ex:"It's seven o'clock."},
+   {en:"half past", pt:"e meia", ex:"It's half past eight."}
+ ],
+ grammarTitle:"Preposições de tempo: at / in / on",
+ grammarBody:"<p><strong>at</strong> para horários (at 7 o'clock) · <strong>in</strong> para partes do dia e meses (in the morning) · <strong>on</strong> para dias (on Monday).</p><p>Dizendo as horas: It's 7 o'clock (7:00) · It's half past 8 (8:30).</p>",
+ dialogue:[
+   {s:"A", en:"What time is the class?"},
+   {s:"B", en:"It's at 7 o'clock in the evening."},
+   {s:"A", en:"On which day?"},
+   {s:"B", en:"On Tuesday and Thursday."},
+   {s:"A", en:"Great, I'm free in the evening."}
+ ],
+ writingPrompt:"Escreva sua agenda semanal: o que você faz e em que dias/horários, usando at/in/on.",
+ chatTopic:"Horários e dias", chatTopicPt:"Fale sobre quando você estuda inglês.",
+ chatOpening:"What days do you study English? And what time?",
+ quiz:[
+   {q:"“The meeting is ___ 9 o'clock.”", opts:["in","on","at","-"], correct:2, tip:"Horário exato → at."},
+   {q:"“I study English ___ Mondays.”", opts:["at","in","on","-"], correct:2, tip:"Dias da semana → on."},
+   {q:"“It's half past 8” significa:", opts:["8:00","8:15","8:30","8:45"], correct:2, tip:"Half past 8 = 8:30."},
+   {q:"“I work ___ the morning.”", opts:["at","in","on"], correct:1, tip:"Partes do dia → in."},
+   {q:"Qual dia vem depois de “Wednesday”?", opts:["Tuesday","Thursday","Friday","Monday"], correct:1, tip:"Wednesday → Thursday."}
+ ]
+},
+{day:9, title:"There is/are & casa", isReview:false,
+ vocab:[
+   {en:"house", pt:"casa", ex:"This is my house."},
+   {en:"apartment", pt:"apartamento", ex:"I live in an apartment."},
+   {en:"bedroom", pt:"quarto", ex:"There are two bedrooms."},
+   {en:"kitchen", pt:"cozinha", ex:"The kitchen is small."},
+   {en:"bathroom", pt:"banheiro", ex:"There is one bathroom."},
+   {en:"living room", pt:"sala de estar", ex:"We watch TV in the living room."},
+   {en:"sofa", pt:"sofá", ex:"There is a sofa."},
+   {en:"bed", pt:"cama", ex:"My bed is comfortable."},
+   {en:"fridge", pt:"geladeira", ex:"The milk is in the fridge."}
+ ],
+ grammarTitle:"There is / There are + some / any",
+ grammarBody:"<p><strong>There is</strong> (singular) e <strong>there are</strong> (plural) descrevem o que existe em um lugar.</p><p>There is a sofa in the living room. · There are three bedrooms.</p><p><strong>Some</strong> em frases afirmativas, <strong>any</strong> em negativas e perguntas: There are some books. · Is there any milk? · There isn't any bread.</p>",
+ dialogue:[
+   {s:"A", en:"Tell me about your apartment."},
+   {s:"B", en:"There are two bedrooms and one bathroom. There is a small kitchen too."},
+   {s:"A", en:"Is there a living room?"},
+   {s:"B", en:"Yes, there is. There's a sofa and a TV."},
+   {s:"A", en:"Is there any furniture in the second bedroom?"},
+   {s:"B", en:"No, there isn't. It's empty."}
+ ],
+ writingPrompt:"Descreva sua casa/apartamento: quantos cômodos tem e o que existe em cada um, usando there is/there are.",
+ chatTopic:"Sua casa", chatTopicPt:"Descreva onde você mora.",
+ chatOpening:"Tell me about your house or apartment. How many rooms does it have?",
+ quiz:[
+   {q:"“___ a fridge in the kitchen.”", opts:["There is","There are","Is there","There isn't"], correct:0, tip:"Singular afirmativo → There is."},
+   {q:"“___ three bedrooms in my house.”", opts:["There is","There are","Is there"], correct:1, tip:"Plural afirmativo → There are."},
+   {q:"“Is ___ milk in the fridge?”", opts:["some","any","a","an"], correct:1, tip:"Pergunta → any."},
+   {q:"“There ___ some books on the table.”", opts:["is","are","be"], correct:1, tip:"Books é plural → are."},
+   {q:"“Bathroom” significa:", opts:["quarto","cozinha","banheiro","sala"], correct:2, tip:"Bathroom = banheiro."}
+ ]
+},
+{day:10, title:"Can/Can't & profissões", isReview:false,
+ vocab:[
+   {en:"doctor", pt:"médico(a)", ex:"A doctor can help sick people."},
+   {en:"teacher", pt:"professor(a)", ex:"I am a teacher."},
+   {en:"engineer", pt:"engenheiro(a)", ex:"She is an engineer."},
+   {en:"lawyer", pt:"advogado(a)", ex:"He is a lawyer."},
+   {en:"nurse", pt:"enfermeiro(a)", ex:"The nurse can help you."},
+   {en:"cook", pt:"cozinheiro(a) / cozinhar", ex:"I can cook well."},
+   {en:"driver", pt:"motorista", ex:"He is a driver."},
+   {en:"can", pt:"poder/conseguir (habilidade)", ex:"I can speak Portuguese."},
+   {en:"can't", pt:"não poder/não conseguir", ex:"She can't swim."}
+ ],
+ grammarTitle:"Can / can't (habilidade e possibilidade)",
+ grammarBody:"<p><strong>Can</strong> tem a mesma forma para todos os sujeitos, sem “s” na 3ª pessoa: I can, she can, they can.</p><p>Negativo: <strong>can't</strong> (ou cannot). Pergunta: <strong>Can you...?</strong></p><p>I can speak Portuguese. · She can't swim. · Can you drive? · A doctor can help sick people.</p>",
+ dialogue:[
+   {s:"A", en:"What's your job?"},
+   {s:"B", en:"I'm a teacher. I can explain grammar very well! What about you?"},
+   {s:"A", en:"I'm an engineer. I can't cook well, but I can fix computers."},
+   {s:"B", en:"That's useful! Can you speak English?"},
+   {s:"A", en:"Yes, a little. I'm learning!"}
+ ],
+ writingPrompt:"Escreva sobre sua profissão (ou uma que você gostaria de ter) e 2-3 coisas que você pode ou não pode fazer, usando can/can't.",
+ chatTopic:"Profissões e habilidades", chatTopicPt:"Fale sobre seu trabalho e suas habilidades.",
+ chatOpening:"What's your job? And what's something you can do really well?",
+ quiz:[
+   {q:"“She ___ speak three languages.”", opts:["cans","can","canning","to can"], correct:1, tip:"Can nunca leva “s”."},
+   {q:"Negativa de “can”:", opts:["can't","don't can","cans not","not can"], correct:0, tip:"can + not = can't."},
+   {q:"“___ you swim?”", opts:["Do","Can","Are","Is"], correct:1, tip:"Habilidade → Can."},
+   {q:"Um “doctor” trabalha em:", opts:["escola","hospital","restaurante","carro"], correct:1, tip:"Doctor = médico, trabalha no hospital."},
+   {q:"“A cook can ___”", opts:["teach math","cook food","fly planes","fix cars"], correct:1, tip:"Cook = cozinheiro."}
+ ]
+},
+{day:11, title:"Comida & preposições de lugar", isReview:false,
+ vocab:[
+   {en:"food", pt:"comida", ex:"I like Brazilian food."},
+   {en:"water", pt:"água", ex:"I drink water every day."},
+   {en:"coffee", pt:"café", ex:"The coffee is on the table."},
+   {en:"bread", pt:"pão", ex:"The bread is in the kitchen."},
+   {en:"rice", pt:"arroz", ex:"We eat rice and beans."},
+   {en:"meat", pt:"carne", ex:"He doesn't eat meat."},
+   {en:"fruit", pt:"fruta", ex:"The fruit is in the fridge."}
+ ],
+ grammarTitle:"Preposições de lugar: in / on / under / next to",
+ grammarBody:"<p><strong>in</strong> (dentro) · <strong>on</strong> (sobre/em cima) · <strong>under</strong> (embaixo) · <strong>next to</strong> (ao lado de).</p><p>The coffee is on the table. · The bread is in the kitchen. · The cat is under the table. · The fridge is next to the stove.</p>",
+ dialogue:[
+   {s:"A", en:"Where is the coffee?"},
+   {s:"B", en:"It's on the table, next to the bread."},
+   {s:"A", en:"And the fruit?"},
+   {s:"B", en:"It's in the fridge, under the milk."},
+   {s:"A", en:"Thanks! I'm hungry."}
+ ],
+ writingPrompt:"Descreva o que tem na sua cozinha ou geladeira, usando there is/are + preposições de lugar (in/on/under/next to).",
+ chatTopic:"Comida", chatTopicPt:"Fale sobre comidas que você gosta.",
+ chatOpening:"What food do you like? Tell me what's in your fridge right now!",
+ quiz:[
+   {q:"“The bread is ___ the table.” (sobre)", opts:["in","on","under","next to"], correct:1, tip:"Sobre a mesa → on."},
+   {q:"“The milk is ___ the fridge.” (dentro)", opts:["on","in","under"], correct:1, tip:"Dentro → in."},
+   {q:"“The cat is ___ the table.” (embaixo)", opts:["on","under","next to"], correct:1, tip:"Embaixo → under."},
+   {q:"“Rice” significa:", opts:["arroz","carne","fruta","pão"], correct:0, tip:"Rice = arroz."},
+   {q:"“The bank is ___ the school.” (ao lado de)", opts:["in","on","next to","under"], correct:2, tip:"Ao lado de → next to."}
+ ]
+},
+{day:12, title:"Dia de Revisão 2 · Checkpoint", isReview:true,
+ vocab:[],
+ grammarTitle:"Recapitulando o Módulo 1 inteiro",
+ grammarBody:"<p>Você chegou ao checkpoint final do Módulo 1! Hoje é só revisão: Present Simple, horários e dias, there is/are, can/can't e preposições de lugar. Se algo não estiver claro, volte para o dia correspondente antes do quiz.</p>",
+ dialogue:[
+   {s:"A", en:"Hi! Tell me about your routine. What time do you wake up?"},
+   {s:"B", en:"I usually wake up at 6 and I work from Monday to Friday."},
+   {s:"A", en:"Nice. Is there a coffee shop next to your house?"},
+   {s:"B", en:"Yes, there is! And I can walk there in five minutes."},
+   {s:"A", en:"What's your job?"},
+   {s:"B", en:"I'm a nurse. I can't cook very well, but I love my job."}
+ ],
+ writingPrompt:"Escreva um parágrafo (6-8 frases) contando sobre você: nome, idade, família, rotina diária, profissão e sua casa.",
+ chatTopic:"Entrevista completa", chatTopicPt:"Uma conversa completa juntando tudo do Módulo 1.",
+ chatOpening:"Let's have a full conversation! Tell me everything about yourself — your name, your family, your job, and your daily routine.",
+ quiz:[
+   {q:"“He ___ (work) on Saturdays.”", opts:["work","works","working"], correct:1, tip:"3ª pessoa: works."},
+   {q:"“___ you like pizza?”", opts:["Do","Does","Are"], correct:0, tip:"Com you: Do."},
+   {q:"“The meeting is ___ 10 o'clock ___ Monday.”", opts:["at / on","on / at","in / at","at / in"], correct:0, tip:"Horário → at, dia → on."},
+   {q:"“There ___ a park near my house.”", opts:["is","are"], correct:0, tip:"Singular → is."},
+   {q:"“___ there any coffee?”", opts:["Is","Are","Do"], correct:0, tip:"Coffee é incontável/singular → Is there."},
+   {q:"“I ___ swim, but I can't dance.”", opts:["can","cans","canning"], correct:0, tip:"Can nunca muda de forma."},
+   {q:"“The keys are ___ the table.” (sobre)", opts:["in","on","under"], correct:1, tip:"Sobre → on."},
+   {q:"“My sister ___ a nurse.”", opts:["is","are","am"], correct:0, tip:"3ª pessoa: is."},
+   {q:"“She usually ___ (wake up) at 7.”", opts:["wake up","wakes up","waking up"], correct:1, tip:"3ª pessoa: wakes up."},
+   {q:"“This is ___ family.” (falando de “eu”)", opts:["my","her","his"], correct:0, tip:"Falando de si mesmo: my."}
+ ]
+}
+];
+
+var TOTAL_DAYS = LESSONS.length;
+var BOX_INTERVALS = [1,2,4,7,14,30];
+
+/* =========================================================
+   STATE
+   ========================================================= */
+var db = null;
+var progress = {unlockedDay:1, completedDays:[], lastActivityDate:null, streak:0, longestStreak:0, totalLessonsCompleted:0};
+var srsCards = [];
+var newWords = [];
+var currentLessonDay = null;
+var quizChecked = false;
+var hasInteracted = false;
+var lockedTapDay = null;
+
+function pad(n){ return String(n).padStart(2,'0'); }
+function dateStr(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+function todayStr(){ return dateStr(new Date()); }
+function addDaysStr(base, days){ var d = new Date(base); d.setDate(d.getDate()+days); return dateStr(d); }
+function yesterdayStr(){ return addDaysStr(new Date(), -1); }
+
+function showToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2400);
+}
+
+/* ---------- storage layer (db capability with localStorage fallback) ---------- */
+
+// The artifact database hands back FROZEN documents — its snapshots and their
+// data() are read-only, and nested arrays/objects are frozen too. Everything
+// this app keeps in memory gets mutated (card.box, progress.completedDays.push),
+// which throws in strict mode against a frozen object. So every value crossing
+// the boundary out of a snapshot is deep-cloned into plain mutable data first.
+function deepClone(v){
+  try{ return v == null ? v : JSON.parse(JSON.stringify(v)); }
+  catch(e){ return v; }
+}
+
+function lsGet(key, fallback){
+  try{ var v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }catch(e){ return fallback; }
+}
+function lsSet(key, val){
+  try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){}
+}
+
+// safeDb: runs fn() (which must return a Promise) and always resolves —
+// catches BOTH a synchronous throw (a raw exception from the call itself)
+// and an asynchronous rejection (the store answering with an error), and
+// falls back to fallbackFn() in either case. No db-related failure should
+// ever propagate as an uncaught exception into the UI code.
+function safeDb(fn, fallbackFn){
+  try{
+    return Promise.resolve(fn()).catch(function(){ return fallbackFn(); });
+  }catch(e){
+    return Promise.resolve(fallbackFn());
+  }
+}
+function safeDbWrite(fn, fallbackFn){
+  try{
+    Promise.resolve(fn()).catch(function(){ fallbackFn(); });
+  }catch(e){
+    fallbackFn();
+  }
+}
+
+function loadProgress(){
+  if(db){
+    return safeDb(function(){
+      return db.doc('progress/state').get().then(function(snap){
+        // Junta o que está na conta com o que está no navegador (se for do mesmo aluno).
+        return mergeProgress(snap.exists ? deepClone(snap.data()) : null, localDoAluno('trilhaA1_progress', null));
+      });
+    }, function(){ return lsGet('trilhaA1_progress', progress); });
+  }
+  return Promise.resolve(lsGet('trilhaA1_progress', progress));
+}
+function saveProgress(){
+  lsSet('trilhaA1_progress', progress); // sempre no navegador; com login, também na conta
+  if(db) safeDbWrite(function(){ return db.doc('progress/state').set(progress); }, function(){});
+}
+function loadSRS(){
+  if(db){
+    return safeDb(function(){
+      return db.doc('srs/allcards').get().then(function(snap){
+        return mergeCards(snap.exists && snap.data().cards ? deepClone(snap.data().cards) : [], localDoAluno('trilhaA1_srs', []));
+      });
+    }, function(){ return lsGet('trilhaA1_srs', []); });
+  }
+  return Promise.resolve(lsGet('trilhaA1_srs', []));
+}
+function saveSRS(){
+  lsSet('trilhaA1_srs', srsCards); // sempre no navegador; com login, também na conta
+  if(db) safeDbWrite(function(){ return db.doc('srs/allcards').set({cards: srsCards}); }, function(){});
+}
+function loadNewWords(){
+  if(db){
+    return safeDb(function(){
+      return db.doc('vocab/newwords').get().then(function(snap){
+        return mergeWordLists(snap.exists && snap.data().words ? deepClone(snap.data().words) : [], localDoAluno('trilhaA1_newwords', []));
+      });
+    }, function(){ return lsGet('trilhaA1_newwords', []); });
+  }
+  return Promise.resolve(lsGet('trilhaA1_newwords', []));
+}
+function saveNewWords(){
+  lsSet('trilhaA1_newwords', newWords); // sempre no navegador; com login, também na conta
+  if(db) safeDbWrite(function(){ return db.doc('vocab/newwords').set({words: newWords}); }, function(){});
+}
+function saveCheckin(dateKey, patch){
+  saveCheckinLocal(dateKey, patch); // sempre no navegador; com login, também na conta
+  if(db){
+    safeDbWrite(function(){
+      var ref = db.collection('checkins').doc(dateKey);
+      return ref.get().then(function(snap){
+        var data = snap.exists ? deepClone(snap.data()) : {date:dateKey, lessonsCompleted:[], manual:false};
+        Object.assign(data, patch);
+        if(patch.addLessonDay && data.lessonsCompleted.indexOf(patch.addLessonDay) === -1){
+          data.lessonsCompleted.push(patch.addLessonDay);
+        }
+        delete data.addLessonDay;
+        return ref.set(data);
+      });
+    }, function(){});
+  }
+}
+function saveCheckinLocal(dateKey, patch){
+  var key = 'trilhaA1_checkin_' + dateKey;
+  var data = lsGet(key, {date:dateKey, lessonsCompleted:[], manual:false});
+  Object.assign(data, patch);
+  if(patch.addLessonDay && data.lessonsCompleted.indexOf(patch.addLessonDay) === -1){
+    data.lessonsCompleted.push(patch.addLessonDay);
+  }
+  delete data.addLessonDay;
+  lsSet(key, data);
+}
+function getLast7Checkins(){
+  var dates = [];
+  for(var i=6;i>=0;i--) dates.push(addDaysStr(new Date(), -i));
+  var localFallback = function(){
+    return dates.map(function(dt){ return lsGet('trilhaA1_checkin_'+dt, {date:dt, lessonsCompleted:[], manual:false}); });
+  };
+  if(db){
+    return safeDb(function(){
+      return db.collection('checkins').where('date','in',dates).get().then(function(qs){
+        var map = {};
+        qs.docs.forEach(function(d){ map[d.id] = deepClone(d.data()); });
+        // Dias estudados antes do login (no navegador) que ainda não estão na conta: sobem para a conta.
+        var locais = progressoLocalEhDoAluno() ? localFallback() : null;
+        return dates.map(function(dt, i){
+          var local = locais && locais[i];
+          if(!map[dt] && local && (local.lessonsCompleted.length || local.manual)){
+            db.collection('checkins').doc(dt).set(local).catch(function(){});
+            return local;
+          }
+          return map[dt] || {date:dt, lessonsCompleted:[], manual:false};
+        });
+      });
+    }, localFallback);
+  }
+  return Promise.resolve(localFallback());
+}
+
+/* =========================================================
+   TTS (shadowing)
+   ========================================================= */
+var ttsVoices = [];
+function loadVoices(){ try{ ttsVoices = window.speechSynthesis.getVoices(); }catch(e){} }
+if('speechSynthesis' in window){
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+function speak(text){
+  try{
+    if(!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US'; u.rate = 0.88;
+    var v = ttsVoices.find(function(v){ return v.lang === 'en-US'; }) || ttsVoices.find(function(v){ return v.lang && v.lang.indexOf('en') === 0; });
+    if(v) u.voice = v;
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+/* =========================================================
+   ACTIVITY / STREAK / CHECK-IN
+   ========================================================= */
+function registerActivity(){
+  var t = todayStr();
+  if(progress.lastActivityDate === t){ /* already counted today */ }
+  else if(progress.lastActivityDate === yesterdayStr()){ progress.streak = (progress.streak||0) + 1; }
+  else { progress.streak = 1; }
+  progress.lastActivityDate = t;
+  progress.longestStreak = Math.max(progress.longestStreak||0, progress.streak);
+}
+
+/* =========================================================
+   RENDER: HOME
+   ========================================================= */
+function completedToday(){
+  // count lessons whose completion happened today — approximated via checkins fetch on demand;
+  // for the stat tile we just show how many lessons were completed overall today by checking the flag we set at completion time.
+  return progress._completedTodayCount || 0;
+}
+
+// Combine saved state with whatever is already in memory, losing nothing from
+// either side: completed days are unioned, counters take the higher value.
+function mergeProgress(saved, current){
+  var base = {unlockedDay:1, completedDays:[], lastActivityDate:null, streak:0, longestStreak:0, totalLessonsCompleted:0, bonusUnlockedDay:0};
+  var a = Object.assign({}, base, deepClone(saved) || {});
+  var b = Object.assign({}, base, deepClone(current) || {});
+  var days = (a.completedDays || []).slice();
+  (b.completedDays || []).forEach(function(d){ if(days.indexOf(d) === -1) days.push(d); });
+  days.sort(function(x,y){ return x-y; });
+  var latestDate = (a.lastActivityDate || '') > (b.lastActivityDate || '') ? a.lastActivityDate : b.lastActivityDate;
+  return {
+    completedDays: days,
+    unlockedDay: Math.max(a.unlockedDay||1, b.unlockedDay||1),
+    bonusUnlockedDay: Math.max(a.bonusUnlockedDay||0, b.bonusUnlockedDay||0),
+    totalLessonsCompleted: Math.max(a.totalLessonsCompleted||0, b.totalLessonsCompleted||0, days.length),
+    streak: Math.max(a.streak||0, b.streak||0),
+    longestStreak: Math.max(a.longestStreak||0, b.longestStreak||0, a.streak||0, b.streak||0),
+    lastActivityDate: latestDate || null,
+    _completedTodayDate: b._completedTodayDate || a._completedTodayDate,
+    _completedTodayCount: Math.max(a._completedTodayCount||0, b._completedTodayCount||0)
+  };
+}
+
+// Same idea for the flashcards: keep every card either side knows about, and for
+// a card both sides have, keep the one reviewed furthest along.
+function mergeCards(saved, current){
+  var byId = {};
+  (saved || []).forEach(function(c){ if(c && c.id) byId[c.id] = c; });
+  (current || []).forEach(function(c){
+    if(!c || !c.id) return;
+    var existing = byId[c.id];
+    if(!existing || (c.nextReview || '') > (existing.nextReview || '')) byId[c.id] = c;
+  });
+  // deepClone so no frozen snapshot object survives into the mutable card pool
+  return deepClone(Object.keys(byId).map(function(k){ return byId[k]; })) || [];
+}
+
+// Notebook entries from both sides, deduped on the word pair.
+function mergeWordLists(saved, current){
+  var out = [];
+  var seen = {};
+  (saved || []).concat(current || []).forEach(function(w){
+    if(!w || !w.en || !w.pt) return;
+    var key = String(w.pt).toLowerCase() + '|' + String(w.en).toLowerCase();
+    if(seen[key]){
+      if(w.inDeck) seen[key].inDeck = true;
+      return;
+    }
+    var copy = deepClone(w) || w;
+    seen[key] = copy;
+    out.push(copy);
+  });
+  return out;
+}
+
+// A day is open when it is the first day, when it is already done, or when the
+// PREVIOUS day is done. Availability is derived from completedDays — the single
+// source of truth — so a stale or out-of-sync unlockedDay counter can never
+// leave the viewer stuck on a day they already finished.
+function isDayOpen(day){
+  if(day === 1) return true;
+  if(progress.completedDays.indexOf(day) !== -1) return true;
+  if(progress.completedDays.indexOf(day - 1) !== -1) return true;
+  // Days unlocked explicitly — by finishing a lesson, or by checking in after
+  // studying somewhere else.
+  return (progress.bonusUnlockedDay || 0) >= day;
+}
+
+// Opens the next day beyond whatever is currently reachable.
+function unlockNextDay(){
+  var next = Math.min(currentDayNumber() + 1, TOTAL_DAYS);
+  progress.bonusUnlockedDay = Math.max(progress.bonusUnlockedDay || 0, next);
+  return next;
+}
+
+// Highest day the viewer may open right now, derived the same way.
+function currentDayNumber(){
+  var d = 1;
+  for(var i=1;i<=TOTAL_DAYS;i++){ if(isDayOpen(i)) d = i; }
+  return d;
+}
+
+function renderHome(){
+  document.getElementById('statDay').textContent = currentDayNumber() + '/' + TOTAL_DAYS;
+  document.getElementById('statStreak').textContent = progress.streak || 0;
+  document.getElementById('statToday').textContent = completedToday();
+  var due = srsCards.filter(function(c){ return c.nextReview <= todayStr(); });
+  document.getElementById('statWords').textContent = due.length;
+  document.getElementById('streakChip').textContent = '🔥 ' + (progress.streak || 0);
+
+  var teaser = document.getElementById('reviewTeaser');
+  if(due.length > 0){ teaser.hidden = false; document.getElementById('dueCount').textContent = due.length; }
+  else { teaser.hidden = true; }
+  updateWordsBadge();
+
+  // week strip
+  getLast7Checkins().then(function(list){
+    var strip = document.getElementById('weekStrip');
+    strip.innerHTML = '';
+    var labels = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    list.forEach(function(c){
+      var d = document.createElement('div');
+      var jsDate = new Date(c.date + 'T00:00:00');
+      var wd = jsDate.getDay();
+      var done = (c.lessonsCompleted && c.lessonsCompleted.length>0) || c.manual;
+      d.className = 'day-dot' + (done ? ' done' : '') + (c.date === todayStr() ? ' today' : '');
+      d.innerHTML = '<span class="ic">' + (done ? '✅' : '📅') + '</span><span class="wd">' + labels[wd] + '</span>';
+      d.title = c.date + (done ? ' — praticou' : '');
+      strip.appendChild(d);
+    });
+  });
+
+  // path
+  var path = document.getElementById('pathRow');
+  path.innerHTML = '';
+  LESSONS.forEach(function(L){
+    var state = 'locked';
+    if(progress.completedDays.indexOf(L.day) !== -1) state = 'done';
+    else if(isDayOpen(L.day)) state = 'available';
+    var node = document.createElement('div');
+    node.className = 'node ' + state + (L.isReview ? ' review' : '');
+    var icon = state === 'done' ? '✅' : (state === 'locked' ? '🔒' : (L.isReview ? '🔁' : '📓'));
+    node.innerHTML = '<div class="num mono">D' + L.day + '</div><div class="ic">' + icon + '</div><div class="t">' + L.title.split(' ').slice(0,2).join(' ') + '</div>';
+    if(state !== 'locked'){
+      node.addEventListener('click', function(day){ return function(){ openLesson(day); }; }(L.day));
+    } else {
+      // Escape hatch: a second tap opens the day anyway, so a wrong saved state
+      // can never leave the viewer unable to study.
+      node.addEventListener('click', function(day){
+        return function(){
+          if(lockedTapDay === day){
+            lockedTapDay = null;
+            openLesson(day);
+          } else {
+            lockedTapDay = day;
+            showToast('Complete a aula anterior primeiro — ou toque de novo para abrir o Dia ' + day + ' assim mesmo.');
+            setTimeout(function(){ if(lockedTapDay === day) lockedTapDay = null; }, 6000);
+          }
+        };
+      }(L.day));
+    }
+    path.appendChild(node);
+  });
+}
+
+/* =========================================================
+   VIEW SWITCHING
+   ========================================================= */
+/* =========================================================
+   CONTA: só o Dia 1 é livre; os outros dias pedem login.
+   O login é feito na página principal (meu-site). Quando alguém entra, ela grava a marca
+   "ingles-basico:login" no navegador, e esta página lê essa marca.
+   ========================================================= */
+var CHAVE_LOGIN = 'ingles-basico:login';
+var PAGINA_PRINCIPAL = '../';
+var ID_DA_TRILHA = 'a1';
+
+function estaLogado(){
+  try{ return !!JSON.parse(localStorage.getItem(CHAVE_LOGIN)); }catch(e){ return false; }
+}
+
+function podeAbrirAula(day){
+  return day === 1 || estaLogado();
+}
+
+// replace() troca a página sem deixar esta no histórico: o "Voltar" do navegador não fica preso aqui.
+function irParaAvisoDeConta(day){
+  location.replace(PAGINA_PRINCIPAL + '#/aviso?trilha=' + ID_DA_TRILHA + '&dia=' + day);
+}
+
+// De quem é o progresso guardado neste navegador (id do aluno). Vazio = de quem estudou sem login.
+// Assim, num computador compartilhado, o progresso de uma pessoa não vai parar na conta de outra.
+var CHAVE_DONO = 'ingles-basico:dono-progresso';
+function progressoLocalEhDoAluno(){
+  if(!db || !db.uid) return true;
+  var dono = null;
+  try{ dono = localStorage.getItem(CHAVE_DONO); }catch(e){}
+  return !dono || dono === db.uid;
+}
+// Lê do navegador só se o progresso for do aluno logado (ou de antes do login).
+function localDoAluno(chave, padrao){
+  return progressoLocalEhDoAluno() ? lsGet(chave, padrao) : padrao;
+}
+function marcarDonoDoProgresso(){
+  try{ if(db && db.uid) localStorage.setItem(CHAVE_DONO, db.uid); }catch(e){}
+}
+
+/* =========================================================
+   ABRIR UM DIA PELO ENDEREÇO (ex.: index.html#dia-5)
+   A página principal (meu-site) manda o aluno direto para o dia que ele clicou.
+   ========================================================= */
+function diaDoEndereco(){
+  var m = location.hash.match(/^#dia-(\d+)$/);
+  var dia = m ? parseInt(m[1], 10) : 0;
+  return (dia >= 1 && dia <= TOTAL_DAYS) ? dia : 0;
+}
+
+// Deixa o endereço igual ao que está na tela: "#dia-5" na aula, sem nada na lista de dias.
+// replaceState troca o endereço sem criar uma página nova no histórico do navegador.
+function marcarDiaNoEndereco(dia){
+  var novo = location.pathname + location.search + (dia ? '#dia-' + dia : '');
+  try{ history.replaceState(null, '', novo); }catch(e){}
+}
+
+function showView(name){
+  if(name !== 'lesson') marcarDiaNoEndereco(0);
+  document.getElementById('view-home').hidden = name !== 'home';
+  document.getElementById('view-lesson').hidden = name !== 'lesson';
+  document.getElementById('view-review').hidden = name !== 'review';
+  document.getElementById('view-words').hidden = name !== 'words';
+  window.scrollTo(0,0);
+}
+
+/* =========================================================
+   RENDER: LESSON
+   ========================================================= */
+function openLesson(day){
+  if(!podeAbrirAula(day)){ irParaAvisoDeConta(day); return; }
+  currentLessonDay = day;
+  marcarDiaNoEndereco(day);
+  var L = LESSONS[day-1];
+  quizChecked = false;
+
+  document.getElementById('lessonEyebrow').textContent = 'Dia ' + day + ' de ' + TOTAL_DAYS + (L.isReview ? ' · Revisão' : '');
+  document.getElementById('lessonTitle').textContent = L.title;
+
+  // vocab
+  var vocabSection = document.getElementById('sec-vocab');
+  var grid = document.getElementById('vocabGrid');
+  grid.innerHTML = '';
+  if(L.vocab.length === 0){
+    document.getElementById('vocabIntro').textContent = '';
+    grid.innerHTML = '<div class="review-banner">🔁 Hoje não há palavras novas — o foco é consolidar tudo o que você já viu. Aproveite para revisar os cartões pendentes na tela inicial.</div>';
+  } else {
+    document.getElementById('vocabIntro').textContent = 'Ouça cada palavra (🔊) antes de seguir. Isso já é o começo do shadowing.';
+    L.vocab.forEach(function(v){
+      var card = document.createElement('div');
+      card.className = 'vcard';
+      card.innerHTML = '<div class="en"><button class="speak-btn" aria-label="Ouvir">🔊</button>' + v.en + '</div><div class="pt">' + v.pt + '</div><div class="ex">“' + v.ex + '”</div>';
+      card.querySelector('.speak-btn').addEventListener('click', function(){ speak(v.en); });
+      grid.appendChild(card);
+    });
+  }
+
+  // grammar
+  document.getElementById('grammarTitle').textContent = L.grammarTitle;
+  document.getElementById('grammarBody').innerHTML = L.grammarBody;
+
+  // dialogue
+  var dbox = document.getElementById('dialogueBox');
+  dbox.innerHTML = '';
+  L.dialogue.forEach(function(line){
+    var row = document.createElement('div');
+    row.className = 'dlg-line';
+    row.innerHTML = '<div class="dlg-avatar ' + line.s + '">' + line.s + '</div><div class="dlg-bubble"><button class="speak-btn" aria-label="Ouvir">🔊</button><span>' + line.en + '</span></div>';
+    row.querySelector('.speak-btn').addEventListener('click', function(t){ return function(){ speak(t); }; }(line.en));
+    dbox.appendChild(row);
+  });
+
+  // writing
+  document.getElementById('writingPrompt').textContent = L.writingPrompt;
+  document.getElementById('writingInput').value = '';
+  document.getElementById('selfCheckOut').hidden = true;
+
+  // chat
+  document.getElementById('chatTopicLine').textContent = L.chatTopic + ' — ' + L.chatTopicPt;
+  document.getElementById('speakQuestion').textContent = L.chatOpening;
+
+  // quiz
+  var qbox = document.getElementById('quizBox');
+  qbox.innerHTML = '';
+  L.quiz.forEach(function(item, qi){
+    var div = document.createElement('div');
+    div.className = 'quiz-item';
+    var optsHtml = item.opts.map(function(opt, oi){
+      return '<label class="quiz-opt"><input type="radio" name="q'+qi+'" value="'+oi+'"> ' + opt + '</label>';
+    }).join('');
+    div.innerHTML = '<div class="quiz-q">' + (qi+1) + '. ' + item.q + '</div>' + optsHtml + '<div class="quiz-tip" id="tip'+qi+'">💡 ' + item.tip + '</div>';
+    qbox.appendChild(div);
+  });
+  document.getElementById('quizScore').textContent = '';
+  document.getElementById('completeHint').hidden = false;
+  document.getElementById('completeHint').textContent = 'Dica: corrija o quiz antes de concluir, para ver o que acertou.';
+
+  var already = progress.completedDays.indexOf(day) !== -1;
+  document.getElementById('btnComplete').textContent = already ? 'Aula já concluída ✓' : 'Concluir aula ✓';
+  if(already){
+    document.getElementById('completeHint').hidden = true;
+  }
+
+  showView('lesson');
+}
+
+function checkQuiz(){
+  var L = LESSONS[currentLessonDay-1];
+  var score = 0;
+  L.quiz.forEach(function(item, qi){
+    var chosen = document.querySelector('input[name="q'+qi+'"]:checked');
+    var opts = document.querySelectorAll('input[name="q'+qi+'"]');
+    opts.forEach(function(opt){
+      var label = opt.closest('.quiz-opt');
+      label.classList.remove('correct','wrong');
+      if(parseInt(opt.value,10) === item.correct) label.classList.add('correct');
+      else if(chosen && opt === chosen) label.classList.add('wrong');
+    });
+    document.getElementById('tip'+qi).classList.add('show');
+    if(chosen && parseInt(chosen.value,10) === item.correct) score++;
+  });
+  document.getElementById('quizScore').textContent = 'Você acertou ' + score + ' de ' + L.quiz.length + '.';
+  quizChecked = true;
+  document.getElementById('completeHint').hidden = true;
+}
+
+function completeLesson(){
+  var day = currentLessonDay;
+  var L = LESSONS[day-1];
+  var alreadyDone = progress.completedDays.indexOf(day) !== -1;
+
+  if(!alreadyDone && !quizChecked){
+    checkQuiz();
+  }
+
+  if(!alreadyDone){
+    hasInteracted = true;
+    // concat, not push — the array may have come from a frozen database document
+    progress.completedDays = (progress.completedDays || []).concat([day]);
+    progress.totalLessonsCompleted = (progress.totalLessonsCompleted||0) + 1;
+    // Unlock the next day explicitly, on top of the derived rule, so finishing a
+    // lesson always opens what comes next.
+    progress.unlockedDay = Math.max(progress.unlockedDay || 1, Math.min(day+1, TOTAL_DAYS));
+    progress.bonusUnlockedDay = Math.max(progress.bonusUnlockedDay || 0, Math.min(day+1, TOTAL_DAYS));
+
+    var t = todayStr();
+    progress._completedTodayDate = progress._completedTodayDate || t;
+    if(progress._completedTodayDate !== t){ progress._completedTodayCount = 0; progress._completedTodayDate = t; }
+    progress._completedTodayCount = (progress._completedTodayCount||0) + 1;
+
+    // add vocab to SRS pool (rebuild the array rather than pushing into one that
+    // may have come from a frozen database document)
+    var newCards = [];
+    L.vocab.forEach(function(v, vi){
+      var id = 'd' + day + '-' + vi;
+      if(!srsCards.find(function(c){ return c && c.id === id; })){
+        newCards.push({id:id, en:v.en, pt:v.pt, ex:v.ex, day:day, box:0, nextReview: addDaysStr(new Date(),1)});
+      }
+    });
+    if(newCards.length) srsCards = srsCards.concat(newCards);
+
+    // show the result to the viewer FIRST — the UI must never depend on persistence succeeding.
+    showCompleteModal(day);
+
+    try{
+      registerActivity();
+      saveProgress();
+      saveCheckin(t, {addLessonDay: day});
+      saveSRS();
+    }catch(e){
+      showToast('Aula concluída, mas seu progresso pode não ter sido salvo.');
+    }
+  } else {
+    showView('home');
+    renderHome();
+  }
+}
+
+function showCompleteModal(day){
+  var isLast = day >= TOTAL_DAYS;
+  var backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  var nextAvailable = !isLast;
+  backdrop.innerHTML = '<div class="modal">' +
+    '<div style="font-size:2rem;">🎉</div>' +
+    '<h3 class="display">Aula do Dia ' + day + ' concluída!</h3>' +
+    '<p>' + (isLast ? 'Você terminou o Módulo 1 inteiro! Continue revisando os cartões para não esquecer.' : 'Quer adiantar a trilha e já começar o Dia ' + (day+1) + ' agora?') + '</p>' +
+    '<div class="row">' +
+      (nextAvailable ? '<button class="btn btn-primary" id="modalNext">Começar Dia ' + (day+1) + ' agora</button>' : '') +
+      '<button class="btn btn-ghost" id="modalHome">Voltar para a trilha</button>' +
+    '</div></div>';
+  document.body.appendChild(backdrop);
+  if(nextAvailable){
+    backdrop.querySelector('#modalNext').addEventListener('click', function(){
+      document.body.removeChild(backdrop);
+      openLesson(day+1);
+    });
+  }
+  backdrop.querySelector('#modalHome').addEventListener('click', function(){
+    document.body.removeChild(backdrop);
+    showView('home');
+    renderHome();
+  });
+}
+
+/* ---------- palavras que a pessoa anota no caderno ---------- */
+
+function captureNewWords(found, day){
+  var added = [];
+  found.forEach(function(w){
+    var key = w.pt.toLowerCase() + '|' + w.en.toLowerCase();
+    var exists = newWords.some(function(x){
+      return (String(x.pt).toLowerCase() + '|' + String(x.en).toLowerCase()) === key;
+    });
+    if(!exists){
+      added.push({
+        id: 'w' + Date.now() + '-' + Math.random().toString(36).slice(2,7),
+        pt: w.pt, en: w.en, day: day || null, addedAt: todayStr(), inDeck: false
+      });
+    }
+  });
+  if(!added.length) return;
+  newWords = newWords.concat(added);
+  updateWordsBadge();
+  showToast('📒 ' + (added.length === 1
+    ? '"' + added[0].en + '" salva em Novas palavras'
+    : added.length + ' palavras salvas em Novas palavras'));
+  try{ saveNewWords(); }catch(e){}
+}
+
+/* =========================================================
+   RENDER: NEW WORDS (the viewer's own notebook)
+   ========================================================= */
+function updateWordsBadge(){
+  var el = document.getElementById('wordsCount');
+  if(el) el.textContent = '(' + newWords.length + ')';
+}
+
+function wordToDeck(word){
+  var id = 'nw-' + word.id;
+  if(!srsCards.some(function(c){ return c && c.id === id; })){
+    srsCards = srsCards.concat([{
+      id: id, en: word.en, pt: word.pt,
+      ex: 'Palavra do seu caderno.',
+      day: word.day || 0, box: 0, nextReview: addDaysStr(new Date(), 1)
+    }]);
+  }
+  return srsCards;
+}
+
+function openWords(){
+  showView('words');
+  renderWords();
+}
+
+function renderWords(){
+  updateWordsBadge();
+  var list = document.getElementById('wordsList');
+  var actions = document.getElementById('wordsActions');
+  list.innerHTML = '';
+
+  if(!newWords.length){
+    actions.hidden = true;
+    list.innerHTML = '<div class="review-banner">Seu caderno está vazio por enquanto. Use o formulário acima para anotar palavras novas.</div>';
+    return;
+  }
+
+  var pending = newWords.filter(function(w){ return !w.inDeck; }).length;
+  actions.hidden = pending === 0;
+  var allBtn = document.getElementById('btnAllToDeck');
+  if(allBtn) allBtn.textContent = 'Enviar ' + pending + ' para a revisão';
+
+  var grid = document.createElement('div');
+  grid.className = 'vocab-grid';
+  newWords.slice().reverse().forEach(function(w){
+    var card = document.createElement('div');
+    card.className = 'vcard';
+    var meta = 'Dia ' + (w.day || '—') + ' · ' + w.addedAt;
+    card.innerHTML =
+      '<div class="en"><button class="speak-btn" aria-label="Ouvir">🔊</button>' + w.en + '</div>' +
+      '<div class="pt">' + w.pt + '</div>' +
+      '<div class="ex mono" style="font-style:normal;font-size:.72rem;">' + meta + '</div>' +
+      '<div class="word-actions">' +
+        (w.inDeck
+          ? '<span class="ai-note">✓ Na revisão</span>'
+          : '<button class="btn btn-progress" data-act="deck">Revisar depois</button>') +
+        '<button class="btn btn-ghost" data-act="del">Remover</button>' +
+      '</div>';
+    card.querySelector('.speak-btn').addEventListener('click', function(){ speak(w.en); });
+    var deckBtn = card.querySelector('[data-act="deck"]');
+    if(deckBtn){
+      deckBtn.addEventListener('click', function(){
+        wordToDeck(w);
+        newWords = newWords.map(function(x){
+          return x.id === w.id ? Object.assign({}, x, {inDeck:true}) : x;
+        });
+        renderWords();
+        showToast('"' + w.en + '" entrou na revisão de amanhã.');
+        try{ saveNewWords(); saveSRS(); }catch(e){}
+      });
+    }
+    card.querySelector('[data-act="del"]').addEventListener('click', function(){
+      newWords = newWords.filter(function(x){ return x.id !== w.id; });
+      renderWords();
+      try{ saveNewWords(); }catch(e){}
+    });
+    grid.appendChild(card);
+  });
+  list.appendChild(grid);
+}
+
+/* =========================================================
+   RENDER: REVIEW (SRS flashcards)
+   ========================================================= */
+var reviewQueue = [];
+var reviewIndex = 0;
+var reviewCorrect = 0;
+
+function openReview(){
+  reviewQueue = srsCards.filter(function(c){ return c.nextReview <= todayStr(); });
+  reviewIndex = 0; reviewCorrect = 0;
+  showView('review');
+  renderReviewCard();
+}
+
+function renderReviewCard(){
+  var area = document.getElementById('reviewArea');
+  if(reviewQueue.length === 0){
+    area.innerHTML = '<div class="review-banner">✨ Nada para revisar hoje! Volte amanhã ou avance para a próxima aula.</div>';
+    return;
+  }
+  if(reviewIndex >= reviewQueue.length){
+    area.innerHTML = '<div class="panel" style="text-align:center;"><div style="font-size:2rem;">🎉</div><h3 class="display">Revisão concluída!</h3><p class="lede">Você acertou ' + reviewCorrect + ' de ' + reviewQueue.length + '.</p><button class="btn btn-primary" id="btnReviewHome">Voltar para a trilha</button></div>';
+    document.getElementById('btnReviewHome').addEventListener('click', function(){ showView('home'); renderHome(); });
+    return;
+  }
+  var card = reviewQueue[reviewIndex];
+  area.innerHTML =
+    '<p class="lede" style="margin-bottom:10px;">Cartão ' + (reviewIndex+1) + ' de ' + reviewQueue.length + '</p>' +
+    '<div class="flash">' +
+      '<div class="word">' + card.en + ' <button class="speak-btn" id="reviewSpeak" aria-label="Ouvir" style="vertical-align:middle;">🔊</button></div>' +
+      '<div class="trans" id="revTrans"></div>' +
+      '<div class="ex2" id="revEx"></div>' +
+      '<div class="flash-controls" id="flashControls">' +
+        '<button class="btn btn-ghost" id="btnReveal">Mostrar tradução</button>' +
+      '</div>' +
+    '</div>';
+  document.getElementById('reviewSpeak').addEventListener('click', function(){ speak(card.en); });
+  document.getElementById('btnReveal').addEventListener('click', function(){
+    document.getElementById('revTrans').textContent = card.pt;
+    document.getElementById('revEx').textContent = '“' + card.ex + '”';
+    document.getElementById('flashControls').innerHTML =
+      '<button class="btn" style="background:var(--danger-soft);color:var(--danger);" id="btnMiss">😵 Não lembrei</button>' +
+      '<button class="btn btn-progress" id="btnHit">🙂 Lembrei</button>';
+    document.getElementById('btnMiss').addEventListener('click', function(){ gradeCard(card, false); });
+    document.getElementById('btnHit').addEventListener('click', function(){ gradeCard(card, true); });
+  });
+}
+
+function gradeCard(card, correct){
+  hasInteracted = true;
+
+  // Build a NEW card object rather than writing into the existing one: a card
+  // loaded from the database may be frozen, and assigning to it would throw
+  // before the queue could move on.
+  var nextBox = correct ? Math.min((card.box||0)+1, BOX_INTERVALS.length-1) : 0;
+  if(correct) reviewCorrect++;
+  var updated = {
+    id: card.id, en: card.en, pt: card.pt, ex: card.ex, day: card.day,
+    box: nextBox,
+    nextReview: addDaysStr(new Date(), BOX_INTERVALS[nextBox])
+  };
+  reviewQueue[reviewIndex] = updated;
+  for(var i=0;i<srsCards.length;i++){
+    if(srsCards[i] && srsCards[i].id === card.id){ srsCards[i] = updated; break; }
+  }
+
+  // advance the card on screen FIRST — this must never depend on persistence succeeding.
+  reviewIndex++;
+  renderReviewCard();
+
+  try{
+    registerActivity();
+    saveProgress();
+    saveSRS();
+    saveCheckin(todayStr(), {reviewDone:true});
+  }catch(e){
+    showToast('Cartão registrado, mas seu progresso pode não ter sido salvo.');
+  }
+}
+
+/* =========================================================
+   SECTION NAV (inside lesson)
+   ========================================================= */
+function buildSectionNav(){
+  var nav = document.getElementById('sectionNav');
+  var items = [
+    ['sec-vocab','📖 Vocabulário'],
+    ['sec-grammar','✏️ Gramática'],
+    ['sec-dialogue','💬 Diálogo'],
+    ['sec-write','📝 Escrita'],
+    ['sec-chat','🎤 Fala'],
+    ['sec-quiz','🏆 Quiz']
+  ];
+  nav.innerHTML = items.map(function(it){ return '<a href="#'+it[0]+'">'+it[1]+'</a>'; }).join('');
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+function wireEvents(){
+  document.getElementById('btnBackHome').addEventListener('click', function(){ showView('home'); renderHome(); });
+  document.getElementById('btnBackHome2').addEventListener('click', function(){ showView('home'); renderHome(); });
+  document.getElementById('btnBackHome3').addEventListener('click', function(){ showView('home'); renderHome(); });
+  document.getElementById('btnGoReview').addEventListener('click', openReview);
+  document.getElementById('btnGoWords').addEventListener('click', openWords);
+  document.getElementById('btnAllToDeck').addEventListener('click', function(){
+    var pending = newWords.filter(function(w){ return !w.inDeck; });
+    if(!pending.length) return;
+    pending.forEach(wordToDeck);
+    newWords = newWords.map(function(x){ return Object.assign({}, x, {inDeck:true}); });
+    renderWords();
+    showToast(pending.length + ' palavra(s) na fila de revisão de amanhã.');
+    try{ saveNewWords(); saveSRS(); }catch(e){}
+  });
+  document.getElementById('btnManualCheckin').addEventListener('click', function(){
+    hasInteracted = true;
+    registerActivity();
+    var opened = unlockNextDay();
+    renderHome();
+    showToast('Check-in registrado! 🔥 Dia ' + opened + ' liberado.');
+    try{ saveProgress(); saveCheckin(todayStr(), {manual:true}); }catch(e){}
+  });
+  document.getElementById('btnCheckQuiz').addEventListener('click', checkQuiz);
+  document.getElementById('btnComplete').addEventListener('click', completeLesson);
+  document.getElementById('btnListenText').addEventListener('click', function(){
+    var t = document.getElementById('writingInput').value.trim();
+    if(!t){ showToast('Escreva algo antes de ouvir.'); return; }
+    speak(t);
+  });
+  document.getElementById('btnSelfCheck').addEventListener('click', function(){
+    document.getElementById('selfCheckOut').hidden = false;
+  });
+  document.getElementById('btnSpeakQuestion').addEventListener('click', function(){
+    speak(document.getElementById('speakQuestion').textContent);
+  });
+  document.getElementById('addWordForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var pt = document.getElementById('newPt').value.trim();
+    var en = document.getElementById('newEn').value.trim();
+    if(!pt || !en) return;
+    captureNewWords([{pt:pt, en:en}], currentLessonDay);
+    document.getElementById('newPt').value = '';
+    document.getElementById('newEn').value = '';
+    renderWords();
+    document.getElementById('newPt').focus();
+  });
+}
+
+function init(){
+  buildSectionNav();
+  wireEvents();
+  renderHome();
+
+  // Veio da página principal com "#dia-N" no endereço? Abre esse dia direto.
+  var diaPedido = diaDoEndereco();
+  if(diaPedido) openLesson(diaPedido);
+  window.addEventListener('hashchange', function(){
+    var dia = diaDoEndereco();
+    if(dia) openLesson(dia);
+  });
+
+  // Progresso: com login vem da conta (Firestore, via conta/nuvem.js); sem login, do navegador.
+  Promise.resolve(window.claude ? window.claude.use('db') : null).then(function(handle){
+    db = handle;
+    return loadProgress();
+  }).then(function(p){
+    progress = mergeProgress(p, progress);
+    return loadSRS();
+  }).then(function(cards){
+    srsCards = mergeCards(cards || [], srsCards);
+    return loadNewWords();
+  }).then(function(words){
+    newWords = mergeWordLists(words || [], newWords);
+    // Com login: guarda na conta o resultado já juntado (inclui o que foi feito antes do login).
+    if(db){ saveProgress(); saveSRS(); saveNewWords(); marcarDonoDoProgresso(); }
+    renderHome();
+  }).catch(function(){ renderHome(); });
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+})();
+</script>
+
+</body></html>
