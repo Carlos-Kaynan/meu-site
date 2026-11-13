@@ -40,6 +40,7 @@ Não há framework de testes configurado.
 - Trilha 1 (A1): projeto separado `trilha-a1`, linkado pelo GitHub Pages.
 - Trilha 2 (A2) e Trilha 3 (B1): cópias de artifacts do Claude em `public/trilha-2/index.html` e `public/trilha-3/index.html` (HTML estático, fora do React). Fora do Claude, a correção por IA, a conversa e o caderno "Novas palavras" ficam desativados; o progresso usa `localStorage`.
 - Ao copiar um artifact novo para `public/`: pôr `<title>`, `lang="pt-BR"` e as fontes dentro do `<head>` (o artifact vem com um invólucro próprio), adicionar `body{margin:0}`, fazer o logo `.brand` apontar para `../` e trocar frases que dizem "volte para conversar comigo".
+- Cada dia em `Trilha.jsx` aponta para `<url da trilha>#dia-N` e abre **na mesma aba** (sem `target="_blank"`). As 3 páginas de trilha (`trilha-a1/index.html`, `public/trilha-2`, `public/trilha-3`) leem esse `#dia-N` no `init()` (`diaDoEndereco`) e abrem a aula direto, mesmo se o dia estiver bloqueado; `marcarDiaNoEndereco` (com `history.replaceState`) mantém o endereço igual ao dia na tela. No topo da aula, ao lado de "← Voltar para a trilha", há o link "🏠 Página principal" para `../#aulas` (Trilha 1: `https://carlos-kaynan.github.io/meu-site/#aulas`). Ao copiar um artifact novo de trilha, repetir essas três mudanças.
 - Aulas com o campo `bloco` (Trilha 3) aparecem agrupadas por bloco. O total de aulas e os níveis do banner são calculados de `trilhas` (`totalDeAulas`, `niveisDasTrilhas`).
 
 ## Estrutura

@@ -50,12 +50,7 @@ function App() {
           <a className="botao botao-principal botao-pequeno" href="#/dialogos">
             💬 Diálogos
           </a>
-          <a
-            className="botao botao-principal botao-pequeno menu-comecar"
-            href={TRILHA_URL}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a className="botao botao-principal botao-pequeno menu-comecar" href={TRILHA_URL}>
             Começar
           </a>
         </nav>

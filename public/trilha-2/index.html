@@ -261,6 +261,15 @@
   .flash .trans{ margin-top:14px; font-size:1.1rem; color:var(--progress); min-height:1.4em; }
   .flash .ex2{ margin-top:6px; font-size:.9rem; color:var(--ink-muted); font-style:italic; min-height:1.3em; }
   .flash-controls{ margin-top:26px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+  /* Topo da aula: "Voltar para a trilha" e "Página principal" lado a lado */
+  .lesson-top{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px; margin-bottom:14px; }
+  .lesson-top .back-link{ margin-bottom:0; }
+  .back-link.principal{
+    color:var(--ink); font-weight:600; border:1px solid var(--border); border-radius:999px;
+    padding:6px 14px; background:var(--surface);
+  }
+  .back-link.principal:hover{ border-color:var(--ink-muted); }
 </style>
 </head>
 <body>
@@ -312,7 +321,10 @@
 
   <!-- ================= LESSON VIEW ================= -->
   <section id="view-lesson" hidden>
-    <button class="back-link" id="btnBackHome">← Voltar para a trilha</button>
+    <div class="lesson-top">
+      <button class="back-link" id="btnBackHome">← Voltar para a trilha</button>
+      <a class="back-link principal" href="../#aulas" title="Voltar para a página principal do Inglês Básico">🏠 Página principal</a>
+    </div>
     <div class="eyebrow" id="lessonEyebrow">Dia 1 de 12</div>
     <h1 class="display" style="font-size:1.7rem;margin:4px 0 16px;" id="lessonTitle"></h1>
 
@@ -1235,7 +1247,25 @@ function renderHome(){
 /* =========================================================
    VIEW SWITCHING
    ========================================================= */
+/* =========================================================
+   ABRIR UM DIA PELO ENDEREÇO (ex.: index.html#dia-5)
+   A página principal (meu-site) manda o aluno direto para o dia que ele clicou.
+   ========================================================= */
+function diaDoEndereco(){
+  var m = location.hash.match(/^#dia-(\d+)$/);
+  var dia = m ? parseInt(m[1], 10) : 0;
+  return (dia >= 1 && dia <= TOTAL_DAYS) ? dia : 0;
+}
+
+// Deixa o endereço igual ao que está na tela: "#dia-5" na aula, sem nada na lista de dias.
+// replaceState troca o endereço sem criar uma página nova no histórico do navegador.
+function marcarDiaNoEndereco(dia){
+  var novo = location.pathname + location.search + (dia ? '#dia-' + dia : '');
+  try{ history.replaceState(null, '', novo); }catch(e){}
+}
+
 function showView(name){
+  if(name !== 'lesson') marcarDiaNoEndereco(0);
   document.getElementById('view-home').hidden = name !== 'home';
   document.getElementById('view-lesson').hidden = name !== 'lesson';
   document.getElementById('view-review').hidden = name !== 'review';
@@ -1248,6 +1278,7 @@ function showView(name){
    ========================================================= */
 function openLesson(day){
   currentLessonDay = day;
+  marcarDiaNoEndereco(day);
   var L = LESSONS[day-1];
   quizChecked = false;
   chatTurns = [];
@@ -1789,6 +1820,14 @@ function init(){
   buildSectionNav();
   wireEvents();
   renderHome();
+
+  // Veio da página principal com "#dia-N" no endereço? Abre esse dia direto.
+  var diaPedido = diaDoEndereco();
+  if(diaPedido) openLesson(diaPedido);
+  window.addEventListener('hashchange', function(){
+    var dia = diaDoEndereco();
+    if(dia) openLesson(dia);
+  });
 
   Promise.resolve(window.claude ? window.claude.use('db') : null).then(function(handle){
     db = handle;

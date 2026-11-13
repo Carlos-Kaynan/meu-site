@@ -53,12 +53,9 @@ function ListaDeAulas({ trilha }) {
               .filter((aula) => aula.bloco === bloco)
               .map((aula) => (
                 <li key={aula.dia}>
-                  <a
-                    className={`aula ${aula.revisao ? 'revisao' : ''}`}
-                    href={trilha.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  {/* "#dia-5" no fim do endereço faz a página da trilha abrir direto no Dia 5.
+                      Sem target="_blank", a aula abre na mesma aba (e o "Voltar" do navegador funciona). */}
+                  <a className={`aula ${aula.revisao ? 'revisao' : ''}`} href={`${trilha.url}#dia-${aula.dia}`}>
                     <span className="aula-dia">Dia {aula.dia}</span>
                     <span className="aula-icone">{aula.icone}</span>
                     <span className="aula-titulo">{aula.titulo}</span>
@@ -70,7 +67,7 @@ function ListaDeAulas({ trilha }) {
       ))}
 
       <div className="trilha-fim">
-        <a className="botao botao-principal" href={trilha.url} target="_blank" rel="noreferrer">
+        <a className="botao botao-principal" href={trilha.url}>
           Começar a {trilha.nome} →
         </a>
       </div>
